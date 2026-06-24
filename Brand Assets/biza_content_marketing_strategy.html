@@ -1,0 +1,267 @@
+
+<style>
+  * { box-sizing: border-box; }
+  .sl { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 10px; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 14px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 12px; margin-bottom: 14px; }
+  .plat-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; }
+  .plat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .plat-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .plat-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .plat-role { font-size: 11px; color: var(--color-text-tertiary); }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 12px; }
+  .row:last-child { border-bottom: none; }
+  .rl { color: var(--color-text-secondary); }
+  .rv { color: var(--color-text-primary); font-weight: 500; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin: 2px 2px 0 0; }
+  .step { display: flex; gap: 10px; margin-bottom: 10px; }
+  .snum { width: 22px; height: 22px; border-radius: 50%; background: #1A3A2A; color: #F5C842; font-size: 10px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .stitle { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 2px; }
+  .sdesc { font-size: 12px; color: var(--color-text-secondary); margin: 0; line-height: 1.5; }
+  .tool-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .tool-row:last-child { border-bottom: none; }
+  .tool-badge { font-size: 11px; padding: 2px 9px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+  .tool-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 2px; }
+  .tool-desc { font-size: 12px; color: var(--color-text-secondary); margin: 0; line-height: 1.5; }
+  .week-row { display: grid; grid-template-columns: 80px 1fr 1fr 1fr 1fr; gap: 8px; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 12px; align-items: center; }
+  .week-row:last-child { border-bottom: none; }
+  .wday { color: var(--color-text-tertiary); font-size: 11px; }
+  .wcell { background: var(--color-background-secondary); border-radius: 6px; padding: 4px 7px; color: var(--color-text-secondary); font-size: 11px; line-height: 1.4; }
+  .wcell.yt { border-left: 2px solid #FF0000; }
+  .wcell.tt { border-left: 2px solid #1A1A1A; }
+  .wcell.ig { border-left: 2px solid #E1306C; }
+  .wcell.fb { border-left: 2px solid #1877F2; }
+  .wcell.off { background: none; color: var(--color-text-tertiary); font-style: italic; }
+  hr.div { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 18px 0; }
+  .hook-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 14px; margin-bottom: 8px; font-size: 13px; color: var(--color-text-primary); line-height: 1.6; }
+  .hook-label { font-size: 10px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 4px; }
+</style>
+
+<div style="padding: 1rem 0;">
+
+  <p class="sl">Content strategy — core philosophy</p>
+  <div class="card">
+    <div style="font-size:14px; font-weight:500; color:var(--color-text-primary); margin-bottom:8px;">One idea → four pieces of content</div>
+    <div style="font-size:13px; color:var(--color-text-secondary); line-height:1.7; margin-bottom:12px;">You don't create different content for each platform. You create one core idea per week and repurpose it intelligently across all four. This keeps you consistent without burning out.</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:120px; background:#1A3A2A; border-radius:var(--border-radius-md); padding:10px 14px; text-align:center;">
+        <div style="font-size:18px; font-weight:500; color:#F5C842;">1</div>
+        <div style="font-size:11px; color:#9FC4A8;">Core idea/week</div>
+      </div>
+      <div style="flex:1; min-width:120px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; text-align:center;">
+        <div style="font-size:18px; font-weight:500; color:var(--color-text-primary);">1</div>
+        <div style="font-size:11px; color:var(--color-text-tertiary);">YouTube video</div>
+      </div>
+      <div style="flex:1; min-width:120px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; text-align:center;">
+        <div style="font-size:18px; font-weight:500; color:var(--color-text-primary);">3–5</div>
+        <div style="font-size:11px; color:var(--color-text-tertiary);">Short clips (TT/IG/FB)</div>
+      </div>
+      <div style="flex:1; min-width:120px; background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; text-align:center;">
+        <div style="font-size:18px; font-weight:500; color:var(--color-text-primary);">2–3</div>
+        <div style="font-size:11px; color:var(--color-text-tertiary);">Carousels/posts</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sl">Platform playbooks</p>
+  <div class="grid2">
+
+    <div class="plat-card">
+      <div class="plat-header">
+        <div class="plat-icon" style="background:#FF0000;">
+          <i class="ti ti-brand-youtube" style="font-size:18px; color:#fff;" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="plat-name">YouTube</div>
+          <div class="plat-role">Trust engine · long-term SEO</div>
+        </div>
+      </div>
+      <div class="row"><span class="rl">Role</span><span class="rv">Authority & depth</span></div>
+      <div class="row"><span class="rl">Format</span><span class="rv">8–15 min explainer videos</span></div>
+      <div class="row"><span class="rl">Frequency</span><span class="rv">1 video/week</span></div>
+      <div class="row"><span class="rl">Content type</span><span class="rv">"How X actually works" deep dives</span></div>
+      <div class="row"><span class="rl">Goal</span><span class="rv">Search traffic + course signups</span></div>
+      <div style="margin-top:10px;">
+        <span class="tag" style="background:#FFEBEB; color:#A32D2D;">Deep dives</span>
+        <span class="tag" style="background:#EAF3DE; color:#27500A;">SEO titles</span>
+        <span class="tag" style="background:#E6F1FB; color:#0C447C;">Scam exposés</span>
+        <span class="tag" style="background:#FEF8E1; color:#633806;">Kenyan focus</span>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-header">
+        <div class="plat-icon" style="background:#1A1A1A;">
+          <i class="ti ti-brand-tiktok" style="font-size:18px; color:#fff;" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="plat-name">TikTok</div>
+          <div class="plat-role">Discovery engine · viral reach</div>
+        </div>
+      </div>
+      <div class="row"><span class="rl">Role</span><span class="rv">Top of funnel, new audience</span></div>
+      <div class="row"><span class="rl">Format</span><span class="rv">30–90 sec rapid tips</span></div>
+      <div class="row"><span class="rl">Frequency</span><span class="rv">3–5 videos/week</span></div>
+      <div class="row"><span class="rl">Content type</span><span class="rv">Shocking truths, quick exposés</span></div>
+      <div class="row"><span class="rl">Goal</span><span class="rv">Followers → YouTube → Biza</span></div>
+      <div style="margin-top:10px;">
+        <span class="tag" style="background:#1A1A1A; color:#fff;">Hook-first</span>
+        <span class="tag" style="background:#EAF3DE; color:#27500A;">Trending audio</span>
+        <span class="tag" style="background:#EEEDFE; color:#3C3489;">Talking head</span>
+        <span class="tag" style="background:#FAECE7; color:#712B13;">Pattern interrupt</span>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-header">
+        <div class="plat-icon" style="background:#E1306C;">
+          <i class="ti ti-brand-instagram" style="font-size:18px; color:#fff;" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="plat-name">Instagram</div>
+          <div class="plat-role">Brand credibility · visual proof</div>
+        </div>
+      </div>
+      <div class="row"><span class="rl">Role</span><span class="rv">Brand trust + community feel</span></div>
+      <div class="row"><span class="rl">Format</span><span class="rv">Reels + carousels + stories</span></div>
+      <div class="row"><span class="rl">Frequency</span><span class="rv">1 reel + 2 posts/week</span></div>
+      <div class="row"><span class="rl">Content type</span><span class="rv">Roadmap visuals, income breakdowns</span></div>
+      <div class="row"><span class="rl">Goal</span><span class="rv">Brand authority + DM leads</span></div>
+      <div style="margin-top:10px;">
+        <span class="tag" style="background:#FBEAF0; color:#72243E;">Carousels</span>
+        <span class="tag" style="background:#EAF3DE; color:#27500A;">Infographics</span>
+        <span class="tag" style="background:#E6F1FB; color:#0C447C;">Stories CTAs</span>
+        <span class="tag" style="background:#FEF8E1; color:#633806;">Behind scenes</span>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-header">
+        <div class="plat-icon" style="background:#1877F2;">
+          <i class="ti ti-brand-facebook" style="font-size:18px; color:#fff;" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="plat-name">Facebook</div>
+          <div class="plat-role">Community & paid traffic</div>
+        </div>
+      </div>
+      <div class="row"><span class="rl">Role</span><span class="rv">Community building + ads</span></div>
+      <div class="row"><span class="rl">Format</span><span class="rv">Group posts, reels, long captions</span></div>
+      <div class="row"><span class="rl">Frequency</span><span class="rv">Daily short posts + 2 reels/week</span></div>
+      <div class="row"><span class="rl">Content type</span><span class="rv">Discussions, polls, success stories</span></div>
+      <div class="row"><span class="rl">Goal</span><span class="rv">Kenyan audience + paid ads later</span></div>
+      <div style="margin-top:10px;">
+        <span class="tag" style="background:#E6F1FB; color:#0C447C;">FB Group</span>
+        <span class="tag" style="background:#EAF3DE; color:#27500A;">Polls</span>
+        <span class="tag" style="background:#FEF8E1; color:#633806;">Long captions</span>
+        <span class="tag" style="background:#EEEDFE; color:#3C3489;">Paid ads later</span>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="div">
+  <p class="sl">Content types that work for Biza</p>
+  <div class="card">
+    <div class="grid2" style="margin-bottom:0;">
+      <div>
+        <div style="font-size:13px; font-weight:500; color:var(--color-text-primary); margin-bottom:8px;">Evergreen content (always relevant)</div>
+        <div class="row"><span class="rl">"How [X] actually works in Kenya"</span></div>
+        <div class="row"><span class="rl">"Why 90% of [X] beginners fail"</span></div>
+        <div class="row"><span class="rl">"The real requirements for [X]"</span></div>
+        <div class="row"><span class="rl">"Is [platform] legit or a scam?"</span></div>
+        <div class="row"><span class="rl">"How much can you realistically earn?"</span></div>
+        <div class="row"><span class="rl">"Step 1 nobody tells you about [X]"</span></div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:500; color:var(--color-text-primary); margin-bottom:8px;">Trending / timely content</div>
+        <div class="row"><span class="rl">Reacting to viral "make money" claims</span></div>
+        <div class="row"><span class="rl">New platform reviews (honest)</span></div>
+        <div class="row"><span class="rl">Income report breakdowns</span></div>
+        <div class="row"><span class="rl">Scam alerts — specific & current</span></div>
+        <div class="row"><span class="rl">Kenyan hustle success stories</span></div>
+        <div class="row"><span class="rl">"I tried [X] for 30 days — results"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+  <p class="sl">Script structure — every video/reel</p>
+  <div class="card">
+    <div style="font-size:12px; color:var(--color-text-tertiary); margin-bottom:14px;">Same formula every time. Claude writes these for you — paste the topic, get a full script.</div>
+    <div class="step"><div class="snum">1</div><div class="step-body"><p class="stitle">Hook (0–3 sec)</p><p class="sdesc">One sentence that stops the scroll. A bold claim, a surprising number, or a direct challenge. E.g. "Most Kenyans trying dropshipping lose money in the first month — here's why."</p></div></div>
+    <div class="step"><div class="snum">2</div><div class="step-body"><p class="stitle">Problem (3–15 sec)</p><p class="sdesc">Agitate the pain point. Why people struggle, what misinformation is out there, what scams look like. Make them feel seen.</p></div></div>
+    <div class="step"><div class="snum">3</div><div class="step-body"><p class="stitle">Authority (15–25 sec)</p><p class="sdesc">Why Biza breaks it down differently. No fluff, just the real process. Brief and confident — not a CV recitation.</p></div></div>
+    <div class="step"><div class="snum">4</div><div class="step-body"><p class="stitle">Value delivery (25 sec – end of short / 2–10 min for YouTube)</p><p class="sdesc">The actual information. Delivered clearly, in steps. Visual aids for YouTube. Fast cuts and text overlays for TikTok/Reels.</p></div></div>
+    <div class="step"><div class="snum">5</div><div class="step-body"><p class="stitle">CTA (last 5–10 sec)</p><p class="sdesc">One clear action only. "Full roadmap is on Biza — link in bio." Never ask for likes AND follows AND comments — pick one per video.</p></div></div>
+  </div>
+
+  <hr class="div">
+  <p class="sl">Hook library — steal these</p>
+  <div style="margin-bottom:14px;">
+    <div class="hook-label">Shock hooks</div>
+    <div class="hook-box">"I tested 6 'make money online' methods so you don't waste your time. Here's the honest truth."</div>
+    <div class="hook-box">"That Mpesa screenshot they sent you? Here's exactly how that scam works — step by step."</div>
+    <div class="hook-label" style="margin-top:10px;">Curiosity hooks</div>
+    <div class="hook-box">"The one thing every legit online income has in common — and why most people skip it."</div>
+    <div class="hook-box">"Nobody talks about how long affiliate marketing actually takes. Let me show you the real timeline."</div>
+    <div class="hook-label" style="margin-top:10px;">Kenyan-specific hooks</div>
+    <div class="hook-box">"Can you actually do dropshipping from Kenya? I checked every step so you don't have to."</div>
+    <div class="hook-box">"Forex trading in Kenya — what the courses won't tell you before you deposit."</div>
+  </div>
+
+  <hr class="div">
+  <p class="sl">Weekly content calendar</p>
+  <div class="card" style="overflow-x:auto;">
+    <div class="week-row" style="font-size:11px; font-weight:500; color:var(--color-text-tertiary);">
+      <span>Day</span><span>YouTube</span><span>TikTok</span><span>Instagram</span><span>Facebook</span>
+    </div>
+    <div class="week-row"><span class="wday">Mon</span><span class="wcell yt">Write & outline script</span><span class="wcell tt">Post tip #1 from last week's YT</span><span class="wcell ig">Carousel — roadmap visual</span><span class="wcell fb">Poll or discussion post</span></div>
+    <div class="week-row"><span class="wday">Tue</span><span class="wcell off">—</span><span class="wcell tt">Scam alert short</span><span class="wcell ig">Story — behind scenes</span><span class="wcell fb">Repost TikTok as reel</span></div>
+    <div class="week-row"><span class="wday">Wed</span><span class="wcell yt">Film & edit video</span><span class="wcell tt">Clip from filming session</span><span class="wcell ig off">—</span><span class="wcell fb">Long caption post</span></div>
+    <div class="week-row"><span class="wday">Thu</span><span class="wcell off">—</span><span class="wcell tt">Hook experiment — trending audio</span><span class="wcell ig">Reel (repurposed TikTok)</span><span class="wcell fb">Short tip post + link to YT</span></div>
+    <div class="week-row"><span class="wday">Fri</span><span class="wcell yt">Publish YouTube video</span><span class="wcell tt">Post YT clip as short</span><span class="wcell ig">Story CTA → Biza link</span><span class="wcell fb">Share YT video to page</span></div>
+    <div class="week-row"><span class="wday">Sat</span><span class="wcell off">—</span><span class="wcell tt">Community reply / duet</span><span class="wcell ig">Q&A in stories</span><span class="wcell fb">Community engagement post</span></div>
+    <div class="week-row"><span class="wday">Sun</span><span class="wcell off">Plan next week</span><span class="wcell off">—</span><span class="wcell off">—</span><span class="wcell off">—</span></div>
+  </div>
+
+  <hr class="div">
+  <p class="sl">Tools & AI workflow</p>
+  <div class="card">
+    <div class="tool-row">
+      <span class="tool-badge" style="background:#E8F2EC; color:#1A3A2A;">Claude (here)</span>
+      <div><div class="tool-name">Script writing, hooks, captions, course content</div><div class="tool-desc">Write full video scripts, generate 10 hook variations per topic, write Instagram captions, draft course roadmap text, create scam warning copy. Your primary content brain.</div></div>
+    </div>
+    <div class="tool-row">
+      <span class="tool-badge" style="background:#FEF8E1; color:#633806;">Canva</span>
+      <div><div class="tool-name">Thumbnails, carousels, brand graphics</div><div class="tool-desc">Create YouTube thumbnails, Instagram carousel slides, Facebook post graphics. Use Biza brand colors (Forest #1A3A2A + Gold #F5C842). Canva's Magic Write can assist with captions too.</div></div>
+    </div>
+    <div class="tool-row">
+      <span class="tool-badge" style="background:#EEEDFE; color:#3C3489;">CapCut</span>
+      <div><div class="tool-name">Short-form video editing + captions</div><div class="tool-desc">Auto-captions for TikTok and Reels. Templates for fast edits. Free and powerful enough for everything you need at this stage. Available on mobile.</div></div>
+    </div>
+    <div class="tool-row">
+      <span class="tool-badge" style="background:#E6F1FB; color:#0C447C;">Buffer / Later</span>
+      <div><div class="tool-name">Content scheduling across all platforms</div><div class="tool-desc">Schedule posts for TikTok, Instagram, Facebook in one place. Plan the whole week on Sunday. Buffer has a free tier that handles 3 platforms.</div></div>
+    </div>
+    <div class="tool-row">
+      <span class="tool-badge" style="background:#FAECE7; color:#712B13;">TubeBuddy / VidIQ</span>
+      <div><div class="tool-name">YouTube SEO & keyword research</div><div class="tool-desc">Find what Kenyans are already searching on YouTube. Optimize titles, tags, descriptions. Know before you film whether a topic has search demand.</div></div>
+    </div>
+    <div class="tool-row">
+      <span class="tool-badge" style="background:#F1EFE8; color:#444441;">Notion</span>
+      <div><div class="tool-name">Content calendar + idea bank</div><div class="tool-desc">Keep all your ideas, scripts, publishing dates, and performance notes in one workspace. Set up a simple content tracker: Topic → Script status → Published → Performance.</div></div>
+    </div>
+  </div>
+
+  <hr class="div">
+  <p class="sl">Growth funnel — how content converts to revenue</p>
+  <div class="card">
+    <div class="step"><div class="snum">1</div><div class="step-body"><p class="stitle">Discovery (TikTok / Instagram Reels)</p><p class="sdesc">Short, punchy content brings in cold audience. Goal: get them to follow and want more. No hard sell here.</p></div></div>
+    <div class="step"><div class="snum">2</div><div class="step-body"><p class="stitle">Trust building (YouTube / Facebook)</p><p class="sdesc">Long-form content converts followers into believers. They see you know what you're talking about. They start visiting Biza.</p></div></div>
+    <div class="step"><div class="snum">3</div><div class="step-body"><p class="stitle">Conversion (Biza platform)</p><p class="sdesc">Free course gets them on the platform. They see the depth of the paid roadmaps. KES 250 feels like nothing compared to the value visible.</p></div></div>
+    <div class="step"><div class="snum">4</div><div class="step-body"><p class="stitle">Retention (community + email)</p><p class="sdesc">Pro Pass members stay through community and new content drops. Email list (built via free course signup) keeps them engaged month to month.</p></div></div>
+    <div class="step"><div class="snum">5</div><div class="step-body"><p class="stitle">Referral (word of mouth)</p><p class="sdesc">Someone who earns their first KES 5,000 online using a Biza roadmap tells five people. This is the most powerful marketing — build the product well first.</p></div></div>
+  </div>
+
+</div>

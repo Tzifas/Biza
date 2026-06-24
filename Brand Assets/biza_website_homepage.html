@@ -1,0 +1,245 @@
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  .biza-site{font-family:var(--font-sans);background:#F7F6F2;min-height:100vh;}
+  .nav{background:#1A3A2A;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;}
+  .nav-logo{display:flex;align-items:center;gap:8px;}
+  .nav-logo-mark{width:28px;height:28px;background:#F5C842;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#1A3A2A;}
+  .nav-logo-text{font-size:17px;font-weight:500;color:#fff;letter-spacing:-0.3px;}
+  .nav-links{display:flex;gap:24px;}
+  .nav-link{font-size:13px;color:#9FC4A8;cursor:pointer;}
+  .nav-link:hover{color:#fff;}
+  .nav-cta{background:#F5C842;color:#1A3A2A;font-size:12px;font-weight:500;padding:7px 16px;border-radius:20px;cursor:pointer;}
+  .hero{background:#1A3A2A;padding:60px 32px 52px;}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,0.15);border:0.5px solid rgba(245,200,66,0.3);border-radius:20px;padding:4px 12px;margin-bottom:20px;}
+  .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#F5C842;}
+  .hero-badge-text{font-size:11px;color:#F5C842;font-weight:500;}
+  .hero-h1{font-size:32px;font-weight:500;color:#fff;line-height:1.25;margin-bottom:14px;max-width:520px;}
+  .hero-h1 span{color:#F5C842;}
+  .hero-sub{font-size:14px;color:#9FC4A8;line-height:1.7;max-width:460px;margin-bottom:28px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+  .btn-primary{background:#F5C842;color:#1A3A2A;font-size:13px;font-weight:500;padding:11px 22px;border-radius:25px;cursor:pointer;border:none;}
+  .btn-ghost{background:transparent;color:#fff;font-size:13px;padding:11px 22px;border-radius:25px;cursor:pointer;border:0.5px solid rgba(255,255,255,0.3);}
+  .hero-stats{display:flex;gap:32px;flex-wrap:wrap;}
+  .hero-stat-num{font-size:22px;font-weight:500;color:#F5C842;}
+  .hero-stat-lbl{font-size:11px;color:#6B9E7A;margin-top:2px;}
+  .section{padding:40px 32px;}
+  .section-title{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+  .section-h2{font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+  .section-sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:24px;}
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
+  .cat-tile{background:#fff;border:0.5px solid #E8E6DE;border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s;}
+  .cat-tile:hover{border-color:#1A3A2A;}
+  .cat-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .cat-name{font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:3px;}
+  .cat-count{font-size:11px;color:#888;}
+  .cat-free{font-size:10px;padding:2px 7px;border-radius:10px;background:#EAF3DE;color:#27500A;margin-top:6px;display:inline-block;}
+  .featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+  .course-card{background:#fff;border:0.5px solid #E8E6DE;border-radius:12px;overflow:hidden;cursor:pointer;}
+  .course-card-top{height:80px;display:flex;align-items:center;justify-content:center;font-size:28px;}
+  .course-card-body{padding:12px 14px;}
+  .course-card-badge{font-size:10px;padding:2px 8px;border-radius:10px;margin-bottom:6px;display:inline-block;}
+  .course-card-title{font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:4px;line-height:1.4;}
+  .course-card-meta{font-size:11px;color:#888;display:flex;gap:10px;margin-bottom:8px;}
+  .course-card-price{font-size:13px;font-weight:500;color:#1A3A2A;}
+  .course-card-price.free{color:#27500A;}
+  .how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;}
+  .how-step{background:#fff;border:0.5px solid #E8E6DE;border-radius:12px;padding:16px;}
+  .how-num{width:28px;height:28px;border-radius:50%;background:#1A3A2A;color:#F5C842;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .how-title{font-size:13px;font-weight:500;color:#1A1A1A;margin-bottom:4px;}
+  .how-desc{font-size:11px;color:#888;line-height:1.5;}
+  .trust-bar{background:#1A3A2A;padding:24px 32px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+  .trust-item{display:flex;align-items:center;gap:8px;}
+  .trust-icon{color:#F5C842;font-size:16px;}
+  .trust-text{font-size:12px;color:#9FC4A8;}
+  .footer{background:#111;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-logo{font-size:16px;font-weight:500;color:#fff;}
+  .footer-copy{font-size:11px;color:#555;}
+  .footer-links{display:flex;gap:16px;}
+  .footer-link{font-size:11px;color:#555;cursor:pointer;}
+</style>
+
+<h2 class="sr-only">Biza website mockup — homepage, category grid, featured courses, and how it works</h2>
+
+<div class="biza-site">
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">B</div>
+      <span class="nav-logo-text">Biza</span>
+    </div>
+    <div class="nav-links">
+      <span class="nav-link">Courses</span>
+      <span class="nav-link">Categories</span>
+      <span class="nav-link">Free resources</span>
+      <span class="nav-link">Blog</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <span class="nav-link" style="color:#9FC4A8;">Log in</span>
+      <span class="nav-cta">Get started free</span>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge"><div class="hero-badge-dot"></div><span class="hero-badge-text">Real online income — no hype</span></div>
+    <h1 class="hero-h1">Learn exactly how<br/><span>online money works.</span><br/>Then go earn it.</h1>
+    <p class="hero-sub">Biza breaks down every legitimate way to earn online — step by step, with real requirements, real timelines, and zero scams.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Explore free courses</button>
+      <button class="btn-ghost">See all categories</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">25+</div><div class="hero-stat-lbl">income roadmaps</div></div>
+      <div><div class="hero-stat-num">6</div><div class="hero-stat-lbl">categories</div></div>
+      <div><div class="hero-stat-num">KES 250</div><div class="hero-stat-lbl">starting price</div></div>
+      <div><div class="hero-stat-num">100%</div><div class="hero-stat-lbl">scam-free verified</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Browse by category</div>
+    <div class="section-h2">Pick your path</div>
+    <div class="section-sub">Every category is a structured roadmap — not a random playlist.</div>
+    <div class="cat-grid">
+      <div class="cat-tile">
+        <div class="cat-icon" style="background:#EAF3DE;"><i class="ti ti-video" style="font-size:18px;color:#27500A;" aria-hidden="true"></i></div>
+        <div class="cat-name">Content creation</div>
+        <div class="cat-count">5 courses</div>
+        <span class="cat-free">2 free</span>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-icon" style="background:#E6F1FB;"><i class="ti ti-briefcase" style="font-size:18px;color:#0C447C;" aria-hidden="true"></i></div>
+        <div class="cat-name">Freelancing</div>
+        <div class="cat-count">5 courses</div>
+        <span class="cat-free">2 free</span>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-icon" style="background:#FEF8E1;"><i class="ti ti-shopping-cart" style="font-size:18px;color:#633806;" aria-hidden="true"></i></div>
+        <div class="cat-name">E-commerce</div>
+        <div class="cat-count">5 courses</div>
+        <span class="cat-free">1 free</span>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-icon" style="background:#FBEAF0;"><i class="ti ti-speakerphone" style="font-size:18px;color:#72243E;" aria-hidden="true"></i></div>
+        <div class="cat-name">Marketing</div>
+        <div class="cat-count">5 courses</div>
+        <span class="cat-free">2 free</span>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-icon" style="background:#EEEDFE;"><i class="ti ti-chart-line" style="font-size:18px;color:#3C3489;" aria-hidden="true"></i></div>
+        <div class="cat-name">Investments</div>
+        <div class="cat-count">5 courses</div>
+        <span class="cat-free">1 free</span>
+      </div>
+      <div class="cat-tile">
+        <div class="cat-icon" style="background:#FAECE7;"><i class="ti ti-cpu" style="font-size:18px;color:#712B13;" aria-hidden="true"></i></div>
+        <div class="cat-name">AI & emerging</div>
+        <div class="cat-count">5 courses</div>
+        <span class="cat-free">1 free</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="background:#fff;padding:40px 32px;">
+    <div class="section-title">Featured courses</div>
+    <div class="section-h2">Most popular roadmaps</div>
+    <div class="section-sub">Start with what's working for most people right now.</div>
+    <div class="featured-grid">
+      <div class="course-card">
+        <div class="course-card-top" style="background:#EAF3DE;">
+          <i class="ti ti-affiliate" style="font-size:32px;color:#27500A;" aria-hidden="true"></i>
+        </div>
+        <div class="course-card-body">
+          <span class="course-card-badge" style="background:#EAF3DE;color:#27500A;">Marketing</span>
+          <div class="course-card-title">Affiliate marketing full roadmap</div>
+          <div class="course-card-meta"><span>7 steps</span><span>3–6 months</span></div>
+          <div class="course-card-price free">Free</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-top" style="background:#FEF8E1;">
+          <i class="ti ti-truck-delivery" style="font-size:32px;color:#633806;" aria-hidden="true"></i>
+        </div>
+        <div class="course-card-body">
+          <span class="course-card-badge" style="background:#FEF8E1;color:#633806;">E-commerce</span>
+          <div class="course-card-title">Dropshipping from Kenya</div>
+          <div class="course-card-meta"><span>7 steps</span><span>2–4 months</span></div>
+          <div class="course-card-price">KES 350</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-top" style="background:#FAECE7;">
+          <i class="ti ti-cpu" style="font-size:32px;color:#712B13;" aria-hidden="true"></i>
+        </div>
+        <div class="course-card-body">
+          <span class="course-card-badge" style="background:#FAECE7;color:#712B13;">AI & emerging</span>
+          <div class="course-card-title">Making money with AI tools</div>
+          <div class="course-card-meta"><span>7 steps</span><span>1–2 months</span></div>
+          <div class="course-card-price free">Free</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-card-top" style="background:#EEEDFE;">
+          <i class="ti ti-chart-candle" style="font-size:32px;color:#3C3489;" aria-hidden="true"></i>
+        </div>
+        <div class="course-card-body">
+          <span class="course-card-badge" style="background:#EEEDFE;color:#3C3489;">Investments</span>
+          <div class="course-card-title">Forex trading — Kenya basics</div>
+          <div class="course-card-meta"><span>7 steps</span><span>6–12 months</span></div>
+          <div class="course-card-price">KES 500</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How Biza works</div>
+    <div class="section-h2">A roadmap, not a rabbit hole</div>
+    <div class="section-sub">Every course follows the same structure so you always know where you are.</div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-title">Pick a category</div>
+        <div class="how-desc">Choose an income model that fits your time, skills, and budget.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-title">Check requirements</div>
+        <div class="how-desc">Know exactly what device, capital, and time you need before you start.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-title">Follow the roadmap</div>
+        <div class="how-desc">Step-by-step process from zero to first income. No skipped steps.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">4</div>
+        <div class="how-title">Watch vetted videos</div>
+        <div class="how-desc">Curated YouTube resources for each step — hand-picked, not random.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">5</div>
+        <div class="how-title">Spot the scams</div>
+        <div class="how-desc">Every course ends with red flags so you never get caught off guard.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-item"><i class="ti ti-shield-check trust-icon" aria-hidden="true"></i><span class="trust-text">All methods verified legit</span></div>
+    <div class="trust-item"><i class="ti ti-map-2 trust-icon" aria-hidden="true"></i><span class="trust-text">Full roadmaps, no guessing</span></div>
+    <div class="trust-item"><i class="ti ti-currency-dollar trust-icon" aria-hidden="true"></i><span class="trust-text">From KES 250 per course</span></div>
+    <div class="trust-item"><i class="ti ti-device-mobile trust-icon" aria-hidden="true"></i><span class="trust-text">Works on phone or laptop</span></div>
+    <div class="trust-item"><i class="ti ti-brand-youtube trust-icon" aria-hidden="true"></i><span class="trust-text">Curated video resources</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">Biza</div>
+    <div class="footer-links">
+      <span class="footer-link">About</span>
+      <span class="footer-link">Courses</span>
+      <span class="footer-link">Blog</span>
+      <span class="footer-link">Contact</span>
+    </div>
+    <div class="footer-copy">© 2025 Biza · Learn it. Earn it.</div>
+  </div>
+</div>

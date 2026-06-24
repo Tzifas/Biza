@@ -1,0 +1,253 @@
+
+<style>
+  * { box-sizing: border-box; }
+  .sec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 10px; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 14px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  .cat-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; }
+  .cat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .cat-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .cat-badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-left: auto; }
+  .course-item { font-size: 12px; color: var(--color-text-secondary); padding: 4px 0; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; justify-content: space-between; align-items: center; }
+  .course-item:last-child { border-bottom: none; }
+  .tier-pill { font-size: 10px; padding: 1px 7px; border-radius: 10px; }
+  .free-pill { background: #EAF3DE; color: #27500A; }
+  .pro-pill { background: #FEF8E1; color: #633806; }
+  .prem-pill { background: #EEEDFE; color: #3C3489; }
+  .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: #1A3A2A; color: #F5C842; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 2px; }
+  .step-desc { font-size: 12px; color: var(--color-text-secondary); margin: 0; line-height: 1.5; }
+  .admin-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #E8F2EC; color: #1A3A2A; margin-left: 6px; }
+  .monetize-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .monetize-row:last-child { border-bottom: none; }
+  .m-icon { font-size: 18px; width: 32px; text-align: center; }
+  .m-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .m-detail { font-size: 12px; color: var(--color-text-secondary); }
+  .price-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; text-align: center; }
+  .price-big { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+  .price-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+  .price-name { font-size: 12px; font-weight: 500; margin-bottom: 6px; color: var(--color-text-secondary); }
+  hr.div { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 18px 0; }
+</style>
+
+<div style="padding: 1rem 0;">
+
+  <p class="sec-label">Platform overview</p>
+  <div class="card" style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+    <div style="flex:1; min-width:200px;">
+      <div style="font-size:16px; font-weight:500; color:var(--color-text-primary); margin-bottom:6px;">Biza — structured online income education</div>
+      <div style="font-size:13px; color:var(--color-text-secondary); line-height:1.7;">A roadmap-based learning platform. Each category is a structured path — not a random collection of videos. Users follow a clear process: understand the model, meet the requirements, take action, track results.</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; min-width:160px;">
+      <div style="background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; font-size:13px;"><i class="ti ti-map-2" style="font-size:15px; margin-right:6px;" aria-hidden="true"></i>Roadmap-first structure</div>
+      <div style="background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; font-size:13px;"><i class="ti ti-brand-youtube" style="font-size:15px; margin-right:6px;" aria-hidden="true"></i>YouTube video integration</div>
+      <div style="background:var(--color-background-secondary); border-radius:var(--border-radius-md); padding:10px 14px; font-size:13px;"><i class="ti ti-shield-check" style="font-size:15px; margin-right:6px;" aria-hidden="true"></i>Fraud prevention focus</div>
+    </div>
+  </div>
+
+  <p class="sec-label">Income categories</p>
+  <div class="grid2">
+
+    <div class="cat-card">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:#1A3A2A;"></div>
+        <span class="cat-title">Content creation</span>
+        <span class="cat-badge" style="background:#EAF3DE; color:#27500A;">Beginner-friendly</span>
+      </div>
+      <div class="course-item"><span>YouTube channel monetization</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>TikTok creator fund & brand deals</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>Instagram reels monetization</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Facebook content & in-stream ads</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Podcast sponsorships</span><span class="tier-pill prem-pill">Premium</span></div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:#2E6644;"></div>
+        <span class="cat-title">Freelancing & services</span>
+        <span class="cat-badge" style="background:#EAF3DE; color:#27500A;">Beginner-friendly</span>
+      </div>
+      <div class="course-item"><span>Writing & transcription (Upwork, Fiverr)</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>Virtual assistant work</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>Graphic design & video editing</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>AI software & app testing</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Web & no-code development</span><span class="tier-pill prem-pill">Premium</span></div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:#F5C842;"></div>
+        <span class="cat-title">E-commerce & selling</span>
+        <span class="cat-badge" style="background:#FEF8E1; color:#633806;">Intermediate</span>
+      </div>
+      <div class="course-item"><span>Dropshipping (full roadmap)</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Print on demand (Printify, Redbubble)</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>Selling digital products</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Selling ebooks & guides</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>Amazon KDP & Merch</span><span class="tier-pill pro-pill">Pro</span></div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:#1A6B8A;"></div>
+        <span class="cat-title">Marketing & traffic</span>
+        <span class="cat-badge" style="background:#E6F1FB; color:#0C447C;">Intermediate</span>
+      </div>
+      <div class="course-item"><span>Affiliate marketing (full roadmap)</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>CPA marketing</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Running ads for clients (SMMA)</span><span class="tier-pill prem-pill">Premium</span></div>
+      <div class="course-item"><span>Email list building & monetization</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Faceless YouTube / clipping</span><span class="tier-pill free-pill">Free</span></div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:#7C3AED;"></div>
+        <span class="cat-title">Investments & trading</span>
+        <span class="cat-badge" style="background:#EEEDFE; color:#3C3489;">Advanced</span>
+      </div>
+      <div class="course-item"><span>Forex trading basics & platforms</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Crypto investing (not trading signals)</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Stocks & bonds fundamentals</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>NSE (Nairobi Securities Exchange)</span><span class="tier-pill prem-pill">Premium</span></div>
+      <div class="course-item"><span>M-Akiba & government bonds</span><span class="tier-pill free-pill">Free</span></div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-header">
+        <div class="cat-dot" style="background:#D85A30;"></div>
+        <span class="cat-title">AI & emerging methods</span>
+        <span class="cat-badge" style="background:#FAECE7; color:#712B13;">New & growing</span>
+      </div>
+      <div class="course-item"><span>Making money with AI tools</span><span class="tier-pill free-pill">Free</span></div>
+      <div class="course-item"><span>Prompt engineering as a service</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>AI art & selling on stock platforms</span><span class="tier-pill pro-pill">Pro</span></div>
+      <div class="course-item"><span>Building & selling GPT tools</span><span class="tier-pill prem-pill">Premium</span></div>
+      <div class="course-item"><span>Newsletter & Substack income</span><span class="tier-pill pro-pill">Pro</span></div>
+    </div>
+
+  </div>
+
+  <hr class="div">
+  <p class="sec-label">Course roadmap layout — per topic</p>
+  <div class="card">
+    <div style="font-size:12px; color:var(--color-text-tertiary); margin-bottom:14px;">Every course follows this exact 7-step structure. No fluff. Users always know where they are.</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-title">What is this? (The real explanation)</p>
+        <p class="step-desc">Plain-language breakdown of how the income model actually works. No hype. What it is, who does it, why it works.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-title">Requirements & reality check</p>
+        <p class="step-desc">Device needed, internet speed, time per week, skills required, capital needed (honest range), location limitations.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-title">How the money actually flows</p>
+        <p class="step-desc">Step-by-step diagram of how value moves from platform → you → payment. This is what prevents fraud — users see the full chain.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <p class="step-title">The process (action roadmap)</p>
+        <p class="step-desc">Numbered steps from zero to first income. No skipped steps. Realistic timeline included (e.g. "expect 3–6 months before consistent income").</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <p class="step-title">Go-to platforms & tools</p>
+        <p class="step-desc">Exact platforms listed with direct links. Payment methods that work in Kenya. What to avoid and why.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <p class="step-title">Video resources <span class="admin-tag">Admin adds here</span></p>
+        <p class="step-desc">Curated YouTube videos you personally vet and embed. Each video gets a one-line note on what to take from it. Admin panel lets you add/remove/reorder videos per course.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <p class="step-title">Red flags & scam warnings</p>
+        <p class="step-desc">Common scams in this niche. How to spot fake versions. What legit platforms never ask for. This section is non-negotiable on every course.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+  <p class="sec-label">Pricing tiers (KES)</p>
+  <div class="grid3">
+    <div class="price-card">
+      <div class="price-name" style="color:#3B6D11;">Free</div>
+      <div class="price-big">KES 0</div>
+      <div class="price-sub">Always free</div>
+      <div style="font-size:11px; color:var(--color-text-secondary); margin-top:10px; line-height:1.6;">Intro courses, overview content, scam warnings, platform listings. No roadmap detail.</div>
+    </div>
+    <div class="price-card" style="border: 2px solid #F5C842;">
+      <div class="price-name" style="color:#854F0B;">Pro — per course</div>
+      <div class="price-big">KES 250–500</div>
+      <div class="price-sub">One-time per course</div>
+      <div style="font-size:11px; color:var(--color-text-secondary); margin-top:10px; line-height:1.6;">Full roadmap, process steps, platforms, video resources, scam guide. Lifetime access per course.</div>
+    </div>
+    <div class="price-card">
+      <div class="price-name" style="color:#3C3489;">Pro pass — all access</div>
+      <div class="price-big">KES 1,500/mo</div>
+      <div class="price-sub">or KES 9,999/year</div>
+      <div style="font-size:11px; color:var(--color-text-secondary); margin-top:10px; line-height:1.6;">All courses unlocked, new content first, community access, monthly live Q&A session.</div>
+    </div>
+  </div>
+
+  <hr class="div">
+  <p class="sec-label">Monetization streams</p>
+  <div class="card">
+    <div class="monetize-row">
+      <i class="ti ti-credit-card m-icon" aria-hidden="true"></i>
+      <div>
+        <div class="m-label">Course sales</div>
+        <div class="m-detail">KES 250–500 per course · all-access pass KES 9,999/yr · primary revenue</div>
+      </div>
+    </div>
+    <div class="monetize-row">
+      <i class="ti ti-link m-icon" aria-hidden="true"></i>
+      <div>
+        <div class="m-label">Affiliate partnerships</div>
+        <div class="m-detail">Earn commissions from platforms you recommend (Fiverr, Shopify, brokers, tools). Links placed naturally in course content.</div>
+      </div>
+    </div>
+    <div class="monetize-row">
+      <i class="ti ti-speakerphone m-icon" aria-hidden="true"></i>
+      <div>
+        <div class="m-label">Minimal site ads</div>
+        <div class="m-detail">Google AdSense or direct brand deals. Max 2 ad placements per page. Never on course pages — only on blog/free content pages.</div>
+      </div>
+    </div>
+    <div class="monetize-row">
+      <i class="ti ti-users m-icon" aria-hidden="true"></i>
+      <div>
+        <div class="m-label">Community membership</div>
+        <div class="m-detail">Optional Discord or Telegram community, included in Pro Pass. Potential for sponsored posts from vetted brands later.</div>
+      </div>
+    </div>
+    <div class="monetize-row">
+      <i class="ti ti-writing m-icon" aria-hidden="true"></i>
+      <div>
+        <div class="m-label">Sponsored content (future)</div>
+        <div class="m-detail">Only vetted, relevant brands. E.g. a legit broker, a payment tool, a business toolkit. Clearly labelled as sponsored.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
