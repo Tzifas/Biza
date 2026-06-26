@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biza Dashboard | Learn it. Earn it.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#00210f",
+                    "primary-container": "#1a3a2a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "on-tertiary-container": "#4f3d00",
+                    "on-tertiary-fixed": "#241a00",
+                    "primary-fixed": "#c7ebd4",
+                    "outline": "#727973",
+                    "on-surface": "#1b1c1a",
+                    "surface-variant": "#e3e2df",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f5f4f0",
+                    "secondary-container": "#b1eec2",
+                    "secondary-fixed": "#b4f0c5",
+                    "tertiary-container": "#d0a61f",
+                    "tertiary": "#755b00",
+                    "surface-bright": "#faf9f5",
+                    "on-primary-fixed": "#002113",
+                    "on-surface-variant": "#424843",
+                    "surface-tint": "#456553",
+                    "inverse-primary": "#abcfb8",
+                    "surface-container": "#efeeea",
+                    "on-primary": "#ffffff",
+                    "secondary": "#316947",
+                    "inverse-surface": "#30312e",
+                    "surface-container-highest": "#e3e2df",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#366e4b",
+                    "surface": "#faf9f5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "secondary-fixed-dim": "#99d4aa",
+                    "primary": "#032416",
+                    "outline-variant": "#c1c8c2",
+                    "surface-dim": "#dbdad6",
+                    "primary-fixed-dim": "#abcfb8",
+                    "surface-container-high": "#e9e8e4",
+                    "on-secondary-fixed-variant": "#165131",
+                    "on-background": "#1b1c1a",
+                    "error": "#ba1a1a",
+                    "background": "#faf9f5",
+                    "tertiary-fixed": "#ffe08f",
+                    "on-primary-container": "#82a48f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#2d4d3c",
+                    "on-tertiary-fixed-variant": "#584400"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "max-width": "1200px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["DM Sans"],
+                    "headline-lg": ["DM Sans"],
+                    "headline-md": ["DM Sans"],
+                    "headline-lg-mobile": ["DM Sans"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .circular-progress {
+            position: relative;
+            width: 54px;
+            height: 54px;
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile h-16 sticky top-0 bg-background z-50 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Biza</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<div class="w-8 h-8 rounded-full border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of Juma Bakari, a young Kenyan entrepreneur with a confident smile, wearing a modern business-casual outfit against a clean, light-colored background. The photography is high-key with soft, natural lighting that emphasizes a trustworthy and successful professional persona, perfectly aligned with a premium online education platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOj4BsYcBj3_dZnVGhznyu9C7r4l_LSBEFtpMtDQbjFaXExbn6Gvy-eUXeSlqVfmDqelWQil4PTgMns1tB2FT2A63g4exQXWYTQB-1yAVZM1j53Jj0xS-efJn3qZzvatLP6X9DpWp8lwfvO4zhg_QJSkp4u3rDr1A_hbkf9Zii5YFSvLBHvYEVA4hz3LOfet6sMRCoKlqnzrdGweiTNodnMcFOA5hUjZPKkODHinnZgSx6fKvcrMOrlbr-KJ6RtdzFofDu6YZuXGHf"/>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile py-stack-md max-w-max-width mx-auto">
+<!-- Profile & Subscription Section -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-stack-sm">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Habari, Juma</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-tertiary text-on-tertiary text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            PRO MEMBER
+                        </span>
+</div>
+</div>
+</div>
+<!-- M-Pesa Subscription Alert -->
+<div class="bg-white border-[0.5px] border-outline-variant rounded-xl p-stack-md flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Pro expires in 14 days</p>
+<p class="text-xs text-on-surface-variant">Last paid via M-Pesa</p>
+</div>
+</div>
+<button class="w-full md:w-auto bg-[#F5C842] text-[#1A1A1A] font-headline-md text-sm px-6 py-3 rounded-[25px] font-bold hover:opacity-90 transition-opacity">
+                    Renew with M-Pesa
+                </button>
+</div>
+</section>
+<!-- Continue Learning (Hero Card) -->
+<section class="mb-stack-lg">
+<div class="bg-primary-container text-white rounded-xl overflow-hidden relative min-h-[180px] flex flex-col justify-end p-stack-md">
+<div class="absolute inset-0 z-0 opacity-40">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek, modern laptop screen showing complex business data visualizations and code, bathed in deep forest green and golden ambient lighting. The background is softly blurred to create a sense of professional focus and technological depth, emphasizing the practical and high-level nature of the online courses offered by Biza." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmuRMURWdwJsxM6VVP_kI-vG0KhdM7xcl05CT1QTVar6pYTzZlt-HFsXx-XCVj_lA7MqKP8HxkOLbaGRx3MKy6UW2FBda6vlsC-x2XPY_eF11PUTNDnRzbwAs6d3f7qZ27GcI2I_obsvT54uIGOxGvbbLGjozjZMq8w6QGIa5NF33HOgCEZ4aNWYIotzMDisHCkGuaWswfZTqideIkrymc0Mzhud12VXz-SHTaBA5vguIfyVRU_jQcdwN0ABhT8T1Lv_mEP8KaWxUY"/>
+</div>
+<div class="relative z-10">
+<span class="text-[10px] font-bold bg-white/20 backdrop-blur-md px-2 py-1 rounded mb-2 inline-block">CONTINUE LEARNING</span>
+<h2 class="font-headline-md text-headline-md mb-1">Advanced Freelancing Strategies</h2>
+<p class="font-body-md text-sm text-on-primary-container mb-4">Module 4: Pricing your value like a Pro</p>
+<div class="w-full bg-white/20 h-1.5 rounded-full mb-4 overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full" style="width: 65%;"></div>
+</div>
+<button class="bg-[#F5C842] text-[#1A1A1A] font-bold text-sm px-6 py-2.5 rounded-[25px] flex items-center gap-2">
+                        Resume Course
+                        <span class="material-symbols-outlined text-sm">play_arrow</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="mb-stack-lg">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-stack-md">
+<div class="bg-white border-[0.5px] border-outline-variant p-stack-md rounded-xl flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-bold text-primary">04</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Courses Completed</span>
+</div>
+<div class="bg-white border-[0.5px] border-outline-variant p-stack-md rounded-xl flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-bold text-primary">28</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Hours Learned</span>
+</div>
+<div class="bg-white border-[0.5px] border-outline-variant p-stack-md rounded-xl flex flex-col items-center justify-center text-center col-span-2 md:col-span-1">
+<span class="text-3xl font-bold text-primary">0/1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Certificates Earned</span>
+</div>
+</div>
+</section>
+<!-- Enrolled Courses Progress -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-primary">Active Courses</h3>
+<a class="text-secondary font-label-md text-label-md" href="#">View All</a>
+</div>
+<div class="space-y-stack-md">
+<!-- Course Item 1 -->
+<div class="bg-white border-[0.5px] border-outline-variant rounded-xl p-stack-md flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="circular-progress">
+<svg class="progress-ring" height="54" width="54">
+<circle class="progress-ring__circle" cx="27" cy="27" fill="transparent" r="24" stroke="#E8E6DE" stroke-width="4"></circle>
+<circle class="progress-ring__circle" cx="27" cy="27" fill="transparent" r="24" stroke="#2E6644" stroke-dasharray="150.79" stroke-dashoffset="30.15" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-bold text-xs text-primary">80%</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface">Digital Marketing Essentials</h4>
+<p class="text-xs text-on-surface-variant">12/15 Lessons Complete</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Course Item 2 -->
+<div class="bg-white border-[0.5px] border-outline-variant rounded-xl p-stack-md flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="circular-progress">
+<svg class="progress-ring" height="54" width="54">
+<circle class="progress-ring__circle" cx="27" cy="27" fill="transparent" r="24" stroke="#E8E6DE" stroke-width="4"></circle>
+<circle class="progress-ring__circle" cx="27" cy="27" fill="transparent" r="24" stroke="#2E6644" stroke-dasharray="150.79" stroke-dashoffset="90.47" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-bold text-xs text-primary">40%</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface">E-commerce with Shopify</h4>
+<p class="text-xs text-on-surface-variant">4/10 Lessons Complete</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center pt-2 pb-safe px-2 bg-surface border-t border-outline-variant z-50">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<!-- Courses -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-sm text-label-sm mt-1">Courses</span>
+</a>
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<!-- Account -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Account</span>
+</a>
+</nav>
+<script>
+        // Simple ripple effect for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                let ripple = document.createElement('span');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

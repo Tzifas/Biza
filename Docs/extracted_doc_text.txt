@@ -1,0 +1,622 @@
+﻿
+
+
+BIZA
+Learn it. Earn it.
+Full Product Documentation Suite
+PRD  Â·  MVP Plan  Â·  Tech Stack  Â·  Design System  Â·  Security  Â·  Legal  Â·  Go-to-Market
+
+
+Version 1.0  Â·  Confidential  Â·  2025
+
+1. Product Requirements Document (PRD)
+1.1 Product overview
+Product name: Biza
+Tagline: Learn it. Earn it.
+Type: Online education platform for legitimate internet income
+Primary market: Kenya (ages 18â€“30), expandable to broader East Africa
+Version: 1.0 â€” MVP
+
+Biza is a structured, roadmap-based learning platform that teaches users exactly how every legitimate online income model works â€” including the process, requirements, realistic timelines, go-to platforms, and scam red flags. It addresses a critical gap in the Kenyan digital economy: widespread misinformation and fraud around online income opportunities.
+
+1.2 Problem statement
+Millions of young Kenyans seek online income but encounter misinformation, scams, and unstructured information.
+Existing YouTube content is fragmented, often monetised through hype, and rarely Kenya-specific.
+No single trusted platform explains how online money actually works end-to-end.
+Users waste time and money on fraudulent schemes that a proper foundation would prevent.
+
+1.3 Solution
+Biza provides verified, structured roadmaps for every major legitimate online income category. Each course follows a fixed 7-step framework: what it is, requirements, how money flows, the action process, platforms, curated video resources, and scam warnings. Content is precise, honest about timelines, and Kenya-optimised.
+
+1.4 Goals & success metrics
+Goal
+Metric
+Target (6 months)
+User acquisition
+Registered users
+2,000 users
+Engagement
+Course completion rate
+> 40%
+Revenue
+Monthly recurring revenue
+KES 150,000/mo
+Trust
+Scam reports from Biza users
+0
+Content
+Published course roadmaps
+25+ courses
+Retention
+30-day return rate
+> 50%
+
+
+1.5 User personas
+Persona A â€” The hustler
+Age: 19â€“26, Nairobi or major town
+Situation: employed part-time or studying, looking for a side income
+Pain: has tried online money methods, lost money or wasted time on scams
+Goal: find one legitimate method and earn their first KES 5,000 online
+Device: Android smartphone, occasional laptop access
+
+Persona B â€” The curious beginner
+Age: 22â€“30, any location with internet
+Situation: employed but wants financial independence
+Pain: overwhelmed by conflicting information, does not know where to start
+Goal: understand the landscape and pick the right path for their skills
+Device: laptop or desktop, good internet
+
+Persona C â€” The educator / referrer
+Age: 25â€“35, community leader, teacher, or content creator
+Situation: trusted voice in their network, gets asked about online income constantly
+Goal: recommend a reliable resource to their audience
+Device: any
+
+1.6 Functional requirements
+Authentication
+Email and password registration and login
+Google OAuth sign-in
+Email verification on signup
+Password reset via email
+
+Course system
+6 categories, each with 4â€“5 course roadmaps at launch
+Each course: 7 fixed steps displayed as an expandable roadmap
+Step locking: free users access steps 1â€“2 only; Pro unlocks all
+Progress tracking per user per course (step-level)
+Course completion certificate (PDF, shareable)
+
+Admin panel
+Add, edit, delete courses and categories
+Per-step YouTube video management: paste URL, write note, drag to reorder
+Mark videos as Primary or Supplementary
+Publish / unpublish courses
+View user stats: enrolments, progress, revenue
+
+Payments
+M-Pesa STK Push (primary, via Daraja API)
+Card payments via Flutterwave or Paystack
+Per-course purchase (one-time, lifetime access)
+Pro Pass: monthly (KES 1,500) and annual (KES 9,999) subscription
+Receipts emailed automatically on payment
+
+User dashboard
+Progress overview across all enrolled courses
+Continue learning shortcut (last visited step)
+Recommended courses based on enrolments
+Subscription status and renewal date
+Saved courses list
+
+1.7 Non-functional requirements
+Page load < 2.5 seconds on 3G connection
+Mobile-first responsive design (60%+ of users on mobile)
+HTTPS across all pages
+Uptime SLA: 99.5% minimum
+GDPR-aligned data handling (basis for future EU expansion)
+Accessible: WCAG 2.1 AA compliance target
+
+1.8 Out of scope â€” Version 1.0
+Mobile app (iOS or Android) â€” post-MVP
+Live coaching or 1:1 sessions â€” post-MVP
+User-generated content or community forum â€” post-MVP
+Multilingual support (Swahili) â€” Phase 2
+AI-powered course recommendations â€” Phase 2
+
+2. MVP Plan
+2.1 MVP definition
+The Biza MVP is the smallest version of the platform that delivers real value to users and generates the first revenue. It does not need to be perfect. It needs to be trustworthy, functional, and fast to launch.
+
+2.2 MVP feature scope
+Feature
+MVP?
+Priority
+User registration & login
+Yes
+P1
+6 categories with 3 courses each
+Yes
+P1
+7-step roadmap per course
+Yes
+P1
+Step locking (free vs Pro)
+Yes
+P1
+M-Pesa payment (STK Push)
+Yes
+P1
+Admin panel â€” courses & videos
+Yes
+P1
+User dashboard with progress
+Yes
+P1
+YouTube video embed per step
+Yes
+P1
+Mobile responsive design
+Yes
+P1
+Email receipt on payment
+Yes
+P2
+Google OAuth login
+Yes
+P2
+Completion certificate
+No
+Phase 2
+Community / forum
+No
+Phase 2
+Mobile app
+No
+Phase 2
+Affiliate tracking
+No
+Phase 2
+
+
+2.3 Build timeline (vibe-coding approach)
+This timeline assumes you are building with AI-assisted tools such as Cursor, Bolt.new, or Lovable, using this document as your prompt reference. Adjust based on your actual pace.
+
+Week
+Focus
+Output
+Week 1
+Project setup, design system, navigation
+Responsive shell + navbar + homepage
+Week 2
+Category pages + course listing
+Browse and filter working
+Week 3
+Course roadmap page (7-step layout)
+Full course page with step expand/collapse
+Week 4
+Auth system (register, login, Google)
+Users can create accounts
+Week 5
+Payment â€” M-Pesa STK Push integration
+Real payments processing
+Week 6
+Admin panel â€” courses + video manager
+You can add content without code
+Week 7
+User dashboard + progress tracking
+Users see their progress
+Week 8
+Testing, fixes, soft launch
+Biza is live
+
+
+2.4 Vibe-coding tool recommendations
+Option A â€” Bolt.new (recommended for beginners)
+Describe your UI in plain English, it generates full React code
+Best for: getting a working prototype fast without setup
+Paste sections of this PRD directly as prompts
+Deploy to Netlify in one click
+
+Option B â€” Cursor (recommended for more control)
+VS Code editor with AI built in
+Best for: building on top of a starter template and customising
+Use Claude inside Cursor to debug and extend
+More flexibility for M-Pesa integration and database work
+
+Option C â€” Lovable
+Similar to Bolt.new, good for full-stack apps
+Has Supabase integration built in (handles auth + database)
+Good choice if you want auth and database without extra config
+
+Whichever tool you use: keep this document open. Paste requirements section by section as prompts. Claude (in a separate window) helps you debug, write prompts, and fix errors as you go.
+
+3. Tech Stack
+3.1 Recommended stack (beginner-friendly, production-ready)
+Layer
+Technology
+Why
+Frontend
+Next.js (React)
+Fast, SEO-friendly, huge community, works with all tools
+Styling
+Tailwind CSS
+Utility-first, fast to build with, mobile-first
+Backend
+Next.js API Routes
+Same codebase, no separate server needed for MVP
+Database
+Supabase (PostgreSQL)
+Free tier, built-in auth, real-time, easy dashboard
+Auth
+Supabase Auth
+Email/password + Google OAuth built in
+Payments â€” M-Pesa
+Safaricom Daraja API
+Official M-Pesa API for STK Push
+Payments â€” Card
+Flutterwave
+Supports Kenya, easy integration, KES native
+Video embeds
+YouTube IFrame API
+Free, reliable, controlled via admin panel
+Email
+Resend or Brevo
+Transactional email (receipts, verification)
+File storage
+Supabase Storage
+For certificates and any uploaded assets
+Deployment
+Vercel
+Free tier, one-click deploy from GitHub, global CDN
+Domain
+Namecheap or GoDaddy
+Register biza.co.ke or biza.app
+Analytics
+Plausible or Google Analytics
+Track user behaviour, course popularity
+
+
+3.2 Database schema (key tables)
+users
+id, email, name, avatar_url, role (user | admin), created_at
+subscription_tier (free | pro_monthly | pro_annual)
+subscription_expires_at
+
+categories
+id, name, slug, description, icon, color, sort_order, is_active
+
+courses
+id, category_id, title, slug, description, tier (free | pro | premium)
+price_kes, time_to_income, capital_required, device_required
+is_published, sort_order, created_at
+
+steps
+id, course_id, step_number (1â€“7), title, body_text, is_locked_on_free
+
+videos
+id, step_id, youtube_url, youtube_id, admin_note, is_primary, sort_order
+
+enrolments
+id, user_id, course_id, enrolled_at, paid_amount_kes, payment_method
+
+progress
+id, user_id, course_id, step_id, completed_at
+
+payments
+id, user_id, course_id (nullable), type (course | subscription)
+amount_kes, method (mpesa | card), status, mpesa_receipt, created_at
+
+3.3 M-Pesa integration notes
+The Daraja API (STK Push) is the standard method for collecting M-Pesa payments in Kenya. You need a Safaricom business account and a registered shortcode or Paybill number.
+
+Register at developer.safaricom.co.ke and get sandbox credentials first
+Use the lipa-na-mpesa-online (STK Push) endpoint
+The flow: user clicks Pay, enters phone number, M-Pesa prompt appears on their phone, they enter PIN, server receives callback confirming payment
+Store every transaction in the payments table regardless of status
+Handle callbacks asynchronously â€” do not rely on redirect for payment confirmation
+Go live requires a Safaricom business account and KYC documents
+
+4. Design System
+4.1 Brand colours
+4.0 Logo identity â€” finalised
+The finalised Biza logo is the Compass B â€” selected from four concepts generated during the brand discovery phase. The compass needle cutting diagonally through the B letterform communicates guidance, direction, and navigation: exactly what Biza does for its users in the online income space.
+Logo mark construction
+Base shape: Forest green rounded square (#1A3A2A), corner radius proportional to icon size
+B letterform: Gold (#F5C842), bold serif weight, centred within the square
+Compass needle: white diagonal line cutting through the B from top-right to bottom-left, with a sharp arrowhead tip â€” representing direction and navigation
+The needle element is the differentiator â€” do not remove or simplify it at any size above 24px
+Approved logo variations (all finalised)
+Primary logo: Compass B icon + â€œBizaâ€ wordmark + â€œLearn it. Earn it.â€ tagline, horizontal lockup on Forest green background
+Icon only: Compass B mark in rounded square â€” used for app icon, favicon, profile picture, watermark
+Horizontal lockup: icon + â€œBizaâ€ + tagline side by side â€” used in navigation bars and headers
+Stacked lockup: icon above wordmark above tagline â€” used for social media profiles, business cards, posters
+Monochrome: full black version for print on white, full white version for dark print backgrounds
+Single colour: Gold B only, no compass needle â€” for embossing, stitching, or single-ink applications only
+
+Fig 2 â€” Finalised Biza brand sheet: primary logo, logo variations (icon, horizontal, stacked), colour palette, typography, and brand voice.
+Logo usage rules
+On dark backgrounds: use the full-colour version (Gold B + white needle on Forest green square)
+On light backgrounds: use the full-colour version with the Forest green square container intact
+Minimum size: 24px height for icon-only; 32px height for horizontal lockup â€” below this the needle detail is lost
+Never stretch, rotate, recolour, or remove the compass needle from the mark
+Clear space: minimum padding around the logo equal to the height of the B letterform on all sides
+Brand voice (confirmed)
+Trustworthy â€” every claim is verifiable, every method is legitimate
+Clear â€” no jargon, no ambiguity, no hidden steps
+Empowering â€” the user is capable; Biza just shows them the map
+Practical â€” real tools, real platforms, real timelines
+Grounded â€” rooted in the Kenyan context, expanding outward
+No hype â€” never promise riches, never use â€œpassive incomeâ€ as a hook
+
+Fig 3 â€” Brand applications: logo usage on dark/light/mono, app icons (Forest, Gold, White variants), website header, social profile, favicon, and business card.
+Source file: the full logo kit (primary, icon, horizontal, stacked, monochrome, single-colour variants) was generated and approved as of June 2025. Request the source files (.ai / .svg / .png) from the brand lead before any new application.
+Name
+Hex
+Usage
+Forest (primary)
+#1A3A2A
+Navigation, hero, headings, CTAs, icons
+Gold (accent)
+#F5C842
+Buttons, highlights, progress, logo mark
+Leaf (secondary)
+#2E6644
+Hover states, secondary buttons, links
+Cream (surface)
+#F7F6F2
+Page background
+White
+#FFFFFF
+Card backgrounds, content areas
+Ink (text)
+#1A1A1A
+Primary body text
+Muted (text)
+#555555
+Secondary body text, descriptions
+Border
+#E8E6DE
+Card borders, dividers
+Success green
+#EAF3DE / #27500A
+Free badges, completion states
+Warning gold
+#FEF8E1 / #633806
+Pro badges, caution states
+Error red
+#FCEBEB / #A32D2D
+Scam warnings, error states
+
+
+4.2 Typography
+Element
+Font
+Size
+Weight
+Display / hero
+DM Sans or Poppins
+32â€“48px
+500
+Page headings (H1)
+DM Sans
+28â€“32px
+500
+Section headings (H2)
+DM Sans
+22â€“26px
+500
+Sub-headings (H3)
+DM Sans
+18â€“20px
+500
+Body text
+Inter or DM Sans
+15â€“16px
+400
+Small / meta
+Inter
+12â€“13px
+400
+Labels / badges
+Inter
+10â€“12px
+500 + uppercase
+Navigation
+Inter
+13â€“14px
+400
+
+
+4.3 Component rules
+Buttons
+Primary: Gold fill (#F5C842), Forest text (#1A3A2A), border-radius 25px
+Ghost / outline: transparent fill, white or forest border, matching text colour
+Danger: red fill for destructive actions only
+All buttons: 40â€“44px height, 16â€“22px horizontal padding
+
+Cards
+White background, 0.5px border (#E8E6DE), border-radius 12px
+Padding: 16â€“20px
+No drop shadows â€” borders only
+Hover state: border-color darkens to #1A3A2A
+
+Navigation
+Desktop: horizontal links, right-aligned CTA button
+Mobile: hamburger menu, full-screen slide-in
+Always Forest green background (#1A3A2A)
+Active link: Gold underline or Gold text
+
+Course step component
+Collapsed by default, click to expand
+Status indicator: circle with number (done = forest fill + gold text, active = gold fill + forest text, locked = gray)
+Locked steps: content blurred or hidden, upgrade prompt on click
+
+Progress bar
+Forest green fill on light gray track
+Height: 6px, border-radius 10px
+Always show step count label alongside (e.g. Step 3 of 7)
+
+4.4 Mobile design rules
+Minimum tap target: 44x44px for all interactive elements
+Bottom navigation bar on mobile (Home, Courses, Dashboard, Account)
+Single column layout below 768px
+Hero text size reduces to 24px on mobile
+YouTube embeds: 16:9 aspect ratio, full width on mobile
+
+5. Security
+5.1 Authentication security
+Passwords hashed using bcrypt (minimum 12 rounds) â€” handled automatically by Supabase Auth
+JWT tokens with 1-hour expiry, refresh tokens with 7-day sliding window
+Rate limiting on login endpoint: max 5 failed attempts before 15-minute lockout
+Email verification required before full account access
+Google OAuth uses official Supabase OAuth flow â€” no password stored for OAuth users
+
+5.2 Payment security
+Never store card details â€” all card processing via Flutterwave (PCI DSS compliant)
+M-Pesa callbacks validated using Safaricom IP whitelist and shared secret
+All payment amounts validated server-side â€” never trust client-sent amounts
+Duplicate payment protection: check payment reference before granting access
+Payments table is append-only â€” no record deletion
+
+5.3 Data security
+All data in transit encrypted via HTTPS (TLS 1.2 minimum, 1.3 preferred)
+Supabase database at rest encryption enabled
+Row-level security (RLS) enabled on all Supabase tables â€” users can only read their own data
+Admin routes protected by role check on every request
+Environment variables for all secrets â€” never hardcoded in source
+
+5.4 Content security
+YouTube embeds use privacy-enhanced mode (youtube-nocookie.com)
+Content Security Policy (CSP) headers configured on all pages
+Admin panel access restricted by IP whitelist in production (optional but recommended)
+Input sanitisation on all user-facing text fields to prevent XSS
+
+5.5 Operational security
+Supabase backups enabled (daily automated backups)
+Error logging via Sentry â€” no sensitive data in logs
+Dependency audit: run npm audit weekly, patch critical vulnerabilities within 48 hours
+Two-factor authentication on all admin accounts
+
+6. Legal & Compliance
+6.1 Required legal pages
+Terms of Service
+User eligibility (18+ or parental consent)
+Acceptable use policy â€” no reselling, no sharing of Pro content
+Payment terms â€” no refunds after course access granted (state clearly)
+Intellectual property â€” all course content owned by Biza
+Limitation of liability â€” Biza is an education platform, not a financial advisor
+Income disclaimer â€” results are not guaranteed and depend on user effort
+
+Privacy Policy
+What data is collected: email, name, payment info, usage data
+How it is used: account management, payments, improving the platform
+Third-party services: Supabase, Flutterwave, Safaricom, YouTube, analytics tools
+Data retention: accounts kept for 3 years after last activity
+User rights: request data export or deletion via email
+Cookies: session cookies only, no third-party tracking cookies without consent
+
+Refund Policy
+No refunds once course content has been accessed
+Pro Pass: cancel anytime, access continues until end of billing period
+Disputed charges reviewed within 5 business days
+
+6.2 Business registration (Kenya)
+Register as a sole proprietorship or limited company with the Business Registration Service (BRS) at brs.go.ke
+Obtain a KRA PIN for tax purposes at itax.kra.go.ke
+Register for VAT if annual revenue exceeds KES 5 million (not relevant at MVP stage)
+Open a business bank account â€” required for M-Pesa Paybill registration
+
+6.3 M-Pesa business requirements
+Safaricom requires a registered business (sole prop or company) to issue a Paybill or Till number
+Required documents: business certificate, KRA PIN, national ID of director, bank details
+Apply at safaricom.co.ke/business or through a Safaricom business dealer
+
+6.4 Income disclaimer (mandatory on all course pages)
+IMPORTANT: Biza provides educational information only. We do not guarantee any specific income results. Actual earnings depend on individual effort, market conditions, experience, and many other factors. Nothing on this platform constitutes financial advice.
+
+6.5 Copyright
+Register Biza as a trademark with the Kenya Industrial Property Institute (KIPI) at kipi.go.ke
+All written course content is original and owned by Biza â€” assert copyright on all pages
+YouTube embeds are covered by YouTube's standard embed terms â€” no additional licence needed
+Do not copy or reproduce third-party content within course material
+
+7. Go-to-Market Plan
+7.1 Launch phases
+Phase 0 â€” Pre-launch (4 weeks before launch)
+Start social media accounts on TikTok, Instagram, YouTube, Facebook
+Post 3 pieces of content per week â€” no product mentions, just valuable free content
+Build an email waitlist via a simple landing page (use Carrd or Typedream)
+Goal: 200 waitlist signups before launch day
+
+Phase 1 â€” Soft launch
+Invite waitlist users first â€” give them 48-hour early access
+Launch 18 courses (3 per category) â€” do not launch with incomplete content
+Offer a launch discount: first 100 Pro Pass signups at KES 999/month for 3 months
+Document the launch day with content â€” post the journey
+
+Phase 2 â€” Growth (months 2â€“6)
+Publish one new course roadmap per week
+Activate affiliate partnerships with 3â€“5 platforms
+Run first Facebook ad campaign with KES 5,000 budget â€” test and optimise
+Partner with 2â€“3 Kenyan YouTube creators or influencers for honest reviews
+
+7.2 Content marketing strategy
+YouTube: 1 deep-dive video per week â€” SEO-optimised, Kenya-specific titles
+TikTok: 3â€“5 short videos per week â€” hook-first, shocking truths format
+Instagram: 1 reel + 2 carousel posts per week â€” roadmap visuals and infographics
+Facebook: daily short posts + Biza community group â€” discussions and polls
+All scripts written with Claude, graphics made in Canva, edited in CapCut
+
+7.3 Monetisation projections
+Month
+Users
+Pro Conversions
+Avg Revenue
+Est. MRR
+Month 1
+200
+20 (10%)
+KES 500 avg
+KES 10,000
+Month 2
+500
+60 (12%)
+KES 600 avg
+KES 36,000
+Month 3
+1,000
+140 (14%)
+KES 700 avg
+KES 98,000
+Month 6
+2,500
+400 (16%)
+KES 900 avg
+KES 360,000
+Month 12
+6,000
+1,100 (18%)
+KES 1,000 avg
+KES 1,100,000
+
+
+Projections are illustrative. MRR includes course sales + Pro Pass subscriptions. Affiliate commissions and ad revenue are additional upside not included here.
+
+7.4 Key partnerships to pursue
+Safaricom: official Daraja API partner (required for M-Pesa)
+Fiverr Affiliates: earn commission when Biza users sign up to Fiverr
+Shopify Partners: affiliate commissions on Shopify referrals for dropshipping courses
+Flutterwave: potential co-marketing given shared Kenyan market focus
+Kenyan universities and polytechnics: bulk access deals for students
+
+7.5 Developer handoff notes
+If handing this document to a developer or development agency, share all sections. The PRD defines what to build, the Tech Stack section defines how, and the Design System section defines the visual rules. Start with the MVP scope in Section 2 and expand from there.
+
+GitHub repository should be private until launch
+Use environment variables for all API keys â€” never commit secrets to Git
+Staging environment required before any production deployment
+M-Pesa sandbox testing must be complete before going live with payments
+Admin panel should be on a separate subdomain: admin.biza.co.ke
+
+
+Biza Â· Learn it. Earn it. Â· Version 1.0 Â· Confidential
