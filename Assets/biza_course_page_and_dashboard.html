@@ -1,0 +1,298 @@
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  .wrap{font-family:var(--font-sans);background:#F7F6F2;}
+  .page-label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#888;padding:10px 0 4px;border-bottom:0.5px solid #E0DED6;margin-bottom:18px;}
+  .course-hero{background:#1A3A2A;padding:28px 24px 24px;}
+  .course-breadcrumb{font-size:11px;color:#6B9E7A;margin-bottom:10px;}
+  .course-breadcrumb span{color:#9FC4A8;}
+  .course-title{font-size:20px;font-weight:500;color:#fff;margin-bottom:6px;line-height:1.3;}
+  .course-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
+  .course-meta-item{font-size:11px;color:#9FC4A8;display:flex;align-items:center;gap:4px;}
+  .course-actions{display:flex;gap:10px;}
+  .btn-gold{background:#F5C842;color:#1A3A2A;font-size:12px;font-weight:500;padding:9px 20px;border-radius:20px;border:none;cursor:pointer;}
+  .btn-outline-w{background:transparent;color:#fff;font-size:12px;padding:9px 20px;border-radius:20px;border:0.5px solid rgba(255,255,255,0.3);cursor:pointer;}
+  .course-layout{display:grid;grid-template-columns:1fr 280px;gap:16px;padding:20px 24px;}
+  .course-main{}
+  .course-sidebar{}
+  .step-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+  .step-item{background:#fff;border:0.5px solid #E8E6DE;border-radius:10px;overflow:hidden;}
+  .step-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;}
+  .step-circle{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;}
+  .step-circle.done{background:#1A3A2A;color:#F5C842;}
+  .step-circle.active{background:#F5C842;color:#1A3A2A;}
+  .step-circle.locked{background:#E8E6DE;color:#888;}
+  .step-label{font-size:12px;font-weight:500;color:#1A1A1A;flex:1;}
+  .step-badge{font-size:10px;padding:2px 7px;border-radius:10px;}
+  .step-body{padding:0 14px 14px;border-top:0.5px solid #F0EEE8;}
+  .step-body-text{font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;}
+  .platform-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;background:#E8F2EC;color:#1A3A2A;padding:3px 10px;border-radius:20px;margin:2px;}
+  .video-section{background:#fff;border:0.5px solid #E8E6DE;border-radius:10px;padding:14px;margin-bottom:16px;}
+  .video-section-title{font-size:12px;font-weight:500;color:#1A1A1A;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .yt-thumb{background:#1A3A2A;border-radius:8px;height:70px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;cursor:pointer;position:relative;}
+  .yt-play{width:28px;height:28px;background:#F5C842;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .yt-label{font-size:11px;color:#555;line-height:1.4;}
+  .yt-note{font-size:10px;color:#888;margin-top:3px;font-style:italic;}
+  .admin-bar{background:#FEF8E1;border:0.5px solid #F5C842;border-radius:8px;padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .admin-bar-icon{color:#854F0B;font-size:15px;}
+  .admin-bar-text{font-size:11px;color:#633806;flex:1;}
+  .admin-bar-btn{font-size:10px;background:#1A3A2A;color:#F5C842;padding:4px 10px;border-radius:10px;cursor:pointer;}
+  .sidebar-card{background:#fff;border:0.5px solid #E8E6DE;border-radius:10px;padding:14px;margin-bottom:12px;}
+  .sidebar-title{font-size:12px;font-weight:500;color:#1A1A1A;margin-bottom:10px;}
+  .progress-bar-wrap{background:#E8E6DE;border-radius:10px;height:6px;margin-bottom:4px;}
+  .progress-bar-fill{background:#1A3A2A;height:6px;border-radius:10px;width:43%;}
+  .progress-label{font-size:11px;color:#888;}
+  .warn-item{display:flex;gap:8px;padding:6px 0;border-bottom:0.5px solid #F0EEE8;font-size:11px;color:#555;line-height:1.4;}
+  .warn-item:last-child{border-bottom:none;}
+  .warn-icon{color:#E24B4A;font-size:14px;flex-shrink:0;margin-top:1px;}
+  .req-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid #F0EEE8;font-size:11px;}
+  .req-row:last-child{border-bottom:none;}
+  .req-key{color:#888;}
+  .req-val{color:#1A1A1A;font-weight:500;}
+  .divider{border:none;border-top:0.5px solid #E0DED6;margin:24px 0;}
+  .dash-header{background:#1A3A2A;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .dash-welcome{font-size:15px;font-weight:500;color:#fff;}
+  .dash-sub{font-size:12px;color:#9FC4A8;margin-top:2px;}
+  .dash-avatar{width:36px;height:36px;border-radius:50%;background:#F5C842;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#1A3A2A;}
+  .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;padding:16px 24px;}
+  .dash-stat{background:#fff;border:0.5px solid #E8E6DE;border-radius:10px;padding:14px;}
+  .dash-stat-num{font-size:22px;font-weight:500;color:#1A3A2A;}
+  .dash-stat-lbl{font-size:11px;color:#888;margin-top:2px;}
+  .dash-body{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 24px 24px;}
+  .dash-section{background:#fff;border:0.5px solid #E8E6DE;border-radius:10px;padding:14px;}
+  .dash-section-title{font-size:12px;font-weight:500;color:#1A1A1A;margin-bottom:10px;}
+  .dash-course-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:0.5px solid #F0EEE8;}
+  .dash-course-row:last-child{border-bottom:none;}
+  .dash-course-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .dash-course-name{font-size:12px;color:#333;flex:1;}
+  .dash-course-pct{font-size:11px;color:#888;}
+  .mini-bar{background:#E8E6DE;border-radius:4px;height:4px;margin-top:3px;}
+  .mini-fill{background:#1A3A2A;height:4px;border-radius:4px;}
+</style>
+
+<h2 class="sr-only">Biza course page layout and user dashboard mockup</h2>
+
+<div class="wrap">
+
+  <div class="page-label">Page view — course roadmap (logged in, Pro user)</div>
+
+  <div class="course-hero">
+    <div class="course-breadcrumb">Courses <span>/ Marketing / Affiliate marketing full roadmap</span></div>
+    <div class="course-title">Affiliate marketing — complete roadmap</div>
+    <div class="course-meta">
+      <span class="course-meta-item"><i class="ti ti-map-2" style="font-size:13px;" aria-hidden="true"></i> 7 steps</span>
+      <span class="course-meta-item"><i class="ti ti-clock" style="font-size:13px;" aria-hidden="true"></i> 3–6 months to first income</span>
+      <span class="course-meta-item"><i class="ti ti-currency-dollar" style="font-size:13px;" aria-hidden="true"></i> KES 0 to start</span>
+      <span class="course-meta-item"><i class="ti ti-device-mobile" style="font-size:13px;" aria-hidden="true"></i> Phone or laptop</span>
+    </div>
+    <div class="course-actions">
+      <button class="btn-gold">Continue roadmap</button>
+      <button class="btn-outline-w">Save course</button>
+    </div>
+  </div>
+
+  <div class="course-layout">
+    <div class="course-main">
+      <div class="admin-bar">
+        <i class="ti ti-settings admin-bar-icon" aria-hidden="true"></i>
+        <span class="admin-bar-text">Admin: add or reorder YouTube videos for any step below</span>
+        <span class="admin-bar-btn">Manage videos</span>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-circle done">1</div>
+            <span class="step-label">What is affiliate marketing?</span>
+            <span class="step-badge" style="background:#EAF3DE;color:#27500A;">Done</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-circle done">2</div>
+            <span class="step-label">Requirements & reality check</span>
+            <span class="step-badge" style="background:#EAF3DE;color:#27500A;">Done</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-header" style="background:#FAFAF6;">
+            <div class="step-circle active">3</div>
+            <span class="step-label" style="color:#1A3A2A;">How the money flows</span>
+            <span class="step-badge" style="background:#FEF8E1;color:#854F0B;">In progress</span>
+          </div>
+          <div class="step-body">
+            <p class="step-body-text">You promote a product using a unique link. When someone buys through your link, the company pays you a commission — usually 5–40% of the sale price. You never handle the product or the customer.</p>
+            <p class="step-body-text" style="font-weight:500;font-size:12px;color:#1A1A1A;margin-bottom:6px;">How the chain works:</p>
+            <p class="step-body-text">You (content) → Audience clicks your link → Buys product → Company tracks via cookie → Commission sent to your account → Withdraw to M-Pesa or bank.</p>
+            <div class="video-section">
+              <div class="video-section-title">
+                <i class="ti ti-brand-youtube" style="font-size:15px;color:#FF0000;" aria-hidden="true"></i>
+                Step videos (2 added)
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div>
+                  <div class="yt-thumb"><div class="yt-play"><i class="ti ti-player-play" style="font-size:12px;color:#1A3A2A;" aria-hidden="true"></i></div></div>
+                  <div class="yt-label">How affiliate commissions work</div>
+                  <div class="yt-note">Watch for the cookie tracking explanation</div>
+                </div>
+                <div>
+                  <div class="yt-thumb" style="background:#2E6644;"><div class="yt-play"><i class="ti ti-player-play" style="font-size:12px;color:#1A3A2A;" aria-hidden="true"></i></div></div>
+                  <div class="yt-label">Real affiliate income breakdown</div>
+                  <div class="yt-note">Skip to 4:30 for the payment walkthrough</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-circle locked">4</div>
+            <span class="step-label" style="color:#888;">The process (action roadmap)</span>
+            <span class="step-badge" style="background:#F1EFE8;color:#5F5E5A;">Next</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-circle locked">5</div>
+            <span class="step-label" style="color:#888;">Go-to platforms & tools</span>
+            <span class="step-badge" style="background:#F1EFE8;color:#5F5E5A;">Locked</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-circle locked">6</div>
+            <span class="step-label" style="color:#888;">Video resources</span>
+            <span class="step-badge" style="background:#F1EFE8;color:#5F5E5A;">Locked</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-circle locked">7</div>
+            <span class="step-label" style="color:#888;">Red flags & scam warnings</span>
+            <span class="step-badge" style="background:#F1EFE8;color:#5F5E5A;">Locked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Your progress</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+        <div class="progress-label" style="margin-bottom:8px;">Step 3 of 7 — 43% complete</div>
+        <div style="font-size:11px;color:#888;">Est. time remaining: ~25 min reading</div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Requirements</div>
+        <div class="req-row"><span class="req-key">Device</span><span class="req-val">Phone or laptop</span></div>
+        <div class="req-row"><span class="req-key">Capital needed</span><span class="req-val">KES 0</span></div>
+        <div class="req-row"><span class="req-key">Time/week</span><span class="req-val">5–10 hours</span></div>
+        <div class="req-row"><span class="req-key">Skills</span><span class="req-val">Basic writing/content</span></div>
+        <div class="req-row"><span class="req-key">Internet</span><span class="req-val">Standard 3G+</span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title" style="display:flex;align-items:center;gap:6px;"><i class="ti ti-alert-triangle" style="font-size:14px;color:#E24B4A;" aria-hidden="true"></i> Scam warnings preview</div>
+        <div class="warn-item"><i class="ti ti-x warn-icon" aria-hidden="true"></i><span>Anyone asking you to pay to join an affiliate program</span></div>
+        <div class="warn-item"><i class="ti ti-x warn-icon" aria-hidden="true"></i><span>Programs with no physical product or traceable company</span></div>
+        <div class="warn-item"><i class="ti ti-x warn-icon" aria-hidden="true"></i><span>Promised commissions with no affiliate agreement document</span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Go-to platforms</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span class="platform-pill"><i class="ti ti-external-link" style="font-size:11px;" aria-hidden="true"></i>Amazon Associates</span>
+          <span class="platform-pill"><i class="ti ti-external-link" style="font-size:11px;" aria-hidden="true"></i>ShareASale</span>
+          <span class="platform-pill"><i class="ti ti-external-link" style="font-size:11px;" aria-hidden="true"></i>Impact</span>
+          <span class="platform-pill"><i class="ti ti-external-link" style="font-size:11px;" aria-hidden="true"></i>ClickBank</span>
+          <span class="platform-pill"><i class="ti ti-external-link" style="font-size:11px;" aria-hidden="true"></i>Jumia KE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin:0;"></div>
+  <div class="page-label" style="padding:10px 24px 4px;">Page view — user dashboard</div>
+
+  <div class="dash-header">
+    <div>
+      <div class="dash-welcome">Welcome back, Brian</div>
+      <div class="dash-sub">You have 3 courses in progress</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:11px;background:rgba(245,200,66,0.15);color:#F5C842;padding:4px 10px;border-radius:10px;">Pro Pass</span>
+      <div class="dash-avatar">BK</div>
+    </div>
+  </div>
+
+  <div class="dash-grid">
+    <div class="dash-stat"><div class="dash-stat-num">3</div><div class="dash-stat-lbl">Courses started</div></div>
+    <div class="dash-stat"><div class="dash-stat-num">1</div><div class="dash-stat-lbl">Completed</div></div>
+    <div class="dash-stat"><div class="dash-stat-num">43%</div><div class="dash-stat-lbl">Avg progress</div></div>
+    <div class="dash-stat"><div class="dash-stat-num">12</div><div class="dash-stat-lbl">Videos watched</div></div>
+  </div>
+
+  <div class="dash-body">
+    <div class="dash-section">
+      <div class="dash-section-title">Continue learning</div>
+      <div class="dash-course-row">
+        <div class="dash-course-dot" style="background:#1A3A2A;"></div>
+        <div style="flex:1;">
+          <div class="dash-course-name">Affiliate marketing roadmap</div>
+          <div class="mini-bar"><div class="mini-fill" style="width:43%;"></div></div>
+        </div>
+        <span class="dash-course-pct">43%</span>
+      </div>
+      <div class="dash-course-row">
+        <div class="dash-course-dot" style="background:#E1306C;"></div>
+        <div style="flex:1;">
+          <div class="dash-course-name">Content creation — Instagram</div>
+          <div class="mini-bar"><div class="mini-fill" style="width:20%;"></div></div>
+        </div>
+        <span class="dash-course-pct">20%</span>
+      </div>
+      <div class="dash-course-row">
+        <div class="dash-course-dot" style="background:#7C3AED;"></div>
+        <div style="flex:1;">
+          <div class="dash-course-name">Making money with AI tools</div>
+          <div class="mini-bar"><div class="mini-fill" style="width:100%;"></div></div>
+        </div>
+        <span class="dash-course-pct" style="color:#1A3A2A;font-weight:500;">Done</span>
+      </div>
+    </div>
+    <div class="dash-section">
+      <div class="dash-section-title">Recommended for you</div>
+      <div class="dash-course-row">
+        <div class="dash-course-dot" style="background:#F5C842;"></div>
+        <div style="flex:1;">
+          <div class="dash-course-name">Dropshipping from Kenya</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">E-commerce · KES 350</div>
+        </div>
+        <span style="font-size:10px;background:#EAF3DE;color:#27500A;padding:2px 7px;border-radius:10px;">New</span>
+      </div>
+      <div class="dash-course-row">
+        <div class="dash-course-dot" style="background:#1877F2;"></div>
+        <div style="flex:1;">
+          <div class="dash-course-name">CPA marketing deep dive</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">Marketing · KES 350</div>
+        </div>
+      </div>
+      <div class="dash-course-row">
+        <div class="dash-course-dot" style="background:#D85A30;"></div>
+        <div style="flex:1;">
+          <div class="dash-course-name">Print on demand guide</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">E-commerce · Free</div>
+        </div>
+        <span style="font-size:10px;background:#EAF3DE;color:#27500A;padding:2px 7px;border-radius:10px;">Free</span>
+      </div>
+    </div>
+  </div>
+
+</div>

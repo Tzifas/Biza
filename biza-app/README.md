@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Biza App
 
-## Getting Started
+Mobile-first learning platform for legitimate online income — **Learn it. Earn it.**
 
-First, run the development server:
+Target domain: [getbiza.co.ke](https://getbiza.co.ke)
+
+## Stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v4** with Stitch brand tokens (`app/globals.css`)
+- Content from `lib/content/content-map.json` (mirrors `Docs/content-map.json`)
+
+## Quick start
 
 ```bash
+cd biza-app
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Production build:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+biza-app/
+  app/
+    page.tsx              Landing (Footer here only)
+    courses/              Public browse + opportunity cards + learn flow
+    app/                  Authenticated shell (3-tab bottom nav)
+    onboarding/           4-phase mock onboarding
+    scam-radar/           Scam pattern library
+  components/
+    layouts/              SiteLayout · AppShell · LearnShell
+    ui/                   Button, Card, Input, Chip, ProgressBar
+    learn/                Chapter reader, quiz, breadcrumbs
+  lib/content/            Typed content-map loaders
+  lib/user/storage.ts     localStorage mock user state (Phase 2 → Supabase)
+  public/avatars/         10 avatar SVGs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Layout shells
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Shell | Routes | Navigation |
+|-------|--------|------------|
+| `SiteLayout` | `/courses`, `/scam-radar`, legal, login | Top Navbar |
+| `SiteLayout footer` | `/` only | Navbar + Footer |
+| `AppShell` | `/app`, `/app/courses`, `/app/profile` | Header + **Home · Courses · Profile** bottom tabs |
+| `LearnShell` | `/courses/.../learn/*` | Compact header + Back \| Progress \| Continue bar |
 
-## Deploy on Vercel
+## Mock user state (Phase 1)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Onboarding and profile data persist in `localStorage` under key `biza_user`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Persona, avatar, name, PRO tier
+- Completed chapters (for dashboard progress)
+
+Reset in browser DevTools: `localStorage.removeItem('biza_user')`
+
+## Content updates
+
+1. Edit `Docs/content-map.json` (source of truth for product)
+2. Copy/sync to `biza-app/lib/content/content-map.json`
+3. Types in `lib/content/types.ts` — extend if schema changes
+
+Regenerate avatar placeholders:
+
+```bash
+node scripts/generate-avatars.mjs
+```
+
+## Docs (repo root)
+
+| File | Purpose |
+|------|---------|
+| `Docs/content-map.md` | Human-readable product/content spec |
+| `Docs/BUILD-TRACKER.md` | Phase progress (1A–1E, Phase 2) |
+| `Docs/Biza-PRD-v6-Final.docx` | Product requirements (behavior, legal) |
+
+## Deploy (Vercel)
+
+- Root directory: `biza-app`
+- Branch `develop` → preview deployments
+- No env vars required for Phase 1 UI mock
+
+## Phase 2 (deferred)
+
+Supabase auth, server progress, M-Pesa Daraja STK Push, admin panel — see `Docs/BUILD-TRACKER.md`.

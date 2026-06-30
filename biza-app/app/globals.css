@@ -1,120 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F7F6F2; /* Cream background */
-  --foreground: #1A1A1A; /* Ink text color */
+  --background: #F4F1E8;
+  --foreground: #1A1A1A;
 }
 
 @theme {
-  /* Brand specific naming */
+  /* Stitch / brand palette */
   --color-forest: #1A3A2A;
   --color-leaf: #2E6644;
+  --color-leaf-light: #E8F0EB;
   --color-gold: #F5C842;
-  --color-cream: #F7F6F2;
+  --color-cream: #F4F1E8;
   --color-ink: #1A1A1A;
-  --color-border-custom: #E8E6DE;
-  
-  /* Semantic tailwind colors mapping */
+  --color-white: #FFFFFF;
+  --color-border: #E8E6DE;
+  --color-stone: #6B7280;
+  --color-coral: #E24B4A;
+  --color-coral-light: #FCEBEB;
+  --color-pro-purple: #534AB7;
+
+  /* Semantic aliases */
   --color-primary: #1A3A2A;
-  --color-primary-container: #2E6644;
+  --color-secondary: #2E6644;
   --color-accent: #F5C842;
   --color-surface: #FFFFFF;
-  --color-background-custom: #F7F6F2;
-  
-  /* Alert / Badge colors */
-  --color-success-bg: #EAF3DE;
-  --color-success-text: #27500A;
-  --color-warning-bg: #FEF8E1;
-  --color-warning-text: #633806;
+  --color-success-bg: #E8F0EB;
+  --color-success-text: #2E6644;
   --color-error-bg: #FCEBEB;
-  --color-error-text: #A32D2D;
+  --color-error-text: #E24B4A;
 
-  /* Typography fonts */
+  /* Typography */
   --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-dm-sans), Georgia, serif;
+  --font-display: var(--font-dm-sans), system-ui, sans-serif;
+
+  /* Shape tokens */
+  --radius-lg: 12px;
+  --radius-pill: 25px;
+  --radius-full: 9999px;
+
+  /* Spacing (8px grid) */
+  --spacing-stack-sm: 8px;
+  --spacing-stack-md: 16px;
+  --spacing-stack-lg: 32px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
 }
 
-/* Custom visual styling based on DESIGN.md rules */
+/* Legacy alias — prefer <Card /> component */
 .flat-card {
-  background-color: #FFFFFF;
-  border: 0.5px solid #E8E6DE;
+  background-color: #ffffff;
+  border: 0.5px solid #e8e6de;
   border-radius: 12px;
   transition: border-color 0.2s ease-in-out;
 }
 
 .flat-card:hover {
-  border-color: #1A3A2A;
-}
-
-.btn-pill-primary {
-  background-color: #F5C842;
-  color: #1A3A2A;
-  font-family: var(--font-display);
-  font-weight: 600;
-  border-radius: 25px;
-  height: 44px;
-  padding: 0 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-pill-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.btn-pill-secondary {
-  background-color: #1A3A2A;
-  color: #FFFFFF;
-  font-family: var(--font-display);
-  font-weight: 500;
-  border-radius: 25px;
-  height: 44px;
-  padding: 0 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-pill-secondary:hover {
-  background-color: #2E6644;
-  transform: translateY(-1px);
-}
-
-.btn-pill-outline {
-  background-color: transparent;
-  color: #1A3A2A;
-  border: 0.5px solid #E8E6DE;
-  font-family: var(--font-display);
-  font-weight: 500;
-  border-radius: 25px;
-  height: 44px;
-  padding: 0 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-pill-outline:hover {
-  border-color: #1A3A2A;
-  background-color: rgba(26, 58, 42, 0.02);
+  border-color: #1a3a2a;
 }

@@ -1,0 +1,357 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-06-29",
+  "status": "locked-pre-database",
+  "design": {
+    "canonical": "stitch-brand",
+    "colors": {
+      "forest": "#1A3A2A",
+      "gold": "#F5C842",
+      "cream": "#F4F1E8",
+      "leaf": "#2E6644",
+      "ink": "#1A1A1A",
+      "white": "#FFFFFF",
+      "border": "#E8E6DE"
+    },
+    "typography": {
+      "headlines": "DM Sans",
+      "body": "Inter"
+    }
+  },
+  "gating": {
+    "freeChaptersPerLesson": 2,
+    "proUnlocks": "all-chapters"
+  },
+  "pricing": {
+    "free": { "kes": 0, "label": "Free" },
+    "proMonthly": { "kes": 999, "label": "Pro Pass Monthly" },
+    "proAnnual": { "kes": 7999, "label": "Pro Pass Annual" },
+    "perCourseRange": { "minKes": 250, "maxKes": 500 }
+  },
+  "personas": [
+    {
+      "id": "starter",
+      "label": "Starter",
+      "homeEmphasis": "Low-cost, beginner-friendly paths",
+      "recommendedOpportunitySlugs": ["print-on-demand"]
+    },
+    {
+      "id": "side-hustler",
+      "label": "Side-hustler",
+      "homeEmphasis": "Time-efficient, flexible paths",
+      "recommendedOpportunitySlugs": ["print-on-demand", "dropshipping"]
+    },
+    {
+      "id": "skilled",
+      "label": "Skilled",
+      "homeEmphasis": "Freelancing and content first",
+      "recommendedOpportunitySlugs": ["writing-transcription"]
+    },
+    {
+      "id": "returning-learner",
+      "label": "Returning learner",
+      "homeEmphasis": "Fraud awareness and structured restart",
+      "recommendedOpportunitySlugs": ["dropshipping"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-freelancing",
+      "name": "Freelancing & services",
+      "slug": "freelancing-services",
+      "description": "Sell skills and services to clients online",
+      "sortOrder": 1,
+      "mvp": false,
+      "opportunities": [
+        { "slug": "writing-transcription", "name": "Writing & transcription", "mvp": false },
+        { "slug": "virtual-assistance", "name": "Virtual assistance", "mvp": false },
+        { "slug": "graphic-design", "name": "Graphic design", "mvp": false },
+        { "slug": "web-dev-freelancing", "name": "Web & dev freelancing", "mvp": false }
+      ]
+    },
+    {
+      "id": "cat-content",
+      "name": "Content & creation",
+      "slug": "content-creation",
+      "description": "Build an audience and monetize through content",
+      "sortOrder": 2,
+      "mvp": false,
+      "opportunities": [
+        { "slug": "youtube-monetization", "name": "YouTube monetization", "mvp": false },
+        { "slug": "tiktok-creator", "name": "TikTok & short-form", "mvp": false },
+        { "slug": "newsletter-blogging", "name": "Newsletter & blogging", "mvp": false },
+        { "slug": "ugc-for-brands", "name": "UGC for brands", "mvp": false }
+      ]
+    },
+    {
+      "id": "cat-selling",
+      "name": "Selling online",
+      "slug": "selling-online",
+      "description": "Sell products online without heavy inventory or with lightweight setup",
+      "sortOrder": 3,
+      "mvp": true,
+      "opportunities": [
+        { "slug": "dropshipping", "name": "Dropshipping", "mvp": true },
+        { "slug": "print-on-demand", "name": "Print on demand", "mvp": true },
+        { "slug": "social-commerce", "name": "Social commerce", "mvp": false },
+        { "slug": "marketplace-selling", "name": "Jumia / marketplace selling", "mvp": false }
+      ]
+    },
+    {
+      "id": "cat-digital",
+      "name": "Digital products",
+      "slug": "digital-products",
+      "description": "Create once, sell repeatedly",
+      "sortOrder": 4,
+      "mvp": false,
+      "opportunities": [
+        { "slug": "templates-kits", "name": "Templates & kits", "mvp": false },
+        { "slug": "ebooks-guides", "name": "Ebooks & guides", "mvp": false },
+        { "slug": "mini-courses", "name": "Mini-courses", "mvp": false }
+      ]
+    },
+    {
+      "id": "cat-marketing",
+      "name": "Marketing & partnerships",
+      "slug": "marketing-partnerships",
+      "description": "Commissions, referrals, and brand partnerships",
+      "sortOrder": 5,
+      "mvp": false,
+      "opportunities": [
+        { "slug": "affiliate-marketing", "name": "Affiliate marketing", "mvp": false },
+        { "slug": "smma", "name": "Social media management", "mvp": false },
+        { "slug": "brand-deals", "name": "Influencer brand deals", "mvp": false }
+      ]
+    },
+    {
+      "id": "cat-tech",
+      "name": "Tech & AI services",
+      "slug": "tech-ai-services",
+      "description": "No-code, automation, and AI-assisted client work",
+      "sortOrder": 6,
+      "mvp": false,
+      "opportunities": [
+        { "slug": "ai-prompting-services", "name": "AI prompting for clients", "mvp": false },
+        { "slug": "no-code-automation", "name": "No-code automations", "mvp": false },
+        { "slug": "micro-saas-services", "name": "Simple web tools for SMEs", "mvp": false }
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-dropshipping",
+      "categorySlug": "selling-online",
+      "name": "Dropshipping",
+      "slug": "dropshipping",
+      "mvp": true,
+      "infoCard": {
+        "skillsNeeded": ["Product research", "Basic marketing", "Customer support", "Patience"],
+        "startupCostMinKes": 0,
+        "startupCostMaxKes": 5000,
+        "devices": ["Phone or laptop"],
+        "platforms": ["Shopify", "TikTok Shop", "Meta Ads", "AliExpress", "CJ Dropshipping"],
+        "timeline": "1 – 3 months",
+        "earnings": {
+          "starting": "KES 0 – 15,000 / month",
+          "growing": "KES 15,000 – 80,000 / month",
+          "established": "KES 80,000 – 300,000+ / month"
+        },
+        "successRateNote": "~30% stay consistent past month 3",
+        "risk": { "financial": 2, "time": 4, "scam": 3 },
+        "recommendedPath": ["This course", "Digital marketing basics", "Paid ads fundamentals"],
+        "scamAlert": "Legitimate dropshipping suppliers never charge you before you make a sale. If a supplier or mentor asks for upfront membership fees — walk away.",
+        "perCoursePriceKes": 350
+      },
+      "course": {
+        "id": "course-dropshipping",
+        "title": "Dropshipping — Complete Course",
+        "slug": "dropshipping-course",
+        "difficulty": "intermediate",
+        "estimatedHours": "8–12",
+        "lessons": [
+          {
+            "id": "ds-lesson-1",
+            "title": "Understand the model",
+            "slug": "lesson-1-model",
+            "sortOrder": 1,
+            "chapters": [
+              { "id": "ds-ch-1-1", "slug": "what-is-dropshipping", "title": "What dropshipping actually is", "sortOrder": 1, "isFree": true, "quizTypes": ["mcq"] },
+              { "id": "ds-ch-1-2", "slug": "money-flow-margin", "title": "How money flows and where margin comes from", "sortOrder": 2, "isFree": true, "quizTypes": ["true-false"] },
+              { "id": "ds-ch-1-3", "slug": "kenya-context", "title": "Dropshipping from Kenya — payments and reality", "sortOrder": 3, "isFree": false, "quizTypes": ["scenario"] },
+              { "id": "ds-ch-1-4", "slug": "when-it-fails", "title": "Why most stores fail in 90 days", "sortOrder": 4, "isFree": false, "quizTypes": ["mcq"] }
+            ]
+          },
+          {
+            "id": "ds-lesson-2",
+            "title": "Setup & suppliers",
+            "slug": "lesson-2-setup",
+            "sortOrder": 2,
+            "chapters": [
+              { "id": "ds-ch-2-1", "slug": "store-platform", "title": "Choosing Shopify vs alternatives", "sortOrder": 1, "isFree": true, "quizTypes": ["mcq"] },
+              { "id": "ds-ch-2-2", "slug": "supplier-vetting", "title": "Finding and vetting suppliers", "sortOrder": 2, "isFree": true, "quizTypes": ["scenario"] },
+              { "id": "ds-ch-2-3", "slug": "product-research", "title": "Product research without hype", "sortOrder": 3, "isFree": false, "quizTypes": ["fill-blank"] },
+              { "id": "ds-ch-2-4", "slug": "store-basics", "title": "Store pages that convert (basics)", "sortOrder": 4, "isFree": false, "quizTypes": [] }
+            ]
+          },
+          {
+            "id": "ds-lesson-3",
+            "title": "Traffic, ops & scams",
+            "slug": "lesson-3-traffic",
+            "sortOrder": 3,
+            "chapters": [
+              { "id": "ds-ch-3-1", "slug": "organic-vs-paid", "title": "Organic vs paid traffic — honest expectations", "sortOrder": 1, "isFree": true, "quizTypes": ["true-false"] },
+              { "id": "ds-ch-3-2", "slug": "customer-support", "title": "Support, refunds, and chargebacks", "sortOrder": 2, "isFree": true, "quizTypes": ["scenario"] },
+              { "id": "ds-ch-3-3", "slug": "scam-patterns", "title": "Dropshipping scams and guru traps", "sortOrder": 3, "isFree": false, "quizTypes": ["mcq"] },
+              { "id": "ds-ch-3-4", "slug": "next-steps", "title": "Your 30-day action plan", "sortOrder": 4, "isFree": false, "quizTypes": [] }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "opp-pod",
+      "categorySlug": "selling-online",
+      "name": "Print on demand",
+      "slug": "print-on-demand",
+      "mvp": true,
+      "infoCard": {
+        "skillsNeeded": ["Basic design", "Niche research", "Social marketing"],
+        "startupCostMinKes": 0,
+        "startupCostMaxKes": 3000,
+        "devices": ["Phone or laptop"],
+        "platforms": ["Printful", "Printify", "Etsy", "Shopify", "Canva"],
+        "timeline": "2 – 8 weeks",
+        "earnings": {
+          "starting": "KES 0 – 10,000 / month",
+          "growing": "KES 10,000 – 60,000 / month",
+          "established": "KES 60,000 – 200,000+ / month"
+        },
+        "successRateNote": "~35% publish 10+ designs and keep going",
+        "risk": { "financial": 1, "time": 3, "scam": 2 },
+        "recommendedPath": ["This course", "Canva for sellers", "Etsy / social traffic"],
+        "scamAlert": "Avoid done-for-you POD stores sold for KES 20,000+. Real POD starts with your designs and free platform accounts.",
+        "perCoursePriceKes": 250
+      },
+      "course": {
+        "id": "course-print-on-demand",
+        "title": "Print on Demand — Complete Course",
+        "slug": "print-on-demand-course",
+        "difficulty": "beginner",
+        "estimatedHours": "6–10",
+        "lessons": [
+          {
+            "id": "pod-lesson-1",
+            "title": "POD fundamentals",
+            "slug": "lesson-1-pod-basics",
+            "sortOrder": 1,
+            "chapters": [
+              { "id": "pod-ch-1-1", "slug": "what-is-pod", "title": "What print on demand is (and is not)", "sortOrder": 1, "isFree": true, "quizTypes": ["mcq"] },
+              { "id": "pod-ch-1-2", "slug": "pod-vs-dropshipping", "title": "POD vs dropshipping — pick your path", "sortOrder": 2, "isFree": true, "quizTypes": ["scenario"] },
+              { "id": "pod-ch-1-3", "slug": "niches-that-work", "title": "Niches that work for Kenyan creators", "sortOrder": 3, "isFree": false, "quizTypes": ["mcq"] }
+            ]
+          },
+          {
+            "id": "pod-lesson-2",
+            "title": "Design & publish",
+            "slug": "lesson-2-design",
+            "sortOrder": 2,
+            "chapters": [
+              { "id": "pod-ch-2-1", "slug": "design-tools", "title": "Canva and simple design rules", "sortOrder": 1, "isFree": true, "quizTypes": ["true-false"] },
+              { "id": "pod-ch-2-2", "slug": "platform-setup", "title": "Printful / Printify + Etsy or Shopify", "sortOrder": 2, "isFree": true, "quizTypes": ["fill-blank"] },
+              { "id": "pod-ch-2-3", "slug": "first-listings", "title": "Publishing your first 5 products", "sortOrder": 3, "isFree": false, "quizTypes": [] },
+              { "id": "pod-ch-2-4", "slug": "pricing-margins", "title": "Pricing for margin in KES terms", "sortOrder": 4, "isFree": false, "quizTypes": ["mcq"] }
+            ]
+          },
+          {
+            "id": "pod-lesson-3",
+            "title": "Traffic & growth",
+            "slug": "lesson-3-growth",
+            "sortOrder": 3,
+            "chapters": [
+              { "id": "pod-ch-3-1", "slug": "social-traffic", "title": "TikTok & Instagram for POD", "sortOrder": 1, "isFree": true, "quizTypes": ["scenario"] },
+              { "id": "pod-ch-3-2", "slug": "avoid-scams", "title": "POD scams and fake mentors", "sortOrder": 2, "isFree": true, "quizTypes": ["mcq"] },
+              { "id": "pod-ch-3-3", "slug": "scale-plan", "title": "30-day POD launch plan", "sortOrder": 3, "isFree": false, "quizTypes": [] }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scamPatterns": [
+    {
+      "id": "scam-activation-fee",
+      "slug": "activation-fee-job",
+      "name": "Activation fee job scam",
+      "categoryTags": ["freelancing-services"],
+      "dangerLevel": "high"
+    },
+    {
+      "id": "scam-telegram",
+      "slug": "telegram-escrow-bypass",
+      "name": "Telegram escrow bypass",
+      "categoryTags": ["freelancing-services"],
+      "dangerLevel": "critical"
+    },
+    {
+      "id": "scam-mlm",
+      "slug": "mlm-masterclass",
+      "name": "MLM masterclass guru",
+      "categoryTags": ["marketing-partnerships"],
+      "dangerLevel": "medium"
+    },
+    {
+      "id": "scam-forex",
+      "slug": "forex-signals-scam",
+      "name": "Forex guaranteed signals",
+      "categoryTags": ["tech-ai-services"],
+      "dangerLevel": "critical"
+    },
+    {
+      "id": "scam-fake-pod",
+      "slug": "fake-pod-store",
+      "name": "Fake POD / prebuilt store",
+      "categoryTags": ["selling-online"],
+      "dangerLevel": "high"
+    },
+    {
+      "id": "scam-supplier-fee",
+      "slug": "fake-supplier-fee",
+      "name": "Fake dropshipping supplier fee",
+      "categoryTags": ["selling-online"],
+      "dangerLevel": "high"
+    },
+    {
+      "id": "scam-crypto",
+      "slug": "crypto-doubling",
+      "name": "Crypto doubling scheme",
+      "categoryTags": ["tech-ai-services"],
+      "dangerLevel": "critical"
+    },
+    {
+      "id": "scam-platform-fee",
+      "slug": "fake-platform-fee",
+      "name": "Fake freelance platform fee",
+      "categoryTags": ["freelancing-services"],
+      "dangerLevel": "high"
+    }
+  ],
+  "avatars": [
+    { "id": "lion", "name": "The Lion", "unlock": "default" },
+    { "id": "leopard", "name": "The Leopard", "unlock": "default" },
+    { "id": "eagle", "name": "The Eagle", "unlock": "default" },
+    { "id": "elephant", "name": "The Elephant", "unlock": "default" },
+    { "id": "zebra", "name": "The Zebra", "unlock": "default" },
+    { "id": "compass", "name": "The Compass", "unlock": "default" },
+    { "id": "flame", "name": "The Flame", "unlock": "default" },
+    { "id": "mountain", "name": "The Mountain", "unlock": "default" },
+    { "id": "crown", "name": "The Crown", "unlock": "courses_completed_5" },
+    { "id": "rocket", "name": "The Rocket", "unlock": "pro_only" }
+  ],
+  "routes": {
+    "marketing": ["/", "/courses", "/courses/[categorySlug]", "/courses/[categorySlug]/[opportunitySlug]", "/scam-radar", "/terms", "/privacy", "/refunds"],
+    "onboarding": ["/onboarding"],
+    "app": ["/app", "/app/profile", "/app/upgrade"],
+    "learn": ["/courses/[categorySlug]/[opportunitySlug]/learn", "/courses/[categorySlug]/[opportunitySlug]/learn/[lessonSlug]/[chapterSlug]"],
+    "redirects": [{ "from": "/scam-warnings", "to": "/scam-radar", "permanent": true }]
+  }
+}
