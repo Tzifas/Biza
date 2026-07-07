@@ -43,6 +43,71 @@
   --spacing-stack-sm: 8px;
   --spacing-stack-md: 16px;
   --spacing-stack-lg: 32px;
+  
+  /* Animations */
+  --animate-fade-in-up: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-slide-down: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulseSlow 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
 
 body {
@@ -61,6 +126,98 @@ h6 {
   font-family: var(--font-display);
 }
 
+.glass-panel {
+  background: rgba(26, 58, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 58, 42, 0.06);
+}
+
+/* Custom premium hover shadow and borders */
+.premium-glow-gold {
+  box-shadow: 0 0 25px rgba(245, 200, 66, 0.15);
+}
+
+.premium-glow-forest {
+  box-shadow: 0 0 30px rgba(26, 58, 42, 0.2);
+}
+
+/* Gradient backgrounds */
+.gradient-forest-to-leaf {
+  background: linear-gradient(135deg, #1A3A2A 0%, #2E6644 100%);
+}
+
+.gradient-gold-fade {
+  background: linear-gradient(135deg, #F5C842 0%, rgba(245, 200, 66, 0) 100%);
+}
+
+.gradient-cream-to-white {
+  background: linear-gradient(135deg, #F4F1E8 0%, #FFFFFF 100%);
+}
+
+.gradient-leaf-light {
+  background: linear-gradient(135deg, #E8F0EB 0%, #F4F1E8 100%);
+}
+
+/* Animated gradient backgrounds */
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: #F5C842;
+  color: #1A1A1A;
+}
+
+::-moz-selection {
+  background-color: #F5C842;
+  color: #1A1A1A;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: rgba(26, 26, 26, 0.5);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F1E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4D0C6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B3A8;
+}
+
 /* Legacy alias — prefer <Card /> component */
 .flat-card {
   background-color: #ffffff;
@@ -72,3 +229,4 @@ h6 {
 .flat-card:hover {
   border-color: #1a3a2a;
 }
+

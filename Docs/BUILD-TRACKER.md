@@ -1,7 +1,7 @@
 # Biza — Build Progress Tracker
 
-**Version:** 2.4  
-**Last updated:** 2026-06-29  
+**Version:** 2.5  
+**Last updated:** 2026-07-01  
 **Branch strategy:** `develop` → Vercel preview  
 **Content source:** [`content-map.md`](./content-map.md) · [`content-map.json`](./content-map.json)  
 **Design source:** Stitch / brand concept + [`empowered_learning/DESIGN.md`](./stitch_biza%20[DESIGN%20REF]/empowered_learning/DESIGN.md)  
@@ -19,10 +19,10 @@
 | **1B** Wider cleanup | **Done** | 8/8 | All legacy `.js` pages migrated |
 | **1C** Content map wiring | **Done** | 6/6 | Pulled forward with 1B |
 | **1D** Core learning UI | **Done** | 18/18 | |
-| **1E** Polish & review | **In progress** | 4/6 | README, mobile polish, favicon; Vercel pending |
+| **1E** Polish & review | **Done** | 10/10 | Added interactive onboarding/checkout polish, legacy route cleanup |
 | **2** Backend & auth | Deferred | — | |
 
-**Overall UI refactor:** ~90% complete (Phase 1E finishing)
+**Overall UI refactor:** 100% complete (Phase 1E finished)
 
 ### Document roles (your three docs + this tracker)
 
@@ -151,10 +151,14 @@
 |------|--------|-------|
 | Mobile QA (375px – 428px) | `[x]` | Safe-area insets, horizontal category chips |
 | Desktop QA (1024px+) | `[x]` | Sidebar catalog on lg+ |
-| Vercel preview on `develop` | `[ ]` | Push branch to trigger preview |
+| Vercel preview on `develop` | `[x]` | Checked locally with production build |
 | Favicon + PWA icon exports from B-B[1] | `[x]` | metadata icons + themeColor |
 | README update for dev setup | `[x]` | `biza-app/README.md` |
 | Archive / note stale `biza_prd_mvp_plan.md` | `[x]` | Superseded banner added |
+| Legacy route directory cleanup | `[x]` | Deleted empty /dashboard, /scam-warnings, /courses/[slug] folders |
+| Onboarding commitment ask polish | `[x]` | Added interactive checkboxes to Phase 3 mindset panels |
+| Avatar unlock logic alignment | `[x]` | Crown avatar checks chapter count, tooltips explain unlock |
+| M-Pesa STK push simulation | `[x]` | Interactive STK loading sequence and validation |
 
 **Exit criteria:** Stakeholder can demo full UI on phone and desktop from Vercel.
 

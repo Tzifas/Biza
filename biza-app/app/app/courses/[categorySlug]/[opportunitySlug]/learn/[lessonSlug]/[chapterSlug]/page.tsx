@@ -34,10 +34,10 @@ export default async function ChapterPage({ params }: Props) {
 
   const next = getNextChapter(categorySlug, opportunitySlug, lessonSlug, chapterSlug);
   const nextHref = next
-    ? `/courses/${categorySlug}/${opportunitySlug}/learn/${next.lesson.slug}/${next.chapter.slug}`
+    ? `/app/courses/${categorySlug}/${opportunitySlug}/learn/${next.lesson.slug}/${next.chapter.slug}`
     : undefined;
 
-  const backHref = `/courses/${categorySlug}/${opportunitySlug}/learn`;
+  const backHref = `/app/courses/${categorySlug}/${opportunitySlug}/learn`;
 
   return (
     <ChapterReader
@@ -51,6 +51,7 @@ export default async function ChapterPage({ params }: Props) {
       progressPercent={progressPercent}
       backHref={backHref}
       nextHref={nextHref}
+      basePath="/app/courses"
     />
   );
 }

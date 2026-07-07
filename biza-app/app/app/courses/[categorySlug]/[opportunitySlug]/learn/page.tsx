@@ -14,7 +14,7 @@ export default async function LearnIndexPage({ params }: Props) {
   if (!category || !opportunity) notFound();
 
   const totalChapters = countChapters(opportunity);
-  const backHref = `/courses/${categorySlug}/${opportunitySlug}`;
+  const backHref = `/app/courses/${categorySlug}/${opportunitySlug}`;
 
   return (
     <LearnShell backHref={backHref}>
@@ -35,7 +35,7 @@ export default async function LearnIndexPage({ params }: Props) {
                 {lesson.chapters.map((ch) => (
                   <li key={ch.id}>
                     <Link
-                      href={`/courses/${categorySlug}/${opportunitySlug}/learn/${lesson.slug}/${ch.slug}`}
+                      href={`/app/courses/${categorySlug}/${opportunitySlug}/learn/${lesson.slug}/${ch.slug}`}
                       className="flex items-center justify-between rounded-lg border border-border px-4 py-3 text-sm transition-colors hover:border-forest"
                     >
                       <span className="font-medium text-ink">{ch.title}</span>

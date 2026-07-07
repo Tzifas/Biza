@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils/cn";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
@@ -6,19 +9,19 @@ export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "dan
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-gold text-ink hover:bg-gold/90 border border-transparent",
+    "px-5 py-2.5 text-sm font-semibold bg-gold text-ink hover:bg-gold/90 border border-transparent shadow-sm hover:shadow-md",
   secondary:
-    "bg-forest text-cream hover:bg-leaf border border-transparent",
+    "px-5 py-2.5 text-sm font-semibold bg-forest text-cream hover:bg-leaf border border-transparent shadow-sm hover:shadow-md",
   outline:
-    "bg-transparent text-forest border border-forest hover:bg-leaf-light",
+    "px-5 py-2.5 text-sm font-semibold bg-transparent text-forest border border-forest hover:bg-leaf-light shadow-sm",
   ghost:
-    "bg-transparent text-forest border border-border hover:border-forest hover:bg-cream",
+    "px-5 py-2.5 text-sm font-semibold bg-transparent text-forest border border-border hover:border-forest hover:bg-cream",
   danger:
-    "bg-coral text-white hover:opacity-90 border border-transparent",
+    "px-5 py-2.5 text-sm font-semibold bg-coral text-white hover:opacity-90 border border-transparent shadow-sm hover:shadow-md",
 };
 
 const baseStyles =
-  "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-pill px-5 font-display text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-pill font-display transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:pointer-events-none disabled:opacity-50";
 
 type SharedProps = {
   variant?: ButtonVariant;
@@ -43,17 +46,28 @@ export function Button({
 }: ButtonProps) {
   const classes = cn(baseStyles, variantStyles[variant], className);
 
+  const content = (
+    <motion.span
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.15 }}
+      className="flex items-center justify-center gap-2 w-full h-full"
+    >
+      {children}
+    </motion.span>
+  );
+
   if (href) {
     return (
       <Link href={href} className={classes} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}>
-        {children}
+        {content}
       </Link>
     );
   }
 
   return (
     <button className={classes} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}>
-      {children}
+      {content}
     </button>
   );
 }

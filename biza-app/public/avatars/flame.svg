@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="flame"><circle cx="24" cy="24" r="24" fill="#F5C842"/><circle cx="24" cy="20" r="10" fill="#1A3A2A" opacity="0.9"/><text x="24" y="26" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui,sans-serif" fill="#F5C842">F</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Flame avatar">
+  <!-- Solid forest background -->
+  <circle cx="50" cy="50" r="46" fill="#1A3A2A"/>
+  
+  <!-- Outer Flame Outline -->
+  <path d="M 50 20 C 50 20 68 36 68 54 C 68 66 60 76 50 76 C 40 76 32 66 32 54 C 32 36 50 20 50 20 Z" stroke="#F5C842" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  
+  <!-- Inner Flame Outline -->
+  <path d="M 50 38 C 50 38 60 48 60 58 C 60 66 55 70 50 70 C 45 70 40 66 40 58 C 40 48 50 38 50 38 Z" stroke="#F5C842" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+</svg>

@@ -13,7 +13,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push("/onboarding");
+    router.push(isLoginMode ? "/app" : "/onboarding");
   };
 
   return (
@@ -72,7 +72,7 @@ export default function LoginPage() {
             <span className="h-px flex-1 bg-border" />
           </div>
 
-          <Button variant="outline" className="w-full" onClick={() => router.push("/onboarding")}>
+          <Button variant="outline" className="w-full" onClick={() => router.push(isLoginMode ? "/app" : "/onboarding")}>
             <Globe size={16} />
             Continue with Google (demo)
           </Button>
@@ -81,7 +81,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setIsLoginMode(!isLoginMode)}
-              className="text-xs font-semibold text-leaf hover:text-forest"
+              className="py-2 px-4 text-xs font-semibold text-leaf hover:text-forest min-h-[44px]"
             >
               {isLoginMode ? "New to Biza? Register" : "Already have an account? Sign in"}
             </button>

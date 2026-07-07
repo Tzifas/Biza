@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="zebra"><circle cx="24" cy="24" r="24" fill="#F4F1E8"/><circle cx="24" cy="20" r="10" fill="#1A1A1A" opacity="0.9"/><text x="24" y="26" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui,sans-serif" fill="#F4F1E8">Z</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Zebra avatar">
+  <!-- Solid forest background -->
+  <circle cx="50" cy="50" r="46" fill="#1A3A2A"/>
+  
+  <!-- Zebra Face Outline -->
+  <path d="M 34 32 C 34 32, 28 42, 28 50 C 28 58, 38 64, 38 72 C 38 76, 42 78, 50 78 C 58 78, 62 76, 62 72 C 62 64, 72 58, 72 50 C 72 42, 66 32, 66 32 Z" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Ears -->
+  <path d="M 34 32 C 32 20, 20 22, 28 34" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <path d="M 66 32 C 68 20, 80 22, 72 34" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- Muzzle/Nose -->
+  <path d="M 40 68 C 40 76, 60 76, 60 68 Z" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Stripes inside face -->
+  <line x1="38" y1="40" x2="62" y2="40" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="34" y1="48" x2="66" y2="48" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="30" y1="56" x2="70" y2="56" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="50" y1="32" x2="50" y2="40" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round"/>
+  
+  <!-- Eyes -->
+  <circle cx="38" cy="46" r="2.5" fill="#F5C842"/>
+  <circle cx="62" cy="46" r="2.5" fill="#F5C842"/>
+</svg>

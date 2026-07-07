@@ -8,3 +8,5 @@ export { Input } from "./Input";
 export type { InputProps } from "./Input";
 export { ProgressBar } from "./ProgressBar";
 export type { ProgressBarProps } from "./ProgressBar";
+export { SkeletonCard, SkeletonText, SkeletonAvatar, PageLoadingState } from "./Skeleton";
+

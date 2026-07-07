@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="crown"><circle cx="24" cy="24" r="24" fill="#F5C842"/><circle cx="24" cy="20" r="10" fill="#1A3A2A" opacity="0.9"/><text x="24" y="26" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui,sans-serif" fill="#F5C842">Cr</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Crown avatar">
+  <!-- Solid forest background -->
+  <circle cx="50" cy="50" r="46" fill="#1A3A2A"/>
+  
+  <!-- Crown Outline -->
+  <path d="M 24 66 L 24 38 L 38 52 L 50 28 L 62 52 L 76 38 L 76 66 Z" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Crown Base Line -->
+  <line x1="24" y1="58" x2="76" y2="58" stroke="#F5C842" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Circles on Points -->
+  <circle cx="24" cy="38" r="3.5" fill="#1A3A2A" stroke="#F5C842" stroke-width="3"/>
+  <circle cx="50" cy="28" r="3.5" fill="#1A3A2A" stroke="#F5C842" stroke-width="3"/>
+  <circle cx="76" cy="38" r="3.5" fill="#1A3A2A" stroke="#F5C842" stroke-width="3"/>
+</svg>

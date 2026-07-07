@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 
 type Props = {
   categorySlug: string;
@@ -7,6 +11,7 @@ type Props = {
   opportunityName: string;
   lessonTitle: string;
   chapterTitle: string;
+  basePath?: string;
 };
 
 export function LearnBreadcrumb({
@@ -16,30 +21,62 @@ export function LearnBreadcrumb({
   opportunityName,
   lessonTitle,
   chapterTitle,
+  basePath = "/courses",
 }: Props) {
   const crumbs = [
-    { label: categoryName, href: `/courses/${categorySlug}` },
-    { label: opportunityName, href: `/courses/${categorySlug}/${opportunitySlug}` },
-    { label: lessonTitle, href: `/courses/${categorySlug}/${opportunitySlug}/learn` },
+    { label: categoryName, href: `${basePath}/${categorySlug}` },
+    { label: opportunityName, href: `${basePath}/${categorySlug}/${opportunitySlug}` },
+    { label: lessonTitle, href: `${basePath}/${categorySlug}/${opportunitySlug}/learn` },
     { label: chapterTitle },
   ];
 
   return (
-    <nav aria-label="Breadcrumb" className="overflow-x-auto px-4 py-2">
-      <ol className="flex min-w-0 items-center gap-1 text-[10px] text-stone whitespace-nowrap">
+    <motion.nav
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      aria-label="Breadcrumb"
+      className="overflow-x-auto px-4 py-2"
+    >
+      <ol className="flex min-w-0 items-center gap-1.5 text-xs text-stone whitespace-nowrap">
         {crumbs.map((crumb, i) => (
-          <li key={crumb.label} className="flex items-center gap-1">
-            {i > 0 ? <span aria-hidden className="text-border">/</span> : null}
+          <motion.li
+            key={crumb.label}
+            initial={{ opacity: 0, x: -4 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: i * 0.05 }}
+            className="flex items-center gap-1.5"
+          >
+            {i > 0 ? (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: i * 0.05 + 0.1 }}
+              >
+                <ChevronRight size={12} className="text-border" aria-hidden />
+              </motion.div>
+            ) : null}
             {crumb.href ? (
-              <Link href={crumb.href} className="hover:text-forest">
-                {crumb.label}
-              </Link>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.15 }}
+              >
+                <Link href={crumb.href} className="hover:text-forest transition-colors">
+                  {crumb.label}
+                </Link>
+              </motion.div>
             ) : (
-              <span className="font-medium text-forest">{crumb.label}</span>
+              <motion.span
+                initial={{ opacity: 0.8 }}
+                animate={{ opacity: 1 }}
+                className="font-semibold text-forest"
+              >
+                {crumb.label}
+              </motion.span>
             )}
-          </li>
+          </motion.li>
         ))}
       </ol>
-    </nav>
+    </motion.nav>
   );
 }

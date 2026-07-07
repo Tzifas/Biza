@@ -2,6 +2,7 @@ import { Logo } from "@/components/Logo";
 import { Card } from "@/components/ui";
 import { Mail, ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
@@ -83,22 +84,20 @@ export default function Footer() {
         </div>
 
         <div className="space-y-4 border-t border-white/10 pt-8 text-center">
-          <Card
-            hover={false}
-            padding="sm"
-            className="mx-auto max-w-4xl border-gold/20 bg-forest text-left"
+          <motion.div
+            initial={{ opacity: 0, y: 4 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-4xl rounded-xl border-2 border-gold/30 bg-gold/5 backdrop-blur-sm p-4 text-left shadow-lg shadow-gold/10"
           >
-            <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold">
-              <ShieldCheck size={14} />
-              Important income disclaimer
+            <h4 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gold">
+              <ShieldCheck size={16} />
+              INCOME DISCLAIMER
             </h4>
-            <p className="text-xs leading-relaxed text-cream/90">
-              IMPORTANT: Biza provides educational information only. We do not guarantee any
-              specific income results. Actual earnings depend on individual effort, market
-              conditions, experience, and many other factors. Nothing on this platform constitutes
-              financial advice.
-            </p>
-          </Card>
+            <div className="text-xs leading-relaxed text-cream/90 space-y-2">
+              <p><strong>IMPORTANT:</strong> Biza provides educational information only. We do not guarantee any specific income results. Actual earnings depend on individual effort, market conditions, experience, and many other factors. Nothing on this platform constitutes financial advice.</p>
+            </div>
+          </motion.div>
 
           <p className="pt-4 text-xs text-cream/60">
             &copy; {new Date().getFullYear()} Biza. All rights reserved. getbiza.co.ke

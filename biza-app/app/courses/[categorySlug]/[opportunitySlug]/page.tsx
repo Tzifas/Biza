@@ -154,8 +154,8 @@ export default async function OpportunityPage({ params }: Props) {
                   <li key={step}>{step}</li>
                 ))}
               </ol>
-              <Button href={`/courses/${categorySlug}/${opportunitySlug}/learn`} variant="primary" className="w-full">
-                Start course
+              <Button href="/onboarding" variant="primary" className="w-full">
+                Sign up to start course
                 <ArrowRight size={14} />
               </Button>
               <p className="text-center text-xs text-stone">

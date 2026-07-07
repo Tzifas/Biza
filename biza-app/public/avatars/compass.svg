@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="compass"><circle cx="24" cy="24" r="24" fill="#1A3A2A"/><circle cx="24" cy="20" r="10" fill="#F5C842" opacity="0.9"/><text x="24" y="26" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui,sans-serif" fill="#1A3A2A">C</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Compass avatar">
+  <!-- Solid forest background -->
+  <circle cx="50" cy="50" r="46" fill="#1A3A2A"/>
+  
+  <!-- Outer Compass Ring -->
+  <circle cx="50" cy="50" r="32" stroke="#F5C842" stroke-width="4.5" fill="none"/>
+  
+  <!-- North Indicator N -->
+  <text x="50" y="32" text-anchor="middle" font-size="9" font-weight="900" font-family="system-ui,sans-serif" fill="#F5C842">N</text>
+  
+  <!-- Compass Star (8-point outline) -->
+  <path d="M 50 36 L 54 48 L 50 50 L 46 48 Z" stroke="#F5C842" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <path d="M 50 64 L 54 52 L 50 50 L 46 52 Z" stroke="#F5C842" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <path d="M 64 50 L 52 54 L 50 50 L 52 46 Z" stroke="#F5C842" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <path d="M 36 50 L 48 54 L 50 50 L 48 46 Z" stroke="#F5C842" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Diagonal ticks -->
+  <line x1="42" y1="42" x2="58" y2="58" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/>
+  <line x1="58" y1="42" x2="42" y2="58" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Center Pin -->
+  <circle cx="50" cy="50" r="3.5" stroke="#F5C842" stroke-width="3" fill="#1A3A2A"/>
+</svg>

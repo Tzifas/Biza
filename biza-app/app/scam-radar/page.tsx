@@ -12,7 +12,10 @@ const dangerVariant = {
 export default function ScamRadarPage() {
   return (
     <SiteLayout>
-      <main className="flex-grow bg-cream py-12">
+      <main
+        className="flex-grow bg-cream py-12"
+        style={{ backgroundImage: `url('/scam_bg.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      >
         <div className="mx-auto max-w-4xl space-y-10 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl space-y-4 text-center">
             <div className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-coral/10 bg-coral-light text-coral">

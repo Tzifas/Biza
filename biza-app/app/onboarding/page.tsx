@@ -14,14 +14,17 @@ const mindsetScreens = [
   {
     title: "What it really takes",
     body: "Skills take time. Shortcuts are myths. Scams exploit impatience — especially in Kenya's online job groups.",
+    commitment: "I understand that building digital skills takes time, and I will avoid shortcuts.",
   },
   {
     title: "The fraud test",
     body: "Forex signal groups, MLMs, and 'registration fee' jobs are documented patterns. Biza teaches you to spot them before you pay.",
+    commitment: "I commit to vetting opportunities and will never pay an 'activation fee' or 'deposit' for a job.",
   },
   {
     title: "The commitment ask",
     body: "This platform is for people willing to learn before they earn. No guaranteed income — honest roadmaps only.",
+    commitment: "I commit to learning before earning, studying chapters honestly, and doing the quizzes myself.",
   },
 ];
 
@@ -32,6 +35,7 @@ export default function OnboardingPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [persona, setPersona] = useState<PersonaId>("starter");
+  const [commitments, setCommitments] = useState([false, false, false]);
 
   const finish = () => {
     saveUser({ name: name || "Learner", email, persona, onboardingComplete: true });
@@ -86,9 +90,25 @@ export default function OnboardingPage() {
           <Card hover={false} className="space-y-4 text-ink">
             <h1 className="font-display text-xl font-bold text-forest">{mindsetScreens[sub].title}</h1>
             <p className="text-sm leading-relaxed text-stone">{mindsetScreens[sub].body}</p>
+            
+            <label className="flex items-start gap-3 rounded-lg border border-border p-3 text-xs text-stone hover:border-forest cursor-pointer bg-cream/40">
+              <input
+                type="checkbox"
+                className="mt-0.5 rounded border-border text-leaf focus:ring-leaf cursor-pointer h-4 w-4"
+                checked={commitments[sub]}
+                onChange={(e) => {
+                  const next = [...commitments];
+                  next[sub] = e.target.checked;
+                  setCommitments(next);
+                }}
+              />
+              <span>{mindsetScreens[sub].commitment}</span>
+            </label>
+
             <Button
               variant="primary"
               className="w-full"
+              disabled={!commitments[sub]}
               onClick={() => {
                 if (sub < mindsetScreens.length - 1) setSub(sub + 1);
                 else {

@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="mountain"><circle cx="24" cy="24" r="24" fill="#2E6644"/><circle cx="24" cy="20" r="10" fill="#F5C842" opacity="0.9"/><text x="24" y="26" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui,sans-serif" fill="#2E6644">M</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Mountain avatar">
+  <!-- Solid forest background -->
+  <circle cx="50" cy="50" r="46" fill="#1A3A2A"/>
+  
+  <!-- Mountains Outline -->
+  <!-- Left tall peak, right small peak -->
+  <path d="M 18 72 L 42 34 L 56 56 L 68 38 L 82 72 Z" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Ground Horizon line -->
+  <line x1="14" y1="72" x2="86" y2="72" stroke="#F5C842" stroke-width="4.5" stroke-linecap="round"/>
+  
+  <!-- Ridges details -->
+  <line x1="42" y1="34" x2="48" y2="48" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/>
+  <line x1="48" y1="48" x2="45" y2="60" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/>
+  <line x1="45" y1="60" x2="52" y2="72" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/>
+</svg>

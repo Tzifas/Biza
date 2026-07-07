@@ -31,6 +31,7 @@ type Props = {
   progressPercent: number;
   backHref: string;
   nextHref?: string;
+  basePath?: string;
 };
 
 export function ChapterReader({
@@ -44,6 +45,7 @@ export function ChapterReader({
   progressPercent,
   backHref,
   nextHref,
+  basePath,
 }: Props) {
   const router = useRouter();
   const [user, setUser] = useState(getUser());
@@ -68,7 +70,7 @@ export function ChapterReader({
           </Link>
         </header>
         <main className="flex flex-grow flex-col items-center justify-center px-6 text-center">
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cream text-stone">
+          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-stone/10 text-stone border border-border">
             <Lock size={24} />
           </div>
           <h1 className="font-display text-xl font-bold text-forest">PRO chapter locked</h1>
@@ -94,7 +96,7 @@ export function ChapterReader({
         <div className="h-1 bg-leaf" style={{ width: `${progressPercent}%` }} />
         <div className="flex items-center justify-between px-4 py-3">
           <div>
-            <p className="text-[10px] uppercase tracking-wider text-stone">{lessonTitle}</p>
+            <p className="text-xs uppercase tracking-wider text-stone">{lessonTitle}</p>
             <h1 className="font-display text-sm font-semibold text-forest">{chapter.title}</h1>
           </div>
           <Link href={backHref} className="text-stone hover:text-forest" aria-label="Close">
@@ -108,6 +110,7 @@ export function ChapterReader({
           opportunityName={opportunityName}
           lessonTitle={lessonTitle}
           chapterTitle={chapter.title}
+          basePath={basePath}
         />
       </header>
 
@@ -136,14 +139,14 @@ export function ChapterReader({
               <p className="mt-2 font-display text-sm font-semibold text-forest">{content.takeaway}</p>
             </div>
             <p className="text-sm leading-relaxed text-ink/85">{content.closing}</p>
-            <Button variant="secondary" className="w-full" onClick={finishChapter}>
+            <Button variant="primary" className="w-full" onClick={finishChapter}>
               Mark chapter complete
             </Button>
           </>
         ) : null}
       </article>
 
-      <LearnBottomBar backHref={backHref} progress={progressPercent} />
+      <LearnBottomBar backHref={backHref} continueHref={nextHref} progress={progressPercent} />
 
       {showComplete ? (
         <ChapterComplete

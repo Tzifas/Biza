@@ -11,8 +11,29 @@ import { ArrowRight, Clock, Filter, Map, Search, ShieldAlert, Wallet } from "luc
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 
 type Props = { basePath?: string };
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 },
+  },
+};
 
 export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
   const searchParams = useSearchParams();
@@ -44,7 +65,11 @@ export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
   return (
     <main className="flex-grow bg-cream py-8 sm:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-10 space-y-4"
+        >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-forest">
             <Map size={14} />
             Verified learning paths
@@ -56,14 +81,18 @@ export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
             {activeCategory?.description ??
               "Explore legitimate online income opportunities with honest Kenyan data."}
           </p>
-        </div>
+        </motion.div>
 
         {/* Mobile: horizontal category chips */}
-        <div className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 lg:hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -8 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 lg:hidden"
+        >
           <Link
             href={basePath}
-            className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold ${
-              !catFilter ? "bg-forest text-white" : "border border-border bg-white text-stone"
+            className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+              !catFilter ? "bg-forest text-white shadow-sm" : "border border-border bg-white text-stone hover:border-forest"
             }`}
           >
             All ({allOpportunities.length})
@@ -75,15 +104,15 @@ export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
               <Link
                 key={cat.id}
                 href={`${basePath}?category=${cat.slug}`}
-                className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold ${
-                  isActive ? "bg-forest text-white" : "border border-border bg-white text-stone"
+                className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+                  isActive ? "bg-forest text-white shadow-sm" : "border border-border bg-white text-stone hover:border-forest"
                 }`}
               >
                 {cat.name.split(" ")[0]} ({count || "0"})
               </Link>
             );
           })}
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
           <Card hover={false} padding="sm" className="hidden space-y-4 lg:col-span-3 lg:block">
@@ -136,26 +165,33 @@ export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
             </div>
 
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+                className="grid grid-cols-1 gap-6 md:grid-cols-2"
+              >
                 {filtered.map((opp) => (
-                  <Card key={`${opp.categorySlug}-${opp.slug}`} className="flex min-h-[240px] flex-col justify-between">
-                    <div className="space-y-2">
-                      <Chip variant={opp.mvp ? "gold" : "default"}>{opp.mvp ? "MVP" : "Soon"}</Chip>
-                      <h3 className="font-display text-lg font-semibold text-forest">{opp.name}</h3>
-                      <p className="text-[10px] uppercase text-stone">{opp.categoryName}</p>
-                    </div>
-                    <div className="mt-4 space-y-2 border-t border-border pt-4">
-                      <div className="flex gap-4 text-[11px] text-stone">
-                        <span className="flex items-center gap-1"><Clock size={12} />{opp.timeline}</span>
-                        <span className="flex items-center gap-1"><Wallet size={12} />{opp.startupCostLabel}</span>
+                  <motion.div key={`${opp.categorySlug}-${opp.slug}`} variants={itemVariants}>
+                    <Card className="flex min-h-[240px] flex-col justify-between">
+                      <div className="space-y-2">
+                        <Chip variant={opp.mvp ? "gold" : "default"}>{opp.mvp ? "MVP" : "Soon"}</Chip>
+                        <h3 className="font-display text-lg font-semibold text-forest">{opp.name}</h3>
+                        <p className="text-xs uppercase text-stone">{opp.categoryName}</p>
                       </div>
-                      <Button href={`/courses/${opp.categorySlug}/${opp.slug}`} variant="outline" className="w-full text-xs">
-                        View opportunity <ArrowRight size={14} />
-                      </Button>
-                    </div>
-                  </Card>
+                      <div className="mt-4 space-y-2 border-t border-border pt-4">
+                        <div className="flex gap-4 text-xs text-stone">
+                          <span className="flex items-center gap-1"><Clock size={12} />{opp.timeline}</span>
+                          <span className="flex items-center gap-1"><Wallet size={12} />{opp.startupCostLabel}</span>
+                        </div>
+                        <Button href={`${basePath}/${opp.categorySlug}/${opp.slug}`} variant="outline" className="w-full text-xs">
+                          View opportunity <ArrowRight size={14} />
+                        </Button>
+                      </div>
+                    </Card>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             ) : (
               <Card hover={false} className="p-12 text-center">
                 <ShieldAlert className="mx-auto text-stone" size={24} />
@@ -164,14 +200,19 @@ export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
             )}
 
             {comingSoonRefs.length > 0 ? (
-              <div className="grid gap-2 sm:grid-cols-2">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="grid gap-2 sm:grid-cols-2"
+              >
                 {comingSoonRefs.map((ref) => (
                   <Card key={ref.slug} hover={false} padding="sm" className="flex justify-between">
                     <span className="text-sm">{ref.name}</span>
                     <Chip variant="default">Soon</Chip>
                   </Card>
                 ))}
-              </div>
+              </motion.div>
             ) : null}
           </div>
         </div>
