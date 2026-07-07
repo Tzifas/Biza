@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Inter } from "next/font/google";
+import { ToastProvider } from "@/components/providers/ToastProvider";
+import { CookieSync } from "@/components/providers/CookieSync";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -45,7 +47,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${dmSans.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream font-sans text-ink">
-        {children}
+        <div className="flex min-h-full flex-col">
+          {children}
+        </div>
+        <ToastProvider />
+        <CookieSync />
       </body>
     </html>
   );

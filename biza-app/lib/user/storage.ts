@@ -38,6 +38,15 @@ export function getUser(): UserProfile {
 export function saveUser(partial: Partial<UserProfile>) {
   const next = { ...getUser(), ...partial };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  
+  if (typeof document !== "undefined") {
+    if (next.onboardingComplete) {
+      document.cookie = "biza_onboarding_complete=true; path=/; max-age=31536000";
+    } else {
+      document.cookie = "biza_onboarding_complete=; path=/; max-age=0";
+    }
+  }
+
   window.dispatchEvent(new Event("biza-user-updated"));
   return next;
 }
@@ -48,6 +57,14 @@ export function markChapterComplete(chapterId: string) {
     ? user.completedChapters
     : [...user.completedChapters, chapterId];
   return saveUser({ completedChapters: completed, lastChapterId: chapterId });
+}
+
+export function logoutUser() {
+  localStorage.removeItem(STORAGE_KEY);
+  if (typeof document !== "undefined") {
+    document.cookie = "biza_onboarding_complete=; path=/; max-age=0";
+  }
+  window.dispatchEvent(new Event("biza-user-updated"));
 }
 
 export function personaCompletionCopy(persona: PersonaId): string {
