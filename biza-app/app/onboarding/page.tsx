@@ -64,7 +64,7 @@ export default function OnboardingPage() {
 
         {phase === 2 ? (
           <Card hover={false} className="space-y-4 text-ink">
-            <h1 className="font-display text-xl font-bold text-forest">What&apos;s your main goal?</h1>
+            <h1 className="font-display text-xl font-bold text-forest">What's your main goal?</h1>
             <div className="space-y-2">
               {personas.map((p) => (
                 <button
@@ -124,9 +124,9 @@ export default function OnboardingPage() {
 
         {phase === 4 ? (
           <Card hover={false} className="space-y-4 text-ink">
-            <h1 className="font-display text-xl font-bold text-forest">You&apos;re ready</h1>
+            <h1 className="font-display text-xl font-bold text-forest">You're ready</h1>
             <p className="text-sm text-stone">
-              Free chapters are available on every course. Pro unlocks the rest when you&apos;re ready.
+              Free chapters are available on every course. Pro unlocks the rest when you're ready.
             </p>
             <Button variant="primary" className="w-full" onClick={finish}>
               Go to dashboard

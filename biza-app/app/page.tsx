@@ -42,12 +42,17 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function Home() {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [activePreviewTab, setActivePreviewTab] = useState<number>(0);
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     const user = getUser();
-    if (user.onboardingComplete) router.replace("/app");
+    if (user.onboardingComplete) {
+      router.replace("/app");
+    } else {
+      setLoading(false);
+    }
   }, [router]);
 
   const launchCategories = getCategories().map((cat) => ({
@@ -58,6 +63,19 @@ export default function Home() {
     badge: cat.mvp ? "MVP live" : "Coming soon",
     mvp: cat.mvp,
   }));
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-forest text-cream">
+        <div className="relative flex flex-col items-center gap-4">
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-gold border-t-transparent" />
+          <p className="font-display text-sm font-semibold uppercase tracking-widest text-gold/80 animate-pulse">
+            Biza
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const syllabusPreview = [
     {
@@ -244,7 +262,7 @@ export default function Home() {
                 What makes Biza different?
               </h2>
               <p className="text-sm text-cream/70 md:text-base max-w-2xl mx-auto leading-relaxed">
-                We aren&apos;t here to promise overnight riches. We&apos;re here to build lasting skills.
+                We aren't here to promise overnight riches. We're here to build lasting skills.
               </p>
             </div>
 

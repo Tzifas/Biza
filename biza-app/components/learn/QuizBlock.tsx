@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils/cn";
-import type { ChapterQuiz } from "@/lib/content/types";
+import type { ChapterQuiz } from "@/lib/content/chapter-content";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X } from "lucide-react";

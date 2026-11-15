@@ -24,38 +24,15 @@ export const defaultUser: UserProfile = {
   lastChapterId: null,
 };
 
-let cachedUserRaw: string | null | undefined;
-let cachedUser = defaultUser;
-
-export function getUserSnapshot(): UserProfile {
-  if (typeof window === "undefined") return defaultUser;
-
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw === cachedUserRaw) return cachedUser;
-
-  cachedUserRaw = raw;
-  try {
-    cachedUser = raw ? { ...defaultUser, ...JSON.parse(raw) } : defaultUser;
-  } catch {
-    cachedUser = defaultUser;
-  }
-  return cachedUser;
-}
-
-export function subscribeToUser(callback: () => void) {
-  const handleStorage = (event: StorageEvent) => {
-    if (event.key === STORAGE_KEY || event.key === null) callback();
-  };
-  window.addEventListener("biza-user-updated", callback);
-  window.addEventListener("storage", handleStorage);
-  return () => {
-    window.removeEventListener("biza-user-updated", callback);
-    window.removeEventListener("storage", handleStorage);
-  };
-}
-
 export function getUser(): UserProfile {
-  return getUserSnapshot();
+  if (typeof window === "undefined") return defaultUser;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultUser;
+    return { ...defaultUser, ...JSON.parse(raw) };
+  } catch {
+    return defaultUser;
+  }
 }
 
 export function saveUser(partial: Partial<UserProfile>) {

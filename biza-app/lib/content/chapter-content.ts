@@ -1,32 +1,36 @@
-import { getOpportunities } from "@/lib/content";
-import type { ChapterContent, ChapterQuiz } from "./types";
+export type QuizOption = { id: string; label: string; correct?: boolean };
 
-/** Transitional content for chapters that have not yet been authored in the content map. */
+export type ChapterQuiz = {
+  id: string;
+  type: "mcq" | "true-false" | "scenario" | "fill-blank";
+  question: string;
+  options: QuizOption[];
+  explanation: string;
+};
+
+export type ChapterContent = {
+  hook: string;
+  paragraphs: string[];
+  visualLabel: string;
+  takeaway: string;
+  closing: string;
+  quiz: ChapterQuiz;
+};
+
+/** Stub chapter body copy — editorial replaces in Phase 2 */
 export function getChapterContent(
   opportunitySlug: string,
   chapterSlug: string
 ): ChapterContent {
-  const opportunities = getOpportunities();
-  const authored = opportunities
-    .find((opportunity) => opportunity.slug === opportunitySlug)
-    ?.course.lessons.flatMap((lesson) => lesson.chapters)
-    .find((chapter) => chapter.slug === chapterSlug)?.content;
-  if (authored) return authored;
-
   const defaults: ChapterContent = {
     hook: "Most people skip this part. Don't.",
-    blocks: [
-      {
-        type: "paragraph",
-        text: "This chapter breaks down how the model works in plain Kenyan context — no hype, no guru promises.",
-      },
-      {
-        type: "paragraph",
-        text: "Read slowly. The quiz checks whether you actually understood the idea, not whether you memorised jargon.",
-      },
+    paragraphs: [
+      "This chapter breaks down how the model works in plain Kenyan context — no hype, no guru promises.",
+      "Read slowly. The quiz checks whether you actually understood the idea, not whether you memorised jargon.",
     ],
+    visualLabel: "Process overview",
     takeaway: "Understanding the model beats chasing shortcuts every time.",
-    closing: "In the next chapter, you'll go deeper with real numbers and platforms.", 
+    closing: "In the next chapter, you'll go deeper with real numbers and platforms.",
     quiz: {
       id: `${chapterSlug}-q1`,
       type: "mcq",
@@ -44,15 +48,9 @@ export function getChapterContent(
   const overrides: Record<string, Partial<ChapterContent>> = {
     "what-is-dropshipping": {
       hook: "Dropshipping is not magic inventory — it's retail without warehousing.",
-      blocks: [
-        {
-          type: "paragraph",
-          text: "You list products online. When a customer buys, your supplier ships directly to them. You keep the margin between your price and the supplier cost.",
-        },
-        {
-          type: "paragraph",
-          text: "From Kenya, this works — but payment processors, delivery times, and ad costs determine whether you profit or burn cash.",
-        },
+      paragraphs: [
+        "You list products online. When a customer buys, your supplier ships directly to them. You keep the margin between your price and the supplier cost.",
+        "From Kenya, this works — but payment processors, delivery times, and ad costs determine whether you profit or burn cash.",
       ],
       quiz: {
         id: "what-is-dropshipping-q1",
@@ -68,15 +66,9 @@ export function getChapterContent(
     },
     "what-is-pod": {
       hook: "Print on demand means zero stock — designs printed only after someone orders.",
-      blocks: [
-        {
-          type: "paragraph",
-          text: "You upload designs to products like t-shirts or mugs. A print partner manufactures each item when ordered.",
-        },
-        {
-          type: "paragraph",
-          text: "Margins are smaller than hype sellers claim, but startup cost can genuinely start at KES 0 if you use free tiers.",
-        },
+      paragraphs: [
+        "You upload designs to products like t-shirts or mugs. A print partner manufactures each item when ordered.",
+        "Margins are smaller than hype sellers claim, but startup cost can genuinely start at KES 0 if you use free tiers.",
       ],
       quiz: {
         id: "what-is-pod-q1",

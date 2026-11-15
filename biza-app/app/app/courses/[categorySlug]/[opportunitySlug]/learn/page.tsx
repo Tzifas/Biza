@@ -27,28 +27,10 @@ export default async function LearnIndexPage({ params }: Props) {
           <p className="text-sm text-stone">{totalChapters} chapters · First 2 per lesson free</p>
         </div>
 
-        {opportunity.course.learningOutcomes?.length ? (
-          <section aria-labelledby="course-outcomes" className="rounded-xl border border-border bg-white p-5">
-            <h2 id="course-outcomes" className="font-display text-base font-semibold text-forest">By the end of this course</h2>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-ink/85">
-              {opportunity.course.learningOutcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}
-            </ul>
-          </section>
-        ) : null}
-
         <div className="space-y-6">
           {opportunity.course.lessons.map((lesson) => (
             <Card key={lesson.id} hover={false} className="space-y-4">
-              <div>
-                <h2 className="font-display text-lg font-semibold text-forest">{lesson.title}</h2>
-                {lesson.summary ? <p className="mt-1 text-sm leading-relaxed text-stone">{lesson.summary}</p> : null}
-                {lesson.estimatedMinutes ? <p className="mt-2 text-xs font-medium text-leaf">About {lesson.estimatedMinutes} minutes</p> : null}
-              </div>
-              {lesson.learningObjectives?.length ? (
-                <ul aria-label={`${lesson.title} learning objectives`} className="list-disc space-y-1 pl-5 text-xs leading-relaxed text-stone">
-                  {lesson.learningObjectives.map((objective) => <li key={objective}>{objective}</li>)}
-                </ul>
-              ) : null}
+              <h2 className="font-display text-lg font-semibold text-forest">{lesson.title}</h2>
               <ul className="space-y-2">
                 {lesson.chapters.map((ch) => (
                   <li key={ch.id}>
