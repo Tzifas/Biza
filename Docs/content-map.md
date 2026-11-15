@@ -53,11 +53,12 @@ Platform (Biza)
 | `/courses/[category-slug]/[opportunity-slug]/learn` | Course shell / lesson list |
 | `/courses/.../learn/[lesson-slug]/[chapter-slug]` | Chapter reader |
 | `/scam-radar` | Scam Radar library (public) |
-| `/onboarding` | 4-phase onboarding (mock user / localStorage until auth) |
-| `/app` | Authenticated home dashboard (mock until Phase 2) |
-| `/app/profile` | Profile + avatars |
-| `/app/upgrade` | Pro / per-course upgrade |
-| `/login` | Auth (Phase 2 — UI may exist earlier as disabled/mock) |
+| `/onboarding` | Four-phase onboarding; choices save to the signed-in learner profile |
+| `/app` | Authenticated dashboard with persisted chapter progress |
+| `/app/profile` | Persisted profile + avatars |
+| `/app/upgrade` | Membership information; payment is disabled until a provider is verified |
+| `/login`, `/register` | Supabase email/password sign-in and sign-up |
+| `/auth/callback` | Email-confirmation callback |
 | `/terms`, `/privacy`, `/refunds` | Legal (PRD §19 copy) |
 | `/admin` | Full admin (Phase 2+) |
 
@@ -245,13 +246,13 @@ Platform (Biza)
 
 ---
 
-## 7. Onboarding (UI — mock user until Phase 2)
+## 7. Onboarding (authenticated learner profile)
 
-Four phases after account creation UI (stored in `localStorage` key `biza_onboarding`):
+Account creation and email confirmation happen on `/register` and `/auth/callback`. These four onboarding phases then save the display name, persona and completion state to the signed-in learner's Supabase profile.
 
 | Phase | Screens | Skippable on return? |
 |-------|---------|----------------------|
-| 1 — Welcome | Splash (B-P[1]) · Create account form · Email verify mock | No (first time) |
+| 1 — Welcome | Welcome screen · Profile display name | No (first time) |
 | 2 — Persona quiz | 3 questions → persona | Yes |
 | 3 — Mindset & fraud | 3 screens + reflective quiz (not graded) | No within phase |
 | 4 — App walkthrough | Learning path · Explore · Free vs PRO · Progress preview | Yes |
@@ -319,7 +320,7 @@ Assets: SVG set to be created in `biza-app/public/avatars/` during Phase 1D.
 | Pro Pass Monthly | 999 | All courses |
 | Pro Pass Annual | 7,999 | ~33% saving |
 
-Payment UI: M-Pesa STK mock first · Flutterwave/Stripe Phase 2+.
+Payment status: no checkout is currently enabled. M-Pesa or another provider requires verified server callbacks before access can be granted.
 
 ---
 

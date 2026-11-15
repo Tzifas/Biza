@@ -35,14 +35,15 @@ biza-app/
     page.tsx              Landing (Footer here only)
     courses/              Public browse + opportunity cards + learn flow
     app/                  Authenticated shell (3-tab bottom nav)
-    onboarding/           4-phase mock onboarding
+    onboarding/           4-phase profile-backed onboarding
     scam-radar/           Scam pattern library
   components/
     layouts/              SiteLayout · AppShell · LearnShell
     ui/                   Button, Card, Input, Chip, ProgressBar
     learn/                Chapter reader, quiz, breadcrumbs
-  lib/content/            Typed content-map loaders
-  lib/user/storage.ts     localStorage mock user state (Phase 2 → Supabase)
+  lib/content/            Typed content-map loaders and chapter renderer
+  lib/supabase/           Browser, server and session-refresh clients
+  lib/user/               Learner profile and RLS-scoped progress hooks
   public/avatars/         10 avatar SVGs
 ```
 
@@ -55,20 +56,18 @@ biza-app/
 | `AppShell` | `/app`, `/app/courses`, `/app/profile` | Header + **Home · Courses · Profile** bottom tabs |
 | `LearnShell` | `/courses/.../learn/*` | Compact header + Back \| Progress \| Continue bar |
 
-## Mock user state (Phase 1)
+## Accounts and learner progress
 
-Onboarding and profile data persist in `localStorage` under key `biza_user`:
+Supabase Auth handles email/password accounts and email confirmation. Learner profiles and completed chapters are stored in `public.profiles` and `public.chapter_progress`, protected by owner-scoped RLS. The app uses the connected Supabase URL and publishable key from environment variables; never place a service-role key in browser code.
 
-- Persona, avatar, name, PRO tier
-- Completed chapters (for dashboard progress)
-
-Reset in browser DevTools: `localStorage.removeItem('biza_user')`
+Paid upgrades are intentionally disabled. Do not enable PRO access or accept payments until a real provider callback is verified server-side.
 
 ## Content updates
 
-1. Edit `Docs/content-map.json` (source of truth for product)
-2. Copy/sync to `biza-app/lib/content/content-map.json`
-3. Types in `lib/content/types.ts` — extend if schema changes
+1. Edit `Docs/content-map.json` (canonical machine-readable content source)
+2. Copy/sync it to `biza-app/lib/content/content-map.json`
+3. Extend types in `lib/content/types.ts` when the schema changes
+4. Run `npm run validate:content` to verify parity, chapter gating and authored assessments
 
 Regenerate avatar placeholders:
 
@@ -81,15 +80,16 @@ node scripts/generate-avatars.mjs
 | File | Purpose |
 |------|---------|
 | `Docs/content-map.md` | Human-readable product/content spec |
-| `Docs/BUILD-TRACKER.md` | Phase progress (1A–1E, Phase 2) |
+| `Docs/BUILD-TRACKER.md` | Phase progress (1A–1F, Phase 2) |
 | `Docs/Biza-PRD-v6-Final.docx` | Product requirements (behavior, legal) |
 
 ## Deploy (Vercel)
 
 - Root directory: `biza-app`
 - Branch `develop` → preview deployments
-- No env vars required for Phase 1 UI mock
+- Configure the connected Supabase integration for the Vercel project environment
+- Production email-confirmation delivery and callback URLs must be tested before public signup
 
-## Phase 2 (deferred)
+## Remaining MVP work
 
-Supabase auth, server progress, M-Pesa Daraja STK Push, admin panel — see `Docs/BUILD-TRACKER.md`.
+Complete a real-account auth/progress smoke test, author and review the remaining course lessons, then implement a verified payment provider and launch controls. See `Docs/BUILD-TRACKER.md` for current status.
