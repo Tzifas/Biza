@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils/cn";
+import { AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 import type { InputHTMLAttributes } from "react";
 
@@ -15,14 +16,14 @@ export function Input({ label, hint, error, className, id, ...props }: InputProp
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 4 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       className="space-y-1.5"
     >
       {label ? (
         <motion.label
           htmlFor={inputId}
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           className="block text-xs font-semibold uppercase tracking-wider text-stone"
         >
@@ -46,12 +47,12 @@ export function Input({ label, hint, error, className, id, ...props }: InputProp
           animate={{ opacity: 1, y: 0 }}
           className="text-xs text-coral flex items-center gap-1"
         >
-          ⚠ {error}
+          <AlertTriangle size={14} aria-hidden="true" /> {error}
         </motion.p>
       ) : null}
       {!error && hint ? (
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           className="text-xs text-stone"
         >

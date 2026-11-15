@@ -11,62 +11,6 @@ export type UserProfile = {
   lastChapterId: string | null;
 };
 
-const STORAGE_KEY = "biza_user";
-
-export const defaultUser: UserProfile = {
-  name: "James Mwangi",
-  email: "james.mwangi@gmail.com",
-  persona: "starter",
-  avatarId: "compass",
-  isPro: false,
-  onboardingComplete: false,
-  completedChapters: [],
-  lastChapterId: null,
-};
-
-export function getUser(): UserProfile {
-  if (typeof window === "undefined") return defaultUser;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultUser;
-    return { ...defaultUser, ...JSON.parse(raw) };
-  } catch {
-    return defaultUser;
-  }
-}
-
-export function saveUser(partial: Partial<UserProfile>) {
-  const next = { ...getUser(), ...partial };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  
-  if (typeof document !== "undefined") {
-    if (next.onboardingComplete) {
-      document.cookie = "biza_onboarding_complete=true; path=/; max-age=31536000";
-    } else {
-      document.cookie = "biza_onboarding_complete=; path=/; max-age=0";
-    }
-  }
-
-  window.dispatchEvent(new Event("biza-user-updated"));
-  return next;
-}
-
-export function markChapterComplete(chapterId: string) {
-  const user = getUser();
-  const completed = user.completedChapters.includes(chapterId)
-    ? user.completedChapters
-    : [...user.completedChapters, chapterId];
-  return saveUser({ completedChapters: completed, lastChapterId: chapterId });
-}
-
-export function logoutUser() {
-  localStorage.removeItem(STORAGE_KEY);
-  if (typeof document !== "undefined") {
-    document.cookie = "biza_onboarding_complete=; path=/; max-age=0";
-  }
-  window.dispatchEvent(new Event("biza-user-updated"));
-}
-
 export function personaCompletionCopy(persona: PersonaId): string {
   const copy: Record<PersonaId, string> = {
     starter: "Done. That's one more thing most people never bother to learn. Keep going.",

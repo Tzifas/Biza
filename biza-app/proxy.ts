@@ -1,64 +1,54 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+import { updateSession } from "@/lib/supabase/proxy";
 
-export function proxy(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
-  const cookie = request.cookies.get("biza_onboarding_complete");
-  const isLoggedIn = cookie?.value === "true";
+function redirectWithSession(response: NextResponse, url: URL) {
+  const redirect = NextResponse.redirect(url);
+  response.cookies.getAll().forEach((cookie) => redirect.cookies.set(cookie));
+  return redirect;
+}
 
-  // Authenticated user logic
-  if (isLoggedIn) {
-    if (pathname === "/courses") {
-      return NextResponse.redirect(new URL("/app/courses" + search, request.url));
-    }
-    if (pathname === "/scam-radar") {
-      return NextResponse.redirect(new URL("/app/scam-radar" + search, request.url));
-    }
-    
-    // Redirect /courses/[categorySlug] to /app/courses?category=[categorySlug]
-    // But ONLY if it's just the category slug, not an opportunity slug or deeper
-    // e.g. /courses/selling-online -> /app/courses?category=selling-online
-    const parts = pathname.split('/').filter(Boolean);
-    if (parts[0] === 'courses' && parts.length === 2) {
-      const categorySlug = parts[1];
-      const newUrl = new URL("/app/courses", request.url);
-      newUrl.searchParams.set("category", categorySlug);
-      // preserve existing search params if any, though usually there aren't
-      request.nextUrl.searchParams.forEach((val, key) => {
-        if (key !== "category") newUrl.searchParams.set(key, val);
-      });
-      return NextResponse.redirect(newUrl);
-    }
+export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const { response, user } = await updateSession(request);
+  const authenticated = Boolean(user);
 
-    // Redirect deeper /courses/... to /app/courses/...
-    // e.g. /courses/selling-online/dropshipping -> /app/courses/selling-online/dropshipping
-    if (parts[0] === 'courses' && parts.length >= 3) {
-      const newPath = "/app" + pathname;
-      return NextResponse.redirect(new URL(newPath + search, request.url));
-    }
-
-    if (pathname === "/onboarding" || pathname === "/login") {
-      return NextResponse.redirect(new URL("/app", request.url));
-    }
+  if (!authenticated && (pathname.startsWith("/app") || pathname === "/onboarding")) {
+    const loginUrl = request.nextUrl.clone();
+    loginUrl.pathname = "/login";
+    loginUrl.search = "";
+    loginUrl.searchParams.set("next", `${pathname}${request.nextUrl.search}`);
+    return redirectWithSession(response, loginUrl);
   }
 
-  // Guest user logic
-  if (!isLoggedIn) {
-    if (pathname.startsWith("/app")) {
-      return NextResponse.redirect(new URL("/onboarding", request.url));
-    }
+  if (authenticated && (pathname === "/login" || pathname === "/register")) {
+    const destination = request.nextUrl.searchParams.get("next");
+    const safeDestination = destination === "/onboarding" || destination?.startsWith("/app/")
+      ? destination
+      : "/app";
+    return redirectWithSession(response, new URL(safeDestination, request.url));
   }
 
-  return NextResponse.next();
+  if (authenticated && pathname === "/courses") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/app/courses";
+    return redirectWithSession(response, url);
+  }
+
+  if (authenticated && pathname === "/scam-radar") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/app/scam-radar";
+    return redirectWithSession(response, url);
+  }
+
+  if (authenticated && pathname.startsWith("/courses/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/app${pathname}`;
+    return redirectWithSession(response, url);
+  }
+
+  return response;
 }
 
 export const config = {
-  matcher: [
-    "/courses",
-    "/courses/:path*",
-    "/app/:path*",
-    "/onboarding",
-    "/login",
-    "/scam-radar",
-  ],
+  matcher: ["/courses", "/courses/:path*", "/app/:path*", "/onboarding", "/login", "/register", "/scam-radar"],
 };

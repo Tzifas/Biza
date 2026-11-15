@@ -1,7 +1,7 @@
 # Biza — Build Progress Tracker
 
-**Version:** 2.5  
-**Last updated:** 2026-07-01  
+**Version:** 2.6  
+**Last updated:** 2026-11-16  
 **Branch strategy:** `develop` → Vercel preview  
 **Content source:** [`content-map.md`](./content-map.md) · [`content-map.json`](./content-map.json)  
 **Design source:** Stitch / brand concept + [`empowered_learning/DESIGN.md`](./stitch_biza%20[DESIGN%20REF]/empowered_learning/DESIGN.md)  
@@ -19,8 +19,9 @@
 | **1B** Wider cleanup | **Done** | 8/8 | All legacy `.js` pages migrated |
 | **1C** Content map wiring | **Done** | 6/6 | Pulled forward with 1B |
 | **1D** Core learning UI | **Done** | 18/18 | |
-| **1E** Polish & review | **Done** | 10/10 | Added interactive onboarding/checkout polish, legacy route cleanup |
-| **2** Backend & auth | Deferred | — | |
+| **1E** Polish & review | **Done** | 10/10 | UI phase complete; later mock payment flow has been removed |
+| **1F** Curriculum architecture pilot | **Done** | 3/3 | Typed course model, authored Dropshipping lesson 1, validation script |
+| **2** Backend & auth | **In progress** | 5/9 | Supabase RLS/profile/progress schema and app wiring; end-to-end auth smoke test pending |
 
 **Overall UI refactor:** 100% complete (Phase 1E finished)
 
@@ -44,14 +45,14 @@
 | MVP category | Selling online |
 | MVP opportunities | Dropshipping + Print on demand |
 | Categories (6) | See content map |
-| DB / Auth | Phase 2 — UI first |
-| Onboarding | Full 4-phase UI with localStorage mock |
+| DB / Auth | Supabase — Phase 2 implementation underway |
+| Onboarding | Four-phase flow now writes profile data to Supabase (replaces prototype localStorage) |
 | Language | TypeScript (migrate during Phase 1A) |
 | Scam URL | `/scam-radar` |
 | Phase 1 scope | Wider (tokens + all pages + routes + legal) |
 | Analytics | Google Analytics (PostHog optional later) |
 | Admin | Full platform admin (Phase 2+) |
-| Payments UI | M-Pesa mock first; Stripe/Flutterwave Phase 2+ |
+| Payments UI | Simulated checkout removed; no payment collection until a provider is verified |
 
 ---
 
@@ -124,13 +125,13 @@
 | Fixed bottom nav (Back \| Progress \| Continue) | `[x]` | Mobile — learn flow only |
 | Breadcrumb (Category > Course > Lesson > Chapter) | `[x]` | `LearnBreadcrumb` in chapter reader |
 | Onboarding Phase 1–4 UI | `[x]` | `onboarding_*` screens |
-| Onboarding localStorage persistence | `[x]` | Key: `biza_user` |
+| Onboarding localStorage persistence | `[x]` | Prototype only; replaced by Supabase profile persistence in Phase 2 |
 | Persona quiz → mock home recommendations | `[x]` | |
 | App home `/app` (Hi name, Continue, Progress) | `[x]` | `my_dashboard_biza` |
 | Profile `/app/profile` + avatar picker | `[x]` | `my_profile_biza` |
 | 10 avatar SVGs in `public/avatars/` | `[x]` | `scripts/generate-avatars.mjs` |
 | Upgrade screen `/app/upgrade` | `[x]` | `payment_biza` |
-| Payment confirmed UI | `[x]` | `payment_confirmed_biza` |
+| Payment confirmed UI | `[x]` | Prototype screen; removed from current build until real verified checkout exists |
 | Scam Radar page (8 patterns from JSON) | `[x]` | Expand current 3-card page |
 | 3-tab bottom nav (Home · Courses · Profile) | `[x]` | `AppShell` — no Footer |
 | Footer **landing only** (`/`); app uses bottom nav | `[x]` | User feedback 2026-06-29 |
@@ -158,9 +159,21 @@
 | Legacy route directory cleanup | `[x]` | Deleted empty /dashboard, /scam-warnings, /courses/[slug] folders |
 | Onboarding commitment ask polish | `[x]` | Added interactive checkboxes to Phase 3 mindset panels |
 | Avatar unlock logic alignment | `[x]` | Crown avatar checks chapter count, tooltips explain unlock |
-| M-Pesa STK push simulation | `[x]` | Interactive STK loading sequence and validation |
+| M-Pesa STK push simulation | `[x]` | Prototype only; removed so the current build cannot imply payment was taken |
 
-**Exit criteria:** Stakeholder can demo full UI on phone and desktop from Vercel.
+**Exit criteria:** Stakeholder can demo the UI prototype on phone and desktop from Vercel. Paid access is disabled until verified payments are implemented.
+
+---
+
+## Phase 1F — Curriculum architecture pilot
+
+| Task | Status | Notes |
+|------|--------|-------|
+| Define typed course, lesson, chapter, content-block, activity and quiz model | `[x]` | `lib/content/types.ts` |
+| Author Dropshipping lesson 1 as the pilot curriculum | `[x]` | Outcomes, objectives, time estimates, practice prompts, quizzes and feedback |
+| Validate map parity, free-chapter rules and authored content | `[x]` | `npm run validate:content` |
+
+**Exit criteria:** A complete lesson follows one reusable content structure and renders from the canonical content map. **Met for the pilot lesson.** Remaining chapters need editorial migration and review.
 
 ---
 
@@ -168,15 +181,15 @@
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Supabase project + env vars | `[-]` | User deferred |
-| DB schema (5-tier + users + progress + payments) | `[-]` | Seed from `content-map.json` |
-| Row-Level Security | `[-]` | |
-| Supabase Auth (email + OTP) | `[-]` | Replace mock login |
-| Replace localStorage onboarding with profile save | `[-]` | |
-| Server-side chapter progress | `[-]` | |
-| M-Pesa Daraja STK Push (server) | `[-]` | |
-| Stripe or Flutterwave (optional) | `[-]` | |
-| Email receipts (Resend/Brevo) | `[-]` | |
+| Supabase project + env vars | `[x]` | Connected Supabase project; app URL and publishable key available |
+| Learner schema (profiles + chapter progress) | `[x]` | Additive migration applied; content remains JSON for the MVP pilot |
+| Row-Level Security | `[x]` | Owner-scoped read/update and progress CRUD policies |
+| Supabase Auth (email + password) | `[/]` | Sign-up/login, confirmation callback and session proxy implemented; real-user smoke test pending |
+| Replace localStorage onboarding with profile save | `[/]` | Profile and onboarding use RLS-backed Supabase rows; verify after confirmed sign-in |
+| Persist chapter completion | `[/]` | Authenticated RLS upsert wired; validate with a signed-in account |
+| M-Pesa Daraja STK Push (server) | `[-]` | Not connected; checkout UI is intentionally disabled |
+| Stripe or Flutterwave (optional) | `[-]` | Decide only if needed alongside M-Pesa |
+| Email receipts (Resend/Brevo) | `[-]` | Depends on verified payment flow |
 
 ---
 
@@ -237,13 +250,15 @@ Use this to validate Phase 1D before starting Phase 2:
 
 | Item | State |
 |------|-------|
-| Framework | Next.js 16, React 19, **TypeScript** (all routes) |
+| Framework | Next.js 16.4.6, React 19, **TypeScript** |
 | Design system | Stitch tokens + `components/ui/*` |
-| Data | `lib/content/content-map.json` + typed getters |
-| Routes live | 15 (app shell + learn flow) |
-| Build | Passing |
+| Course data | Canonical `Docs/content-map.json` mirrored to runtime; Dropshipping lesson 1 authored and validated |
+| Learner data | Supabase profiles + chapter progress with owner-scoped RLS |
+| Auth | Supabase email/password flow, confirmation callback and session proxy implemented; end-to-end email verification pending |
+| Payments | Disabled until a verified provider and server callbacks are implemented |
+| Verification | Content validation, ESLint and production build passing; production dependency audit clean |
 
-**Next coding session:** Push to Vercel preview, then **Phase 2** when ready.
+**Next coding session:** Test a real confirmed Supabase account, validate profile/progress persistence, then continue editing the remaining course lessons.
 
 ---
 
@@ -251,6 +266,7 @@ Use this to validate Phase 1D before starting Phase 2:
 
 | Date | Version | Change |
 |------|---------|--------|
+| 2026-11-16 | 2.6 | Curriculum architecture pilot, first Dropshipping lesson, Supabase auth/progress wiring, disable mock checkout, security baseline |
 | 2026-06-29 | 2.4 | Phase 1D complete; Phase 1E polish (README, mobile, avatars, metadata) |
 | 2026-06-29 | 2.3 | Phase 1D: app bottom nav, learn flow, onboarding, footer landing-only |
 | 2026-06-29 | 2.2 | Phase 1B complete; 1C mostly complete; 13 routes |

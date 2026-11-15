@@ -1,8 +1,8 @@
 # Biza Content Map
 
-**Version:** 1.0  
-**Last updated:** 2026-06-29  
-**Status:** Locked for UI build (pre-database)  
+- **Version:** 1.1
+- **Last updated:** 2026-11-16
+- **Status:** Curriculum model pilot
 **Canonical design:** Stitch / brand concept (`empowered_learning/DESIGN.md` + brand style guide)  
 **Product behavior:** PRD v6 (flows, gating, legal, URLs — not PRD color/typography drift)
 
@@ -10,9 +10,9 @@
 
 ## 1. Purpose
 
-This document is the **single source of truth** for categories, opportunities, courses, lessons, and chapter outlines until Supabase is live. The frontend and future seed scripts should read from `content-map.json` (companion file).
+This guide describes categories, opportunities, courses, lessons and chapters. `content-map.json` is the machine-readable source used by the app and future seed tooling; this Markdown file is its human-readable product guide. Keep them aligned when changing the model. Authored chapter bodies, activities and assessments live with their chapter in the JSON so the application can validate and render them from one record.
 
-**MVP vertical slice:** Category **Selling online** → Opportunities **Dropshipping** + **Print on demand** → one course each with full lesson/chapter structure (copy can be stubbed in UI).
+**MVP vertical slice:** Category **Selling online** → Opportunities **Dropshipping** + **Print on demand** → one course each. The first Dropshipping lesson is the curriculum-model pilot; remaining chapters still need the same editorial treatment.
 
 ---
 
@@ -37,7 +37,8 @@ Platform (Biza)
 | Lesson count | Flexible — MVP uses 3 lessons per course |
 | Chapter count | Flexible — MVP uses 3–4 chapters per lesson |
 | Quizzes | 1–2 per chapter (mid-chapter); types: MCQ, True/False, Scenario, Fill-in-blank |
-| Content depth | Titles and outlines are locked; body copy is **stub** until editorial pass |
+| Content model | Courses and lessons define outcomes, prerequisites and time estimates; chapters define objectives, typed content blocks, optional practice, takeaways and structured quizzes |
+| Editorial status | Dropshipping lesson 1 is the authored pilot; other chapter bodies remain transitional and require review |
 
 ---
 

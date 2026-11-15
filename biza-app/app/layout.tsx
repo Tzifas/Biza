@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import { ToastProvider } from "@/components/providers/ToastProvider";
-import { CookieSync } from "@/components/providers/CookieSync";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -51,7 +50,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
         <ToastProvider />
-        <CookieSync />
       </body>
     </html>
   );

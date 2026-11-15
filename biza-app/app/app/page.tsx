@@ -1,25 +1,23 @@
 "use client";
 
-import { Button, Card, Chip, Input, ProgressBar } from "@/components/ui";
-import { getOpportunityBySlug, getPricing } from "@/lib/content";
-import { getUser, saveUser } from "@/lib/user/storage";
+import { Button, Card, Chip } from "@/components/ui";
+import { getOpportunities, getOpportunityBySlug } from "@/lib/content";
+import { useLearner } from "@/lib/user/use-learner";
 import { AlertCircle, ArrowRight, BookOpen, Sparkles, Trophy } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-const pricing = getPricing();
 
 export default function AppDashboardPage() {
-  const [user, setUser] = useState(getUser());
+  const { learner: user, isLoading } = useLearner();
 
-  useEffect(() => {
-    const sync = () => setUser(getUser());
-    window.addEventListener("biza-user-updated", sync);
-    return () => window.removeEventListener("biza-user-updated", sync);
-  }, []);
+  if (isLoading) return <p className="p-8 text-center text-sm text-stone" role="status">Loading your dashboard…</p>;
+  if (!user) return <p className="p-8 text-center text-sm text-stone">Sign in to view your dashboard.</p>;
 
   const recommendedSlug = user.persona === "starter" ? "print-on-demand" : "dropshipping";
   const recommended = getOpportunityBySlug("selling-online", recommendedSlug);
+  const lastOpportunity = getOpportunities().find((opportunity) => opportunity.course.slug === user.lastChapter?.courseSlug);
+  const resumeHref = lastOpportunity && user.lastChapter
+    ? `/app/courses/${lastOpportunity.categorySlug}/${lastOpportunity.slug}/learn/${user.lastChapter.lessonSlug}/${user.lastChapter.chapterSlug}`
+    : null;
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-6">
@@ -48,8 +46,8 @@ export default function AppDashboardPage() {
 
       <Card className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-wider text-stone">Continue reading</p>
-        {user.lastChapterId ? (
-          <Button href="/courses/selling-online/dropshipping/learn" variant="outline" className="w-full max-w-xs mx-auto flex text-xs">
+        {resumeHref ? (
+          <Button href={resumeHref} variant="outline" className="w-full max-w-xs mx-auto flex text-xs">
             Resume course
             <ArrowRight size={14} />
           </Button>
@@ -60,7 +58,7 @@ export default function AppDashboardPage() {
 
       <div className="grid grid-cols-3 gap-3">
         {[
-          { icon: BookOpen, label: "Started", value: "1" },
+          { icon: BookOpen, label: "Started", value: user.lastChapter ? "1" : "0" },
           { icon: Trophy, label: "Chapters done", value: String(user.completedChapters.length) },
           { icon: Sparkles, label: "Plan", value: user.isPro ? "PRO" : "Free" },
         ].map((s) => (
@@ -76,7 +74,7 @@ export default function AppDashboardPage() {
         <Card hover={false} className="space-y-3 border-gold/30 bg-gold/5">
           <p className="text-sm font-semibold text-forest">Unlock all chapters</p>
           <Button href="/app/upgrade" variant="primary" className="w-full max-w-xs mx-auto flex text-xs">
-            Pro Pass — KES {pricing.proMonthly.kes}/mo
+            View membership options
           </Button>
         </Card>
       ) : null}

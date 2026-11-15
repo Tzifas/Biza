@@ -34,7 +34,7 @@ export function Card({
   if (animated) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         whileHover={hover ? { y: -4, boxShadow: "0 12px 24px rgba(0, 0, 0, 0.08)" } : undefined}

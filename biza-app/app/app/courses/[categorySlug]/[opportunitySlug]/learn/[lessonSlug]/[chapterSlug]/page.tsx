@@ -45,6 +45,7 @@ export default async function ChapterPage({ params }: Props) {
       categoryName={category.name}
       opportunitySlug={opportunitySlug}
       opportunityName={opportunity.name}
+      courseSlug={opportunity.course.slug}
       lessonTitle={lesson.title}
       lessonSlug={lessonSlug}
       chapter={chapter}

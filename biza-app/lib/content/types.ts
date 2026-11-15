@@ -35,13 +35,40 @@ export type CategoryOpportunityRef = {
   mvp: boolean;
 };
 
+export type QuizOption = { id: string; label: string; correct?: boolean };
+
+export type ChapterQuiz = {
+  id: string;
+  type: "mcq" | "true-false" | "scenario" | "fill-blank";
+  question: string;
+  options: QuizOption[];
+  explanation: string;
+};
+
+export type ChapterBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "callout"; title: string; text: string }
+  | { type: "steps"; title: string; items: string[] };
+
+export type ChapterContent = {
+  hook: string;
+  blocks: ChapterBlock[];
+  activity?: { title: string; instructions: string; prompt: string };
+  takeaway: string;
+  closing: string;
+  quiz: ChapterQuiz;
+};
+
 export type Chapter = {
   id: string;
   slug: string;
   title: string;
   sortOrder: number;
   isFree: boolean;
+  estimatedMinutes?: number;
+  learningObjectives?: string[];
   quizTypes?: string[];
+  content?: ChapterContent;
 };
 
 export type Lesson = {
@@ -49,6 +76,9 @@ export type Lesson = {
   title: string;
   slug: string;
   sortOrder: number;
+  summary?: string;
+  learningObjectives?: string[];
+  estimatedMinutes?: number;
   chapters: Chapter[];
 };
 
@@ -65,6 +95,8 @@ export type Opportunity = {
     slug: string;
     difficulty: string;
     estimatedHours: string;
+    learningOutcomes?: string[];
+    prerequisites?: string[];
     lessons: Lesson[];
   };
 };

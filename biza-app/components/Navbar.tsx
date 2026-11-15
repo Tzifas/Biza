@@ -4,35 +4,31 @@ import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui";
 import { AvatarIcon } from "@/components/avatars/AvatarIcon";
 import { cn } from "@/lib/utils/cn";
-import { getUser, saveUser, logoutUser, UserProfile } from "@/lib/user/storage";
-import { LayoutDashboard, LogIn, LogOut, Menu, ShieldAlert, X, User } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
+import { useLearner } from "@/lib/user/use-learner";
+import { toast } from "sonner";
+import { LayoutDashboard, LogIn, LogOut, Menu, ShieldAlert, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const [user, setUser] = useState<UserProfile | null>(null);
+  const { learner: user } = useLearner();
 
-  useEffect(() => {
-    // Initial fetch
-    setUser(getUser());
-
-    const sync = () => {
-      setUser(getUser());
-    };
-    window.addEventListener("biza-user-updated", sync);
-    return () => window.removeEventListener("biza-user-updated", sync);
-  }, []);
-
-  const handleSignOut = () => {
-    logoutUser();
-    router.push("/");
+  const handleSignOut = async () => {
+    const { error } = await createClient().auth.signOut();
+    if (error) {
+      toast.error("Could not sign out. Please try again.");
+      return;
+    }
+    router.replace("/");
+    router.refresh();
   };
 
-  const isLoggedIn = user?.onboardingComplete;
+  const isLoggedIn = Boolean(user);
 
   // Paths
   const coursesPath = isLoggedIn ? "/app/courses" : "/courses";
