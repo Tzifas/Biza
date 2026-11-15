@@ -11,7 +11,6 @@ export function getChapterContent(
     .find((opportunity) => opportunity.slug === opportunitySlug)
     ?.course.lessons.flatMap((lesson) => lesson.chapters)
     .find((chapter) => chapter.slug === chapterSlug)?.content;
-  console.log("[v0] chapter content lookup", opportunitySlug, chapterSlug, Boolean(authored), opportunities.length);
   if (authored) return authored;
 
   const defaults: ChapterContent = {
