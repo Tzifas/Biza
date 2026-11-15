@@ -1,6 +1,6 @@
 # Biza Content Map
 
-- **Version:** 1.1
+- **Version:** 1.2
 - **Last updated:** 2026-11-16
 - **Status:** Curriculum model pilot
 **Canonical design:** Stitch / brand concept (`empowered_learning/DESIGN.md` + brand style guide)  
@@ -10,9 +10,9 @@
 
 ## 1. Purpose
 
-This guide describes categories, opportunities, courses, lessons and chapters. `content-map.json` is the machine-readable source used by the app and future seed tooling; this Markdown file is its human-readable product guide. Keep them aligned when changing the model. Authored chapter bodies, activities and assessments live with their chapter in the JSON so the application can validate and render them from one record.
+This guide describes categories, opportunities, courses, lessons and chapters. `content-map.json` is the machine-readable catalog used by client pages; `chapter-content.json` holds authored bodies, activities and assessments keyed by stable chapter ID and is imported only by the server renderer. This Markdown file is the human-readable product guide. Keep all three aligned when changing the model.
 
-**MVP vertical slice:** Category **Selling online** → Opportunities **Dropshipping** + **Print on demand** → one course each. The first Dropshipping lesson is the curriculum-model pilot; remaining chapters still need the same editorial treatment.
+**MVP vertical slice:** Category **Selling online** → Opportunities **Dropshipping** + **Print on demand** → one course each. Dropshipping lesson 1 is the authored curriculum-model pilot; lesson 2 now has a structured draft. Both need editorial and source review before public launch; lesson 3 and POD chapters remain to be authored.
 
 ---
 
@@ -38,7 +38,7 @@ Platform (Biza)
 | Chapter count | Flexible — MVP uses 3–4 chapters per lesson |
 | Quizzes | 1–2 per chapter (mid-chapter); types: MCQ, True/False, Scenario, Fill-in-blank |
 | Content model | Courses and lessons define outcomes, prerequisites and time estimates; chapters define objectives, typed content blocks, optional practice, takeaways and structured quizzes |
-| Editorial status | Dropshipping lesson 1 is the authored pilot; other chapter bodies remain transitional and require review |
+| Editorial status | Dropshipping lesson 1 is the authored pilot; lesson 2 is a draft; remaining bodies are transitional and need review |
 
 ---
 

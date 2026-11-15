@@ -1,4 +1,5 @@
 import { ChapterReader } from "@/components/learn/ChapterReader";
+import { getChapterContent } from "@/lib/content/chapter-content";
 import {
   countChapters,
   getCategoryBySlug,
@@ -26,6 +27,7 @@ export default async function ChapterPage({ params }: Props) {
   if (!category || !opportunity || !found) notFound();
 
   const { lesson, chapter } = found;
+  const content = chapter.isFree ? getChapterContent(chapter.id) : undefined;
   const total = countChapters(opportunity);
   const flatIndex = opportunity.course.lessons
     .flatMap((l) => l.chapters.map((c) => ({ lesson: l, chapter: c })))
@@ -48,7 +50,15 @@ export default async function ChapterPage({ params }: Props) {
       courseSlug={opportunity.course.slug}
       lessonTitle={lesson.title}
       lessonSlug={lessonSlug}
-      chapter={chapter}
+      chapter={{
+        id: chapter.id,
+        slug: chapter.slug,
+        title: chapter.title,
+        isFree: chapter.isFree,
+        estimatedMinutes: chapter.estimatedMinutes,
+        learningObjectives: chapter.learningObjectives,
+      }}
+      content={content}
       progressPercent={progressPercent}
       backHref={backHref}
       nextHref={nextHref}

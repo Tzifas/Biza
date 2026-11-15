@@ -68,7 +68,6 @@ export type Chapter = {
   estimatedMinutes?: number;
   learningObjectives?: string[];
   quizTypes?: string[];
-  content?: ChapterContent;
 };
 
 export type Lesson = {

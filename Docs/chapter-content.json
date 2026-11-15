@@ -1,0 +1,266 @@
+{
+  "version": "1.2.0",
+  "updated": "2026-11-16",
+  "chapters": {
+    "ds-ch-1-1": {
+      "hook": "No warehouse does not mean no business. In dropshipping, you sell the order; a supplier fulfils it.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A customer buys from your storefront at the price you set. You forward the order and pay the supplier's agreed cost; the supplier packs and ships the item. Your storefront is the sales channel, while the supplier is your fulfilment partner."
+        },
+        {
+          "type": "steps",
+          "title": "One order, four hand-offs",
+          "items": [
+            "Publish an accurate listing and clear delivery expectations.",
+            "The customer orders and pays through your checkout.",
+            "Confirm the order, pay the supplier and submit correct fulfilment details.",
+            "Track delivery, keep the customer informed and resolve service issues."
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "You still own the customer relationship",
+          "text": "The customer bought from your business. You remain responsible for honest product claims, updates and the refund or replacement policy you promise—even when a supplier ships the parcel."
+        }
+      ],
+      "activity": {
+        "title": "Map the responsibilities",
+        "instructions": "For each hand-off, write who acts and who must resolve the issue if it fails.",
+        "prompt": "A parcel is late and the buyer contacts your store. What do you tell them, and what do you ask the supplier to verify?"
+      },
+      "takeaway": "The supplier handles stock and dispatch; the seller handles the offer, customer communication and business risk.",
+      "closing": "Next, distinguish the money collected from the money the business may keep.",
+      "quiz": {
+        "id": "what-is-dropshipping-q1",
+        "type": "mcq",
+        "question": "A customer reports a late parcel. Who should respond to the customer?",
+        "options": [
+          {
+            "id": "a",
+            "label": "The seller, while working with the supplier",
+            "correct": true
+          },
+          {
+            "id": "b",
+            "label": "Nobody; shipping is outsourced",
+            "correct": false
+          },
+          {
+            "id": "c",
+            "label": "Only the payment provider",
+            "correct": false
+          }
+        ],
+        "explanation": "The seller owns the customer-facing promise. The supplier may help investigate, but outsourced shipping does not transfer customer support."
+      }
+    },
+    "ds-ch-1-2": {
+      "hook": "A sale is revenue—not proof that you made a profit.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start with the amount collected, then subtract the costs tied to completing the order. These may include the item and supplier delivery, checkout or currency fees, discounts, advertising and a realistic allowance for refunds, replacements or failed deliveries."
+        },
+        {
+          "type": "steps",
+          "title": "Illustrative order (KES)",
+          "items": [
+            "Customer pays: 1,500",
+            "Item and supplier delivery: −800",
+            "Payment and currency costs: −75",
+            "Advertising assigned to the order: −250",
+            "Illustrative remainder before overhead, refunds and tax: 375"
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "An example is not a forecast",
+          "text": "These round figures only demonstrate the calculation. Provider fees, exchange rates, advertising and delivery costs vary. Verify current quotes before spending."
+        }
+      ],
+      "activity": {
+        "title": "Stress-test the margin",
+        "instructions": "Change one cost at a time and recalculate; include a possible refund or replacement.",
+        "prompt": "If delivery costs KES 150 more and you offer a KES 100 discount, how much of the illustrative KES 375 remains before overhead, refunds and tax?"
+      },
+      "takeaway": "Profitability depends on the full cost to acquire, fulfil and support an order—not only the item price.",
+      "closing": "Next, verify the payment, delivery and support promises you intend to make in Kenya.",
+      "quiz": {
+        "id": "money-flow-margin-q1",
+        "type": "true-false",
+        "question": "If a customer pays more than the supplier charges for the item, the difference is automatically net profit.",
+        "options": [
+          {
+            "id": "true",
+            "label": "True",
+            "correct": false
+          },
+          {
+            "id": "false",
+            "label": "False",
+            "correct": true
+          }
+        ],
+        "explanation": "Delivery, processing, customer acquisition, refunds, operating costs and tax all affect the result."
+      }
+    },
+    "ds-ch-1-3": {
+      "hook": "A platform name in a tutorial is not proof that it supports your country, account or business today.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before building a store, confirm the current eligibility and payout terms of each service you plan to use. Check required identity or business documents, supported currencies, payout routes, fees and settlement timing. Ask suppliers for written delivered-cost quotes, tracking details and realistic delivery ranges."
+        },
+        {
+          "type": "steps",
+          "title": "Verify before you commit",
+          "items": [
+            "Check country and account eligibility directly with the provider.",
+            "Confirm checkout, payout route, currency, fees and settlement time.",
+            "Get supplier delivery, tracking and returns terms in writing.",
+            "Write a support and refund process that matches your actual promises and applicable rules."
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Avoid platform assumptions",
+          "text": "Availability and terms change. Do not borrow, buy inventory or pay for ads based on an old screenshot or an unverified claim."
+        }
+      ],
+      "activity": {
+        "title": "Create a verification sheet",
+        "instructions": "Record the source and date for your checkout, payout, supplier, shipping and support answers.",
+        "prompt": "Which unresolved payment or delivery question would prevent you from safely taking your first order?"
+      },
+      "takeaway": "Verify eligibility, cash flow and fulfilment with current primary sources before accepting a customer's money.",
+      "closing": "Finally, turn common failure points into small tests before increasing your risk.",
+      "quiz": {
+        "id": "kenya-context-q1",
+        "type": "scenario",
+        "question": "A tutorial says a checkout service works in Kenya, but its eligibility page is unclear. What should you do?",
+        "options": [
+          {
+            "id": "a",
+            "label": "Accept orders first and solve payouts later",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "label": "Verify eligibility and payout terms with the provider",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "label": "Use someone else's account without checking terms",
+            "correct": false
+          }
+        ],
+        "explanation": "Do not build customer promises around a service until you can confirm current eligibility and withdrawals."
+      }
+    },
+    "ds-ch-1-4": {
+      "hook": "There is no reliable universal countdown to failure. The better question is which assumption your next test will check.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A store can struggle when demand is assumed, delivered costs are unknown, product claims exceed what a supplier can provide or acquisition costs exceed the margin. Slow fulfilment and unclear refund handling can also weaken trust. These are risks to investigate—not a statistic that predicts every seller's outcome."
+        },
+        {
+          "type": "steps",
+          "title": "Run a smaller, safer test",
+          "items": [
+            "Write one hypothesis about a specific customer and need.",
+            "Gather evidence without promising a result you cannot deliver.",
+            "Set a spending cap and a signal that would make you stop or revise.",
+            "Review costs, customer questions and fulfilment before increasing exposure."
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Protect your downside",
+          "text": "Do not use money needed for essentials, borrow on a promise of guaranteed return or scale advertising before you understand fulfilment and unit economics."
+        }
+      ],
+      "activity": {
+        "title": "Draft a bounded experiment",
+        "instructions": "Write a hypothesis, the smallest ethical test, your maximum spend and what evidence would change your mind.",
+        "prompt": "What would you need to observe before continuing, revising the offer or stopping?"
+      },
+      "takeaway": "Test one assumption at a time, cap your risk and let evidence—not hype—set the next step.",
+      "closing": "You now have a model, a cost lens and a verification checklist. Next: platform and supplier decisions.",
+      "quiz": {
+        "id": "when-it-fails-q1",
+        "type": "mcq",
+        "question": "Before increasing advertising spend, which signal is most useful?",
+        "options": [
+          {
+            "id": "a",
+            "label": "A creator says the product always goes viral",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "label": "A bounded test with known costs, fulfilment evidence and a stop rule",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "label": "More visits without checking orders or costs",
+            "correct": false
+          }
+        ],
+        "explanation": "A bounded test connects evidence with real costs and fulfillment before risk increases."
+      }
+    },
+    "ds-ch-2-1": {
+      "hook": "A storefront platform is a tool choice—not a shortcut to customers or payouts.",
+      "blocks": [
+        { "type": "paragraph", "text": "Compare platforms against the way you actually intend to sell. A hosted store may bundle setup and support; a marketplace may already have shoppers but apply its own rules and fees; a simpler landing page may be enough to test interest. None is automatically available or best for every Kenyan seller." },
+        { "type": "steps", "title": "Compare the full setup", "items": ["Confirm country and account eligibility with the platform and payment provider.", "List setup, monthly, transaction, currency and withdrawal costs.", "Check delivery, returns, customer data, domain and product-export options.", "Choose the smallest setup that lets you test the offer and meet your obligations."] },
+        { "type": "callout", "title": "Check current terms", "text": "Pricing, country support and payment integrations change. Use the provider's current official documentation before you subscribe or promise a checkout method." }
+      ],
+      "activity": { "title": "Build a platform comparison", "instructions": "Compare two candidates with the same checklist and record the source and date for every fee or eligibility claim.", "prompt": "Which requirement is a must-have for your first test, and which can wait until you have evidence of demand?" },
+      "takeaway": "Choose a platform by verified requirements, total cost and fit—not by a tutorial's favorite brand.",
+      "closing": "With a sales setup in mind, decide how to verify the partner who will fulfil each order.",
+      "quiz": { "id": "store-platform-q1", "type": "mcq", "question": "What is the most responsible way to choose a platform?", "options": [{ "id": "a", "label": "Pick the tool promoted by the most popular creator", "correct": false }, { "id": "b", "label": "Compare current eligibility, total costs, payment support and requirements", "correct": true }, { "id": "c", "label": "Subscribe before checking whether payouts work for your account", "correct": false }], "explanation": "The best fit depends on your use case and country-specific terms. Verify them directly and compare the full cost before committing." }
+    },
+    "ds-ch-2-2": {
+      "hook": "A polished supplier profile is a starting point for questions, not proof of reliable fulfilment.",
+      "blocks": [
+        { "type": "paragraph", "text": "A supplier affects the product a customer receives, its quality and how long fulfilment takes. Ask for specific product details, packaging, handling time, available tracking, shipping ranges, defect handling and return terms. Compare written answers rather than relying on screenshots or earnings claims." },
+        { "type": "steps", "title": "A low-risk vetting sequence", "items": ["Verify the supplier identity and contact channel independently.", "Request an itemized delivered-cost quote and realistic fulfilment range.", "Check product specifications, quality-control steps and tracking process.", "Review defect, cancellation, replacement and return terms in writing.", "If practical and affordable, test one sample before listing or scaling."] },
+        { "type": "callout", "title": "Separate real costs from access fees", "text": "A supplier may charge for products, samples or shipping. Treat pressure to pay an unexplained access or activation fee, especially with guaranteed-income claims, as a reason to stop and verify independently." }
+      ],
+      "activity": { "title": "Write a supplier question set", "instructions": "Draft questions you would send to two suppliers and compare their specific written answers.", "prompt": "What evidence would you need about product quality, shipping and defect handling before accepting an order?" },
+      "takeaway": "Verify identity, delivered cost, fulfilment evidence and the remedy for problems before relying on a supplier.",
+      "closing": "Next, use customer evidence and unit economics to evaluate a product idea without chasing hype.",
+      "quiz": { "id": "supplier-vetting-q1", "type": "scenario", "question": "A new supplier demands an unexplained activation payment and promises guaranteed sales. What is the safest response?", "options": [{ "id": "a", "label": "Pay quickly before the offer expires", "correct": false }, { "id": "b", "label": "Pause, verify the supplier independently and request written terms", "correct": true }, { "id": "c", "label": "Borrow the money because the guarantee removes the risk", "correct": false }], "explanation": "Urgency and guaranteed income are red flags. Verify the business and every charge independently; walk away if the terms remain unclear." }
+    },
+    "ds-ch-2-3": {
+      "hook": "Product research is a way to reduce uncertainty—not a method for predicting a guaranteed winner.",
+      "blocks": [
+        { "type": "paragraph", "text": "Begin with a specific customer and problem. Look for more than views or a viral post: repeated questions, existing alternatives, willingness to pay, realistic delivered cost, competition and the service burden all matter. Ask whether you can make accurate claims and fulfil orders consistently." },
+        { "type": "steps", "title": "Turn an idea into a testable hypothesis", "items": ["Name the customer and the problem in plain language.", "Collect more than one demand signal from the audience you intend to serve.", "Estimate complete order costs and the margin left for returns and operations.", "Check competition, product claims, supplier capacity and delivery risk.", "Run the smallest safe test and write down what result would make you revise or stop."] },
+        { "type": "callout", "title": "A trend is not a business case", "text": "Popularity can disappear, and public engagement does not equal purchases. Do not spend essential or borrowed money based on a trend alone." }
+      ],
+      "activity": { "title": "Score one product hypothesis", "instructions": "Rate customer need, evidence, costs, competition, fulfilment and risk from 1 to 3. Write down what information is still missing.", "prompt": "What is the cheapest ethical way to learn whether your intended customer cares enough to consider this offer?" },
+      "takeaway": "Good research joins customer evidence with margins, competition and fulfilment—not hype metrics alone.",
+      "closing": "A product decision becomes a customer promise on your store pages. Next, make that promise clear and accurate.",
+      "quiz": { "id": "product-research-q1", "type": "mcq", "question": "Which is the strongest early product signal?", "options": [{ "id": "a", "label": "A viral clip with no customer or cost research", "correct": false }, { "id": "b", "label": "Several relevant demand signals alongside feasible costs and fulfilment", "correct": true }, { "id": "c", "label": "A supplier claims the product cannot fail", "correct": false }], "explanation": "A credible hypothesis combines customer evidence with realistic economics and operations; no single signal guarantees sales." }
+    },
+    "ds-ch-2-4": {
+      "hook": "A trustworthy store answers the questions a careful customer has before paying.",
+      "blocks": [
+        { "type": "paragraph", "text": "A product page should make the offer understandable without making claims the supplier cannot support. Show accurate product details, the full price and any known additional charges, a realistic delivery range, a clear contact route and the policies customers need to review before ordering." },
+        { "type": "steps", "title": "A pre-launch page review", "items": ["Use a clear product name, accurate description and rights-cleared images.", "Show price, relevant delivery costs and realistic timing before checkout.", "Explain how customers can contact you and where to find refund or return terms.", "Check the page and checkout on a phone, including error and confirmation states.", "Place a test order where possible and verify each customer email and fulfilment hand-off."] },
+        { "type": "callout", "title": "Clarity beats pressure", "text": "Avoid fake scarcity, hidden charges and unsupported performance or delivery claims. A conversion is not worth a misleading customer promise." }
+      ],
+      "activity": { "title": "Review a product page", "instructions": "Use the checklist on one draft page. Mark every claim that needs supplier evidence and every fee or policy a customer cannot find.", "prompt": "Could a buyer understand what they will receive, what it costs and what happens if something goes wrong?" },
+      "takeaway": "Good store basics set accurate expectations, make costs and policies visible and work on mobile.",
+      "closing": "You have the basics to compare tools, vet fulfilment, test a product idea and explain the offer clearly.",
+      "quiz": { "id": "store-basics-q1", "type": "scenario", "question": "A supplier cannot confirm delivery timing, but your draft page says 'arrives in five days'. What should you do?", "options": [{ "id": "a", "label": "Keep the claim because shorter delivery improves conversion", "correct": false }, { "id": "b", "label": "Use a supportable range or wait for verified fulfilment information", "correct": true }, { "id": "c", "label": "Hide the delivery details until after payment", "correct": false }], "explanation": "Only publish claims you can support. Set an honest expectation or delay launch until the delivery process is verified." }
+    }
+  }
+}

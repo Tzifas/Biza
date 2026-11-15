@@ -1,10 +1,7 @@
 "use client";
 
 import { Button, Card } from "@/components/ui";
-import {
-  canAccessChapter,
-  getChapterContent,
-} from "@/lib/content/chapter-content";
+import type { ChapterContent } from "@/lib/content/types";
 import { recordChapterCompletion, useLearner } from "@/lib/user/use-learner";
 import { ChapterComplete } from "@/components/learn/ChapterComplete";
 import { LearnBottomBar } from "@/components/learn/LearnBottomBar";
@@ -23,6 +20,7 @@ type Props = {
   courseSlug: string;
   lessonTitle: string;
   lessonSlug: string;
+  content?: ChapterContent;
   chapter: {
     id: string;
     slug: string;
@@ -46,6 +44,7 @@ export function ChapterReader({
   lessonTitle,
   lessonSlug,
   chapter,
+  content,
   progressPercent,
   backHref,
   nextHref,
@@ -58,8 +57,6 @@ export function ChapterReader({
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  const content = getChapterContent(opportunitySlug, chapter.slug);
-
   if (isLoading) {
     return <main className="flex min-h-screen items-center justify-center text-sm text-stone" role="status">Loading your learning session…</main>;
   }
@@ -68,7 +65,7 @@ export function ChapterReader({
     return <main className="flex min-h-screen items-center justify-center text-sm text-stone">Sign in to continue learning.</main>;
   }
 
-  const allowed = canAccessChapter(chapter.isFree, user.isPro);
+  const allowed = chapter.isFree || user.isPro;
 
   if (!allowed) {
     return (
@@ -91,6 +88,18 @@ export function ChapterReader({
           </Button>
         </main>
       </div>
+    );
+  }
+
+  if (!content) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-cream px-6">
+        <Card hover={false} className="max-w-md space-y-3 text-center">
+          <h1 className="font-display text-lg font-semibold text-forest">This chapter is being prepared</h1>
+          <p className="text-sm leading-relaxed text-stone">The outline is available, but this lesson has not completed editorial review yet.</p>
+          <Button href={backHref} variant="outline">Back to course</Button>
+        </Card>
+      </main>
     );
   }
 

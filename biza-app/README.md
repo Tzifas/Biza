@@ -8,7 +8,7 @@ Target domain: [getbiza.co.ke](https://getbiza.co.ke)
 
 - **Next.js 16** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS v4** with Stitch brand tokens (`app/globals.css`)
-- Content from `lib/content/content-map.json` (mirrors `Docs/content-map.json`)
+- Catalog from `lib/content/content-map.json`; authored chapter bodies live in a server-only content map
 
 ## Quick start
 
@@ -64,10 +64,11 @@ Paid upgrades are intentionally disabled. Do not enable PRO access or accept pay
 
 ## Content updates
 
-1. Edit `Docs/content-map.json` (canonical machine-readable content source)
-2. Copy/sync it to `biza-app/lib/content/content-map.json`
-3. Extend types in `lib/content/types.ts` when the schema changes
-4. Run `npm run validate:content` to verify parity, chapter gating and authored assessments
+1. Edit `Docs/content-map.json` for catalog, objectives and access metadata.
+2. Edit `Docs/chapter-content.json` for authored chapter bodies and assessments (keyed by chapter ID).
+3. Sync those files to `biza-app/lib/content/`.
+4. Extend types in `lib/content/types.ts` when the schema changes.
+5. Run `npm run validate:content` to verify parity, gating, assessments and server/client separation.
 
 Regenerate avatar placeholders:
 
@@ -79,7 +80,9 @@ node scripts/generate-avatars.mjs
 
 | File | Purpose |
 |------|---------|
-| `Docs/content-map.md` | Human-readable product/content spec |
+| `Docs/content-map.md` | Human-readable product and curriculum spec |
+| `Docs/content-map.json` | Client-safe catalog and chapter metadata |
+| `Docs/chapter-content.json` | Authored learning bodies and answer keys, served server-side only |
 | `Docs/BUILD-TRACKER.md` | Phase progress (1A–1F, Phase 2) |
 | `Docs/Biza-PRD-v6-Final.docx` | Product requirements (behavior, legal) |
 

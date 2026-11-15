@@ -1,7 +1,7 @@
 # Biza — Build Progress Tracker
 
-**Version:** 2.6  
-**Last updated:** 2026-11-16  
+- **Version:** 2.7
+- **Last updated:** 2026-11-16
 **Branch strategy:** `develop` → Vercel preview  
 **Content source:** [`content-map.md`](./content-map.md) · [`content-map.json`](./content-map.json)  
 **Design source:** Stitch / brand concept + [`empowered_learning/DESIGN.md`](./stitch_biza%20[DESIGN%20REF]/empowered_learning/DESIGN.md)  
@@ -20,7 +20,7 @@
 | **1C** Content map wiring | **Done** | 6/6 | Pulled forward with 1B |
 | **1D** Core learning UI | **Done** | 18/18 | |
 | **1E** Polish & review | **Done** | 10/10 | UI phase complete; later mock payment flow has been removed |
-| **1F** Curriculum architecture pilot | **Done** | 3/3 | Typed course model, authored Dropshipping lesson 1, validation script |
+| **1F** Curriculum architecture pilot | **Done** | 5/5 | Typed model, lesson 1 pilot, lesson 2 structured draft, server-only authored bodies |
 | **2** Backend & auth | **In progress** | 5/9 | Supabase RLS/profile/progress schema and app wiring; end-to-end auth smoke test pending |
 
 **Overall UI refactor:** 100% complete (Phase 1E finished)
@@ -29,8 +29,9 @@
 
 | File | Role |
 |------|------|
-| [`content-map.md`](./content-map.md) | **What to build** — categories, courses, chapters, copy rules |
-| [`content-map.json`](./content-map.json) | **Machine-readable** same data for code + future DB seed |
+| [`content-map.md`](./content-map.md) | **What to build** — categories, courses, chapter outlines and content rules |
+| [`content-map.json`](./content-map.json) | Client-safe catalog, objectives, access metadata and chapter IDs |
+| [`chapter-content.json`](./chapter-content.json) | Authored chapter bodies and quiz answers; served only from server-side code |
 | **`BUILD-TRACKER.md` (this file)** | **Task progress** — phases, checkboxes, exit criteria, update after each session |
 
 > Update this tracker at the end of every work session: change `[ ]` → `[/]` → `[x]` and bump **Last updated**.
@@ -170,7 +171,9 @@
 | Task | Status | Notes |
 |------|--------|-------|
 | Define typed course, lesson, chapter, content-block, activity and quiz model | `[x]` | `lib/content/types.ts` |
-| Author Dropshipping lesson 1 as the pilot curriculum | `[x]` | Outcomes, objectives, time estimates, practice prompts, quizzes and feedback |
+| Author Dropshipping lesson 1 as the pilot curriculum | `[x]` | Complete structured pilot; editorial/source review remains before launch |
+| Draft Dropshipping lesson 2 | `[x]` | Platform selection, supplier vetting, product research, store basics; editorial/source review pending |
+| Keep authored bodies server-only; only pass free content to the reader | `[x]` | `chapter-content.json` separated from client catalog; verified absent from client chunks |
 | Validate map parity, free-chapter rules and authored content | `[x]` | `npm run validate:content` |
 
 **Exit criteria:** A complete lesson follows one reusable content structure and renders from the canonical content map. **Met for the pilot lesson.** Remaining chapters need editorial migration and review.
@@ -266,7 +269,7 @@ Use this to validate Phase 1D before starting Phase 2:
 
 | Date | Version | Change |
 |------|---------|--------|
-| 2026-11-16 | 2.6 | Curriculum architecture pilot, first Dropshipping lesson, Supabase auth/progress wiring, disable mock checkout, security baseline |
+| 2026-11-16 | 2.7 | Server-only lesson bodies, Dropshipping lesson 2 draft, Supabase auth/progress wiring, disabled mock checkout |
 | 2026-06-29 | 2.4 | Phase 1D complete; Phase 1E polish (README, mobile, avatars, metadata) |
 | 2026-06-29 | 2.3 | Phase 1D: app bottom nav, learn flow, onboarding, footer landing-only |
 | 2026-06-29 | 2.2 | Phase 1B complete; 1C mostly complete; 13 routes |
