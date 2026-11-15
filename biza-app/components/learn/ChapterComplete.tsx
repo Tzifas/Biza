@@ -12,32 +12,33 @@ type Props = {
   hasNext: boolean;
 };
 
-// Confetti particle animation
 function Confetti() {
-  const confetti = Array.from({ length: 30 }).map((_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    delay: Math.random() * 0.3,
-    duration: 2 + Math.random() * 0.5,
+  const colors = ["bg-gold", "bg-leaf", "bg-coral"];
+  const particles = Array.from({ length: 24 }, (_, id) => ({
+    id,
+    left: (id * 37) % 100,
+    delay: (id % 5) * 0.06,
+    duration: 1.8 + (id % 4) * 0.12,
+    drift: ((id * 29) % 81) - 40,
+    color: colors[id % colors.length],
   }));
 
   return (
     <>
-      {confetti.map((particle) => (
+      {particles.map((particle) => (
         <motion.div
           key={particle.id}
           initial={{ opacity: 1, y: -20, x: 0 }}
-          animate={{ opacity: 0, y: 100, x: (Math.random() - 0.5) * 80 }}
+          animate={{ opacity: 0, y: 100, x: particle.drift }}
           transition={{
             duration: particle.duration,
             delay: particle.delay,
             ease: "easeOut",
           }}
-          className="pointer-events-none fixed text-2xl"
+          className={`pointer-events-none fixed h-2 w-2 rounded-sm ${particle.color}`}
           style={{ left: `${particle.left}%`, top: 0 }}
-        >
-          {["🎉", "✨", "🌟", "⭐"][Math.floor(Math.random() * 4)]}
-        </motion.div>
+          aria-hidden="true"
+        />
       ))}
     </>
   );

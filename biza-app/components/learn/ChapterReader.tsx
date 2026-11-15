@@ -27,6 +27,8 @@ type Props = {
     slug: string;
     title: string;
     isFree: boolean;
+    estimatedMinutes?: number;
+    learningObjectives?: string[];
   };
   progressPercent: number;
   backHref: string;
@@ -116,17 +118,55 @@ export function ChapterReader({
 
       <article className="mx-auto max-w-3xl space-y-6 px-4 py-8">
         <p className="font-display text-xl font-bold text-forest">{content.hook}</p>
-        {content.paragraphs.map((p) => (
-          <p key={p.slice(0, 24)} className="text-sm leading-relaxed text-ink/85">
-            {p}
-          </p>
-        ))}
+        {chapter.learningObjectives?.length ? (
+          <section aria-labelledby="chapter-objectives" className="rounded-xl border border-border bg-white p-4">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h2 id="chapter-objectives" className="font-display text-sm font-semibold text-forest">In this chapter</h2>
+              {chapter.estimatedMinutes ? <span className="text-xs text-stone">About {chapter.estimatedMinutes} minutes</span> : null}
+            </div>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-ink/85">
+              {chapter.learningObjectives.map((objective) => <li key={objective}>{objective}</li>)}
+            </ul>
+          </section>
+        ) : null}
+        {content.blocks.map((block, index) => {
+          if (block.type === "paragraph") {
+            return (
+              <p key={`paragraph-${index}`} className="text-sm leading-relaxed text-ink/85">
+                {block.text}
+              </p>
+            );
+          }
 
-        <Card hover={false} className="border-leaf/30 bg-leaf-light/40 text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-leaf">Visual</p>
-          <p className="mt-2 font-display text-base font-semibold text-forest">{content.visualLabel}</p>
-          <p className="mt-1 text-xs text-stone">Infographic placeholder — editorial asset in Phase 2</p>
-        </Card>
+          if (block.type === "callout") {
+            return (
+              <Card key={`callout-${index}`} hover={false} className="border-leaf/30 bg-leaf-light/40">
+                <p className="font-display text-sm font-semibold text-forest">{block.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink/85">{block.text}</p>
+              </Card>
+            );
+          }
+
+          return (
+            <Card key={`steps-${index}`} hover={false}>
+              <h2 className="font-display text-sm font-semibold text-forest">{block.title}</h2>
+              <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-ink/85">
+                {block.items.map((item) => <li key={item}>{item}</li>)}
+              </ol>
+            </Card>
+          );
+        })}
+
+        {content.activity ? (
+          <Card hover={false} className="border-gold/50 bg-gold/10">
+            <p className="text-xs font-semibold uppercase tracking-wider text-forest">Put it into practice</p>
+            <h2 className="mt-2 font-display text-base font-semibold text-forest">{content.activity.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink/85">{content.activity.instructions}</p>
+            <p className="mt-3 rounded-lg bg-white/70 p-3 text-sm font-medium leading-relaxed text-forest">
+              {content.activity.prompt}
+            </p>
+          </Card>
+        ) : null}
 
         {!quizDone ? (
           <QuizBlock quiz={content.quiz} onContinue={() => setQuizDone(true)} />

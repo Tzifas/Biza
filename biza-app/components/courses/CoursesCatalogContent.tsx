@@ -10,7 +10,7 @@ import {
 import { ArrowRight, Clock, Filter, Map, Search, ShieldAlert, Wallet } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 type Props = { basePath?: string };
@@ -44,23 +44,20 @@ export function CoursesCatalogContent({ basePath = "/courses" }: Props) {
   const activeCategory = catFilter ? getCategoryBySlug(catFilter) : undefined;
   const allOpportunities = getOpportunityListItems();
 
-  const filtered = useMemo(() => {
-    return allOpportunities.filter((opp) => {
-      const matchesCat = !catFilter || opp.categorySlug === catFilter;
-      const matchesSearch =
-        !searchQuery ||
-        opp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        opp.categoryName.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCat && matchesSearch;
-    });
-  }, [allOpportunities, catFilter, searchQuery]);
+  const filtered = allOpportunities.filter((opp) => {
+    const matchesCat = !catFilter || opp.categorySlug === catFilter;
+    const matchesSearch =
+      !searchQuery ||
+      opp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      opp.categoryName.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCat && matchesSearch;
+  });
 
-  const comingSoonRefs = useMemo(() => {
-    if (!activeCategory) return [];
-    return activeCategory.opportunities.filter(
-      (ref) => !getOpportunityBySlug(activeCategory.slug, ref.slug)
-    );
-  }, [activeCategory]);
+  const comingSoonRefs = activeCategory
+    ? activeCategory.opportunities.filter(
+        (ref) => !getOpportunityBySlug(activeCategory.slug, ref.slug)
+      )
+    : [];
 
   return (
     <main className="flex-grow bg-cream py-8 sm:py-12">

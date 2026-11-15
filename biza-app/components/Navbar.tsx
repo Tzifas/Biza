@@ -4,28 +4,21 @@ import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui";
 import { AvatarIcon } from "@/components/avatars/AvatarIcon";
 import { cn } from "@/lib/utils/cn";
-import { getUser, saveUser, logoutUser, UserProfile } from "@/lib/user/storage";
+import { getUserSnapshot, logoutUser, subscribeToUser } from "@/lib/user/storage";
 import { LayoutDashboard, LogIn, LogOut, Menu, ShieldAlert, X, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const [user, setUser] = useState<UserProfile | null>(null);
-
-  useEffect(() => {
-    // Initial fetch
-    setUser(getUser());
-
-    const sync = () => {
-      setUser(getUser());
-    };
-    window.addEventListener("biza-user-updated", sync);
-    return () => window.removeEventListener("biza-user-updated", sync);
-  }, []);
+  const user = useSyncExternalStore(
+    subscribeToUser,
+    getUserSnapshot,
+    () => null
+  );
 
   const handleSignOut = () => {
     logoutUser();

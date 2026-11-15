@@ -168,17 +168,116 @@
         "slug": "dropshipping-course",
         "difficulty": "intermediate",
         "estimatedHours": "8–12",
+        "learningOutcomes": [
+          "Explain the order, supplier, customer and storefront roles in dropshipping.",
+          "Estimate contribution margin using all direct order costs, not just product cost.",
+          "Identify operational and payment questions to verify before accepting an order.",
+          "Choose a small, evidence-led test instead of treating a product or income claim as guaranteed."
+        ],
+        "prerequisites": ["No prior ecommerce experience required."],
         "lessons": [
           {
             "id": "ds-lesson-1",
             "title": "Understand the model",
             "slug": "lesson-1-model",
             "sortOrder": 1,
+            "summary": "Learn what dropshipping does and does not do, then follow the money and identify the risks a seller remains responsible for.",
+            "learningObjectives": [
+              "Trace a customer order from storefront to supplier fulfilment.",
+              "Calculate a simple contribution margin from an example order.",
+              "List the checks required before accepting orders from Kenya.",
+              "Distinguish testable business assumptions from guaranteed outcomes."
+            ],
+            "estimatedMinutes": 36,
             "chapters": [
-              { "id": "ds-ch-1-1", "slug": "what-is-dropshipping", "title": "What dropshipping actually is", "sortOrder": 1, "isFree": true, "quizTypes": ["mcq"] },
-              { "id": "ds-ch-1-2", "slug": "money-flow-margin", "title": "How money flows and where margin comes from", "sortOrder": 2, "isFree": true, "quizTypes": ["true-false"] },
-              { "id": "ds-ch-1-3", "slug": "kenya-context", "title": "Dropshipping from Kenya — payments and reality", "sortOrder": 3, "isFree": false, "quizTypes": ["scenario"] },
-              { "id": "ds-ch-1-4", "slug": "when-it-fails", "title": "Why most stores fail in 90 days", "sortOrder": 4, "isFree": false, "quizTypes": ["mcq"] }
+              {
+                "id": "ds-ch-1-1",
+                "slug": "what-is-dropshipping",
+                "title": "What dropshipping actually is",
+                "sortOrder": 1,
+                "isFree": true,
+                "estimatedMinutes": 8,
+                "learningObjectives": ["Describe the roles of the seller, customer and supplier.", "Explain why no warehouse does not mean no responsibilities."],
+                "quizTypes": ["mcq"],
+                "content": {
+                  "hook": "No warehouse does not mean no business. In dropshipping, you sell the order; a supplier fulfils it.",
+                  "blocks": [
+                    { "type": "paragraph", "text": "A customer buys from your storefront at the price you set. You send the order details and payment for the agreed supplier cost. The supplier packs and ships the item to the customer. Your store is the sales channel; the supplier is the fulfilment partner." },
+                    { "type": "steps", "title": "One order, four hand-offs", "items": ["You publish an accurate listing and disclose delivery expectations.", "The customer places an order and pays through your chosen checkout.", "You confirm the order, pay the supplier and provide the correct fulfilment details.", "The supplier ships; you keep the customer informed and handle service issues." ] },
+                    { "type": "callout", "title": "You still own the customer relationship", "text": "The customer bought from your business. You remain responsible for clear product claims, order updates, support and the refund or replacement policy you promise—even when a supplier ships the parcel." }
+                  ],
+                  "activity": { "title": "Map the responsibilities", "instructions": "For each step, name who performs it and who must resolve the problem if it goes wrong.", "prompt": "A parcel arrives late and the buyer contacts your store. What should you do first, and what information do you need from the supplier?" },
+                  "takeaway": "The supplier handles stock and dispatch; the seller handles the offer, customer communication and business risk.",
+                  "closing": "Next, separate the money collected from the money the business actually keeps.",
+                  "quiz": { "id": "what-is-dropshipping-q1", "type": "mcq", "question": "A customer buys from your store, but the supplier ships the parcel. Who is responsible for replying to that customer about a late order?", "options": [{ "id": "a", "label": "The seller, while working with the supplier to investigate", "correct": true }, { "id": "b", "label": "Nobody; a supplier shipment removes the seller's responsibility", "correct": false }, { "id": "c", "label": "Only the payment provider", "correct": false }], "explanation": "The seller owns the customer-facing promise. The supplier may help resolve fulfilment, but outsourcing shipping does not transfer the customer relationship." }
+                }
+              },
+              {
+                "id": "ds-ch-1-2",
+                "slug": "money-flow-margin",
+                "title": "How money flows and where margin comes from",
+                "sortOrder": 2,
+                "isFree": true,
+                "estimatedMinutes": 9,
+                "learningObjectives": ["Distinguish revenue from profit.", "Calculate an illustrative contribution margin before overhead and tax."],
+                "quizTypes": ["true-false"],
+                "content": {
+                  "hook": "A sale is revenue—not proof that you made a profit.",
+                  "blocks": [
+                    { "type": "paragraph", "text": "Start with the amount collected, then subtract the costs directly tied to completing that order. Depending on your setup, these may include the supplier's item and shipping charges, checkout or currency-conversion fees, discounts, advertising attributable to the sale, and a realistic allowance for refunds, replacements or failed deliveries." },
+                    { "type": "steps", "title": "Illustrative order calculation (KES)", "items": ["Customer pays: 1,500", "Item and supplier delivery: −800", "Payment and currency costs: −75", "Advertising assigned to this order: −250", "Illustrative remainder before overhead, refunds and tax: 375"] },
+                    { "type": "callout", "title": "An example is not a forecast", "text": "These round figures only demonstrate the calculation. Real fees, exchange rates, ad costs and delivery costs vary by provider, product and time. Verify current quotes before spending." }
+                  ],
+                  "activity": { "title": "Stress-test the margin", "instructions": "Change one cost at a time and recalculate the remainder. Include a refund or replacement scenario.", "prompt": "If supplier delivery costs KES 150 more and you offer a KES 100 discount, how much of the illustrative KES 375 remainder is left before overhead, refunds and tax?" },
+                  "takeaway": "Profitability depends on the full cost to acquire, fulfil and support an order—not the gap between selling price and item price alone.",
+                  "closing": "Next, build a verification checklist for the payment, delivery and support promises you make to Kenyan customers.",
+                  "quiz": { "id": "money-flow-margin-q1", "type": "true-false", "question": "If the customer pays more than the supplier charges for the item, the difference is automatically net profit.", "options": [{ "id": "true", "label": "True", "correct": false }, { "id": "false", "label": "False", "correct": true }], "explanation": "Other direct and indirect costs still matter: shipping, payment fees, acquisition, discounts, refunds, operating costs and tax can reduce or exceed the apparent spread." }
+                }
+              },
+              {
+                "id": "ds-ch-1-3",
+                "slug": "kenya-context",
+                "title": "Dropshipping from Kenya — payments and reality",
+                "sortOrder": 3,
+                "isFree": false,
+                "estimatedMinutes": 10,
+                "learningObjectives": ["Identify payment, currency, delivery and support assumptions to verify.", "Build a pre-launch checklist based on current provider terms."],
+                "quizTypes": ["scenario"],
+                "content": {
+                  "hook": "A platform name on a course outline is not proof that it supports your country, account or business model today.",
+                  "blocks": [
+                    { "type": "paragraph", "text": "Before building a store, check the current eligibility and payout terms of each service you intend to use. Confirm whether a Kenyan business or individual can open the account, what identity and business documents are required, which currencies are supported, how payouts reach you, and what fees or reserves may apply." },
+                    { "type": "steps", "title": "Verify before you commit", "items": ["Check the provider's current country and business eligibility directly.", "Confirm checkout, payout currency, withdrawal route, fees and settlement timing.", "Ask the supplier for a written delivered-cost quote, tracking method and realistic delivery range.", "Write a support, cancellation and refund process that matches your actual promises and applicable rules."] },
+                    { "type": "callout", "title": "Avoid platform assumptions", "text": "Availability, features and commercial terms change. Do not borrow, buy inventory or pay for ads based on a tutorial's old screenshot or an unverified claim." }
+                  ],
+                  "activity": { "title": "Create a launch verification sheet", "instructions": "Make a row for the checkout provider, payout route, supplier, shipping method and support policy. Record the source and date of each answer.", "prompt": "Which single unresolved payment or delivery question would stop you from accepting your first order?" },
+                  "takeaway": "Verify account eligibility, cash flow and fulfilment with current primary sources before taking a customer's money.",
+                  "closing": "The final chapter in this lesson turns common failure points into small tests you can run before scaling.",
+                  "quiz": { "id": "kenya-context-q1", "type": "scenario", "question": "A tutorial says a checkout service works in Kenya, but its eligibility page is unclear. What is the safest next step?", "options": [{ "id": "a", "label": "Take orders first and sort out payouts later", "correct": false }, { "id": "b", "label": "Verify eligibility and payout terms with the provider before committing", "correct": true }, { "id": "c", "label": "Use a friend's account without checking its terms", "correct": false }], "explanation": "If you cannot confirm that you can accept and withdraw payments under the provider's current terms, do not build customer promises around that service." }
+                }
+              },
+              {
+                "id": "ds-ch-1-4",
+                "slug": "when-it-fails",
+                "title": "Why most stores fail in 90 days",
+                "sortOrder": 4,
+                "isFree": false,
+                "estimatedMinutes": 9,
+                "learningObjectives": ["Spot assumptions that can make a small store test uneconomic.", "Choose a bounded experiment and a stop-or-revise signal."],
+                "quizTypes": ["mcq"],
+                "content": {
+                  "hook": "There is no reliable universal countdown to failure. The useful question is which assumption your next test will check.",
+                  "blocks": [
+                    { "type": "paragraph", "text": "A store can struggle when demand is assumed rather than tested, the complete delivered cost is unknown, product claims exceed what the supplier can deliver, or acquisition costs are higher than the margin can support. Slow fulfilment and unclear refund handling can also erode trust. These are risks to investigate—not a statistic that predicts a fixed outcome for every seller." },
+                    { "type": "steps", "title": "Run a smaller, safer test", "items": ["Write one hypothesis about a specific customer and problem.", "Gather evidence without promising a result you cannot deliver.", "Set a spending cap and a signal that would make you stop or revise.", "Review actual costs, customer questions and fulfilment before increasing exposure."] },
+                    { "type": "callout", "title": "Protect your downside", "text": "Do not use money needed for essentials, borrow on the promise of a guaranteed return, or scale advertising before you understand fulfilment and unit economics." }
+                  ],
+                  "activity": { "title": "Draft a bounded experiment", "instructions": "Write a one-sentence hypothesis, the cheapest ethical way to test it, your maximum spend (which may be zero), and the evidence that would change your mind.", "prompt": "What would you need to observe before deciding to continue, revise the offer, or stop?" },
+                  "takeaway": "Treat early activity as learning: test one assumption at a time, cap risk and let evidence—not hype—set the next step.",
+                  "closing": "You have a model, a cost lens and a verification checklist. The next lesson moves into platform and supplier decisions.",
+                  "quiz": { "id": "when-it-fails-q1", "type": "mcq", "question": "Before increasing ad spend, which signal is most useful?", "options": [{ "id": "a", "label": "A creator promises that the product always goes viral", "correct": false }, { "id": "b", "label": "A clear test with known costs, fulfilment evidence and a defined stop-or-revise rule", "correct": true }, { "id": "c", "label": "A high number of store visits with no attention to orders or costs", "correct": false }], "explanation": "A bounded test connects evidence to costs and fulfillment, and defines what to do before risk increases." }
+                }
+              }
             ]
           },
           {
